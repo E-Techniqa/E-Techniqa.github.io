@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Techniqa | Engineering, Technology & Innovation</title>
-    <meta name="description" content="E-Techniqa — Smart Home Gadgets, EEE Components, IoT Solutions & Upcoming Industrial R&D Projects.">
+    <meta name="description" content="E-Techniqa — Smart Home Gadgets, EEE Components, Robotics Parts, IoT Solutions & Upcoming Industrial R&D Projects.">
     <link rel="icon" type="image/png" href="logo.png">
 
     <!-- Tailwind CSS -->
@@ -135,14 +135,14 @@
 
     <!-- ==================== MAIN E-COMMERCE HEADER ==================== -->
     <header class="sticky top-0 z-40 backdrop-blur-lg bg-navy-950/95 border-b border-cyan-500/20 shadow-lg shadow-black/40">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
 
             <!-- Top Row: Brand Name on Left + Language & Bag on Right -->
-            <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-1.5 sm:gap-3">
 
                 <!-- Exact Official Brand Logo -->
-                <div id="brand-logo-trigger" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 cursor-pointer select-none group">
-                    <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-brand-orange/60 shadow-[0_0_14px_rgba(0,212,255,0.4)] flex-shrink-0 bg-navy-950">
+                <div id="brand-logo-trigger" class="flex items-center gap-1.5 sm:gap-3 min-w-0 cursor-pointer select-none group">
+                    <div class="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-brand-orange/60 shadow-[0_0_14px_rgba(0,212,255,0.4)] flex-shrink-0 bg-navy-950">
                         <img
                             src="logo.png"
                             alt="E-Techniqa Official Logo"
@@ -175,13 +175,13 @@
                             <path d="M21 61C18 72 36 78 58 67C77 57 86 38 76 28C71 23 61 23 52 26" stroke="url(#ringSplit)" stroke-width="3.2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div>
-                        <div class="brand-wordmark text-[21px] sm:text-3xl leading-none">
+                    <div class="min-w-0">
+                        <div class="brand-wordmark text-[18px] sm:text-3xl leading-none">
                             <span class="text-brand-orange">E-</span><span class="text-silver">Techn</span><span class="brand-i-wrap"><span class="brand-i-stem">ı</span><span class="brand-i-diamond"></span></span><span class="text-silver">qa</span>
                         </div>
                         <div class="flex items-center gap-1 mt-0.5">
-                            <span class="h-[1.5px] w-2 sm:w-3 bg-brand-orange flex-shrink-0"></span>
-                            <p class="text-[8px] sm:text-[9.5px] text-slate-200 tracking-wide font-medium italic whitespace-nowrap">Engineering, Technology &amp; Innovation</p>
+                            <span class="h-[1.5px] w-1.5 sm:w-3 bg-brand-orange flex-shrink-0"></span>
+                            <p class="text-[7.5px] sm:text-[9.5px] text-slate-200 tracking-tight sm:tracking-wide font-medium italic truncate">Engineering, Technology &amp; Innovation</p>
                             <span class="h-[1.5px] w-2 sm:w-3 bg-brand-orange hidden sm:inline-block flex-shrink-0"></span>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                     <input
                         id="desktop-search-input"
                         type="text"
-                        placeholder="Search Smart Plug, Router UPS, Arduino Uno, ESP32, Sensors..."
+                        placeholder="Search Resistor, Motor, Arduino, ESP32, Router UPS, Smart Plug..."
                         class="w-full pl-4 pr-12 py-2.5 rounded-xl bg-navy-900/95 border border-cyan-500/30 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange transition-all"
                     >
                     <button onclick="scrollToCatalog()" class="absolute right-1.5 top-1/2 -translate-y-1/2 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-brand-orange to-brand-amber text-white text-xs font-bold hover:brightness-110 transition-all" aria-label="Search">
@@ -201,7 +201,7 @@
                 </div>
 
                 <!-- Right Storefront Actions -->
-                <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                     <!-- Language Switcher -->
                     <div class="flex items-center rounded-xl bg-navy-900 border border-cyan-500/30 p-0.5 text-[10px] sm:text-xs font-bold" role="group" aria-label="Language Switcher">
                         <button id="lang-en-btn" onclick="setLanguage('en')" class="px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all">EN</button>
@@ -215,10 +215,10 @@
                     </button>
 
                     <!-- Order Bag Button -->
-                    <button id="open-cart-btn" class="relative flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-navy-800/90 hover:bg-navy-700 border border-cyan-500/30 text-slate-200 hover:text-brand-cyan transition-all" aria-label="Order Bag">
-                        <i class="fa-solid fa-cart-shopping text-sm sm:text-base text-brand-orange"></i>
+                    <button id="open-cart-btn" class="relative flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-navy-800/90 hover:bg-navy-700 border border-cyan-500/30 text-slate-200 hover:text-brand-cyan transition-all" aria-label="Order Bag">
+                        <i class="fa-solid fa-cart-shopping text-xs sm:text-base text-brand-orange"></i>
                         <span data-i18n="bagLabel" class="hidden lg:inline text-xs font-semibold">Bag</span>
-                        <span id="cart-count-badge" class="min-w-[18px] h-4.5 px-1 rounded-full bg-brand-orange text-white text-[10px] sm:text-xs font-bold flex items-center justify-center shadow">0</span>
+                        <span id="cart-count-badge" class="min-w-[16px] h-4 px-1 rounded-full bg-brand-orange text-white text-[10px] sm:text-xs font-bold flex items-center justify-center shadow">0</span>
                     </button>
 
                     <!-- WhatsApp Button (Desktop & Tablet) -->
@@ -236,7 +236,7 @@
                     <input
                         id="mobile-search-input"
                         type="text"
-                        placeholder="Search gadgets, UPS, Arduino, sensors..."
+                        placeholder="Search Resistor, Motor, Arduino, UPS..."
                         class="w-full pl-9 pr-3 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-orange"
                     >
                 </div>
@@ -251,40 +251,40 @@
         </div>
     </header>
 
-    <!-- ==================== HERO BANNER ==================== -->
-    <section id="home" class="relative pt-7 pb-10 sm:pt-10 sm:pb-12 overflow-hidden">
+    <!-- ==================== COMPACT HERO BANNER ==================== -->
+    <section id="home" class="relative pt-5 pb-6 sm:pt-7 sm:pb-8 overflow-hidden">
         <div class="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-brand-orange/15 blur-3xl"></div>
         <div class="pointer-events-none absolute top-12 -right-24 w-96 h-96 rounded-full bg-brand-cyan/15 blur-3xl"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
 
                 <!-- Main Left Feature Banner -->
-                <div class="lg:col-span-8 rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-navy-800/95 via-navy-900 to-navy-950 border border-cyan-500/30 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+                <div class="lg:col-span-8 rounded-3xl p-5 sm:p-7 bg-gradient-to-br from-navy-800/95 via-navy-900 to-navy-950 border border-cyan-500/30 shadow-2xl relative overflow-hidden flex flex-col justify-between">
                     <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#00D4FF 1px, transparent 1px); background-size: 22px 22px;"></div>
 
                     <div class="relative z-10">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-950/90 border border-brand-orange/45 text-xs font-semibold text-amber-300 mb-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-950/90 border border-brand-orange/45 text-[11px] font-semibold text-amber-300 mb-3">
                             <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
                             <span>Engineer • Innovate • Excel</span>
                         </div>
 
-                        <h1 data-i18n="heroTitle" class="font-tech text-3xl sm:text-5xl font-bold tracking-tight leading-tight mb-3">
+                        <h1 data-i18n="heroTitle" class="font-tech text-2xl sm:text-4xl font-bold tracking-tight leading-tight mb-2.5">
                             <span class="text-white">Building a </span>
                             <span class="text-brand-orange">Smarter</span>
                             <span class="text-brand-cyan"> Tomorrow</span>
                         </h1>
 
-                        <p data-i18n="heroSubtitle" class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mb-6">
-                            Upgrade your home with <strong class="text-white">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class="text-white">EEE &amp; IoT Components</strong>.
+                        <p data-i18n="heroSubtitle" class="text-slate-300 text-xs sm:text-sm max-w-xl leading-relaxed mb-4">
+                            Upgrade your home with <strong class="text-white">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class="text-white">EEE, Robotics &amp; IoT Components</strong>.
                         </p>
 
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="#catalog" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber hover:brightness-110 text-white text-sm font-bold shadow-lg shadow-brand-orange/30 transition-all">
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <a href="#catalog" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber hover:brightness-110 text-white text-xs sm:text-sm font-bold shadow-lg shadow-brand-orange/30 transition-all">
                                 <i class="fa-solid fa-bolt"></i>
                                 <span data-i18n="shopAllBtn">Shop All Products</span>
                             </a>
-                            <button onclick="openCustomRequestModal()" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy-950/90 hover:bg-navy-800 border border-brand-cyan/40 text-cyan-300 text-sm font-semibold transition-all">
+                            <button onclick="openCustomRequestModal()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy-950/90 hover:bg-navy-800 border border-brand-cyan/40 text-cyan-300 text-xs sm:text-sm font-semibold transition-all">
                                 <i class="fa-solid fa-file-signature"></i>
                                 <span data-i18n="customReqHeroBtn">Custom Project / Component Quote</span>
                             </button>
@@ -292,10 +292,10 @@
                     </div>
 
                     <!-- Bottom Brand Pillars Strip -->
-                    <div class="relative z-10 mt-8 pt-6 border-t border-slate-800/90 grid grid-cols-3 gap-2 sm:gap-4">
+                    <div class="relative z-10 mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-3 gap-2 sm:gap-4">
                         <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-9 h-9 rounded-lg bg-brand-cyan/15 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan flex-shrink-0">
-                                <i class="fa-solid fa-microchip text-sm"></i>
+                            <div class="w-8 h-8 rounded-lg bg-brand-cyan/15 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan flex-shrink-0">
+                                <i class="fa-solid fa-microchip text-xs"></i>
                             </div>
                             <div class="min-w-0">
                                 <div data-i18n="pillar1Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">EEE Components</div>
@@ -303,8 +303,8 @@
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-9 h-9 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center text-brand-orange flex-shrink-0">
-                                <i class="fa-solid fa-house-signal text-sm"></i>
+                            <div class="w-8 h-8 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center text-brand-orange flex-shrink-0">
+                                <i class="fa-solid fa-house-signal text-xs"></i>
                             </div>
                             <div class="min-w-0">
                                 <div data-i18n="pillar2Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">Our Products</div>
@@ -312,8 +312,8 @@
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
-                                <i class="fa-solid fa-solar-panel text-sm"></i>
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                                <i class="fa-solid fa-solar-panel text-xs"></i>
                             </div>
                             <div class="min-w-0">
                                 <div data-i18n="pillar3Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">Big Projects</div>
@@ -323,43 +323,43 @@
                     </div>
                 </div>
 
-                <!-- Right Side Featured Cards -->
-                <div class="lg:col-span-4 flex flex-col gap-4">
-                    <div class="flex-1 rounded-3xl p-5 bg-gradient-to-br from-navy-800 to-navy-950 border border-brand-orange/40 flex flex-col justify-between relative overflow-hidden">
+                <!-- Right Side Featured Deals -->
+                <div class="hidden sm:flex lg:col-span-4 flex-col gap-3.5">
+                    <div class="flex-1 rounded-3xl p-4 sm:p-5 bg-gradient-to-br from-navy-800 to-navy-950 border border-brand-orange/40 flex flex-col justify-between relative overflow-hidden">
                         <div class="flex items-start justify-between gap-2">
                             <div>
-                                <span data-i18n="deal1Tag" class="px-2.5 py-0.5 rounded-md bg-brand-orange text-white text-[10px] font-bold uppercase">Featured Gadget</span>
-                                <h2 class="font-tech text-2xl font-bold text-white mt-1.5">Router Mini UPS</h2>
+                                <span data-i18n="deal1Tag" class="px-2 py-0.5 rounded-md bg-brand-orange text-white text-[10px] font-bold uppercase">Featured Gadget</span>
+                                <h2 class="font-tech text-xl font-bold text-white mt-1">Router Mini UPS</h2>
                                 <p data-i18n="deal1Desc" class="text-xs text-slate-300 mt-0.5">4–6 Hours Non-Stop Wi-Fi &amp; ONU Backup</p>
                             </div>
                             <div class="text-right">
                                 <span class="text-xs text-slate-400 line-through block">৳1,750</span>
-                                <span class="font-tech text-2xl font-bold text-brand-orange">৳1,450</span>
+                                <span class="font-tech text-xl font-bold text-brand-orange">৳1,450</span>
                             </div>
                         </div>
-                        <div class="mt-4 flex items-center justify-between">
+                        <div class="mt-3 flex items-center justify-between">
                             <span data-i18n="inStockLabel" class="text-[11px] text-emerald-400 font-medium"><i class="fa-solid fa-circle-check mr-1"></i>In Stock</span>
-                            <a href="#catalog" onclick="selectCategory('gadgets')" data-i18n="viewDealBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-cyan/15 hover:bg-brand-cyan/25 border border-brand-cyan/40 text-brand-cyan text-xs font-semibold transition-all">
+                            <a href="#catalog" onclick="selectCategory('gadgets')" data-i18n="viewDealBtn" class="px-3 py-1 rounded-lg bg-brand-cyan/15 hover:bg-brand-cyan/25 border border-brand-cyan/40 text-brand-cyan text-xs font-semibold transition-all">
                                 View Deal &rarr;
                             </a>
                         </div>
                     </div>
 
-                    <div class="flex-1 rounded-3xl p-5 bg-gradient-to-br from-navy-800 to-navy-950 border border-brand-cyan/35 flex flex-col justify-between">
+                    <div class="flex-1 rounded-3xl p-4 sm:p-5 bg-gradient-to-br from-navy-800 to-navy-950 border border-brand-cyan/35 flex flex-col justify-between">
                         <div class="flex items-start justify-between gap-2">
                             <div>
-                                <span data-i18n="deal2Tag" class="px-2.5 py-0.5 rounded-md bg-cyan-500 text-navy-950 text-[10px] font-bold uppercase">EEE / CSE Kit</span>
-                                <h2 class="font-tech text-2xl font-bold text-white mt-1.5">Arduino + ESP32 Kit</h2>
+                                <span data-i18n="deal2Tag" class="px-2 py-0.5 rounded-md bg-cyan-500 text-navy-950 text-[10px] font-bold uppercase">EEE / CSE Kit</span>
+                                <h2 class="font-tech text-xl font-bold text-white mt-1">Arduino + ESP32 Kit</h2>
                                 <p data-i18n="deal2Desc" class="text-xs text-slate-300 mt-0.5">Includes Free QR Code Wiring &amp; Code Guide</p>
                             </div>
                             <div class="text-right">
                                 <span class="text-xs text-slate-400 line-through block">৳1,450</span>
-                                <span class="font-tech text-2xl font-bold text-brand-cyan">৳1,250</span>
+                                <span class="font-tech text-xl font-bold text-brand-cyan">৳1,250</span>
                             </div>
                         </div>
-                        <div class="mt-4 flex items-center justify-between">
+                        <div class="mt-3 flex items-center justify-between">
                             <span data-i18n="labVerified" class="text-[11px] text-amber-300 font-medium"><i class="fa-solid fa-qrcode mr-1"></i>Tested &amp; Verified</span>
-                            <a href="#catalog" onclick="selectCategory('eee')" data-i18n="shopKitsBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-orange/20 hover:bg-brand-orange/30 border border-brand-orange/45 text-amber-300 text-xs font-semibold transition-all">
+                            <a href="#catalog" onclick="selectCategory('eee')" data-i18n="shopKitsBtn" class="px-3 py-1 rounded-lg bg-brand-orange/20 hover:bg-brand-orange/30 border border-brand-orange/45 text-amber-300 text-xs font-semibold transition-all">
                                 Shop Kits &rarr;
                             </a>
                         </div>
@@ -370,13 +370,86 @@
         </div>
     </section>
 
+    <!-- ==================== STOREFRONT CATALOG SECTION ==================== -->
+    <section id="catalog" class="py-6 sm:py-10 border-t border-cyan-500/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Toolbar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+                <div>
+                    <h2 class="font-tech text-2xl sm:text-4xl font-bold text-white flex flex-wrap items-center gap-2">
+                        <span class="brand-wordmark"><span class="text-brand-orange">E-</span><span class="text-silver">Techn</span><span class="brand-i-wrap"><span class="brand-i-stem">ı</span><span class="brand-i-diamond"></span></span><span class="text-silver">qa</span></span>
+                        <span data-i18n="catalogHeadingSuffix">Store Catalog</span>
+                    </h2>
+                    <p data-i18n="catalogSub" class="text-xs sm:text-sm text-slate-400 mt-1">Click any product to view full specs or order directly on WhatsApp.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2">
+                    <!-- Availability Filter -->
+                    <select id="stock-filter-select" class="px-3 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs text-slate-200 focus:outline-none focus:border-brand-orange">
+                        <option value="all" data-i18n="stockFilterAll">Status: All</option>
+                        <option value="in-stock" data-i18n="stockFilterIn">● In Stock Only</option>
+                        <option value="upcoming" data-i18n="stockFilterUp">● Upcoming</option>
+                        <option value="out-of-stock" data-i18n="stockFilterOut">● Stock Out</option>
+                    </select>
+
+                    <!-- Sort Filter -->
+                    <select id="sort-select" class="px-3 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs text-slate-200 focus:outline-none focus:border-brand-orange">
+                        <option value="featured" data-i18n="sortFeatured">Featured &amp; Popular</option>
+                        <option value="price-low" data-i18n="sortLow">Price: Low to High</option>
+                        <option value="price-high" data-i18n="sortHigh">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="flex items-center gap-2.5 overflow-x-auto pb-3 mb-6 no-scrollbar" role="tablist">
+                <button class="filter-btn active flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 transition-all" data-category="all" data-i18n="catAll">
+                    All Items (30)
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="gadgets">
+                    <i class="fa-solid fa-house-signal mr-1.5 text-brand-cyan"></i><span data-i18n="catGadgets">Smart Home &amp; Protection</span>
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="eee">
+                    <i class="fa-solid fa-microchip mr-1.5 text-brand-orange"></i><span data-i18n="catEEE">EEE Kits, GPS &amp; Sensors</span>
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="basic">
+                    <i class="fa-solid fa-bolt mr-1.5 text-yellow-400"></i><span data-i18n="catBasic">Basic Components, Wires &amp; Power</span>
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="robotics">
+                    <i class="fa-solid fa-gears mr-1.5 text-amber-300"></i><span data-i18n="catRobotics">Motors, Pumps &amp; Robotics</span>
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="winter">
+                    <i class="fa-solid fa-temperature-half mr-1.5 text-sky-300"></i><span data-i18n="catUtility">Controllers &amp; Meters</span>
+                </button>
+                <button class="filter-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="projects">
+                    <i class="fa-solid fa-robot mr-1.5 text-emerald-400"></i><span data-i18n="catProjects">Custom IoT Projects</span>
+                </button>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+
+            <!-- Empty Search State -->
+            <div id="empty-state" class="hidden text-center py-16 rounded-3xl bg-navy-900/70 border border-slate-800">
+                <i class="fa-solid fa-box-open text-4xl text-slate-500 mb-3"></i>
+                <p data-i18n="noMatchTitle" class="text-slate-200 font-semibold">No matching products found</p>
+                <p data-i18n="noMatchSub" class="text-xs text-slate-400 mt-1">Try searching for "Resistor", "Motor", "Wheel", "UPS", or "Arduino".</p>
+                <button onclick="resetFilters()" data-i18n="resetBtn" class="mt-4 px-5 py-2.5 rounded-xl bg-brand-orange text-white text-xs font-bold hover:brightness-110">
+                    Reset Filters
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== SMART BUNDLE & COMBO DEALS ==================== -->
-    <section class="py-8 border-t border-cyan-500/15 bg-navy-900/40">
+    <section class="py-10 border-t border-cyan-500/15 bg-navy-900/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-5">
-                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
+                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white flex flex-wrap items-center gap-2">
                     <i class="fa-solid fa-fire text-brand-orange"></i>
-                    <span data-i18n="comboHeading">E-Techniqa Value Combo Packs</span>
+                    <span class="brand-wordmark"><span class="text-brand-orange">E-</span><span class="text-silver">Techn</span><span class="brand-i-wrap"><span class="brand-i-stem">ı</span><span class="brand-i-diamond"></span></span><span class="text-silver">qa</span></span>
+                    <span data-i18n="comboHeadingSuffix">Value Combo Packs</span>
                 </h2>
                 <span data-i18n="comboSubTag" class="text-xs text-brand-cyan font-semibold hidden sm:inline">Save Extra on Bundle Orders</span>
             </div>
@@ -419,64 +492,6 @@
         </div>
     </section>
 
-    <!-- ==================== STOREFRONT CATALOG SECTION ==================== -->
-    <section id="catalog" class="py-10 sm:py-14 border-t border-cyan-500/15">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <!-- Toolbar -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <div>
-                    <h2 class="font-tech text-3xl sm:text-4xl font-bold text-white flex items-center gap-2.5">
-                        <span class="w-2 h-7 rounded-full bg-brand-orange inline-block"></span>
-                        <span data-i18n="catalogHeading">E-Techniqa Store Catalog</span>
-                    </h2>
-                    <p data-i18n="catalogSub" class="text-xs sm:text-sm text-slate-400 mt-1">Click any product to view full specs or order directly on WhatsApp.</p>
-                </div>
-
-                <div class="flex items-center gap-2.5">
-                    <label for="sort-select" data-i18n="sortByLabel" class="text-xs text-slate-400 font-medium">Sort by:</label>
-                    <select id="sort-select" class="px-3.5 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-brand-orange">
-                        <option value="featured" data-i18n="sortFeatured">Featured &amp; Popular</option>
-                        <option value="price-low" data-i18n="sortLow">Price: Low to High</option>
-                        <option value="price-high" data-i18n="sortHigh">Price: High to Low</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Category Filter Pills -->
-            <div class="flex items-center gap-2.5 overflow-x-auto pb-3 mb-7 no-scrollbar" role="tablist">
-                <button class="filter-btn active flex-shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 transition-all" data-category="all" data-i18n="catAll">
-                    All Items
-                </button>
-                <button class="filter-btn flex-shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="gadgets">
-                    <i class="fa-solid fa-house-signal mr-1.5 text-brand-cyan"></i><span data-i18n="catGadgets">Smart Home Gadgets</span>
-                </button>
-                <button class="filter-btn flex-shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="winter">
-                    <i class="fa-solid fa-temperature-half mr-1.5 text-sky-300"></i><span data-i18n="catUtility">Utility &amp; Controllers</span>
-                </button>
-                <button class="filter-btn flex-shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="eee">
-                    <i class="fa-solid fa-microchip mr-1.5 text-brand-orange"></i><span data-i18n="catEEE">EEE Kits &amp; Sensors</span>
-                </button>
-                <button class="filter-btn flex-shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-cyan-500/25 bg-navy-900 text-slate-200 hover:border-brand-orange transition-all" data-category="projects">
-                    <i class="fa-solid fa-robot mr-1.5 text-emerald-400"></i><span data-i18n="catProjects">Custom IoT Projects</span>
-                </button>
-            </div>
-
-            <!-- Product Cards Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
-
-            <!-- Empty Search State -->
-            <div id="empty-state" class="hidden text-center py-16 rounded-3xl bg-navy-900/70 border border-slate-800">
-                <i class="fa-solid fa-box-open text-4xl text-slate-500 mb-3"></i>
-                <p data-i18n="noMatchTitle" class="text-slate-200 font-semibold">No matching products found</p>
-                <p data-i18n="noMatchSub" class="text-xs text-slate-400 mt-1">Try searching for "Smart Plug", "UPS", "Arduino", or "Sensor".</p>
-                <button onclick="resetFilters()" data-i18n="resetBtn" class="mt-4 px-5 py-2.5 rounded-xl bg-brand-orange text-white text-xs font-bold hover:brightness-110">
-                    Reset Filters
-                </button>
-            </div>
-        </div>
-    </section>
-
     <!-- ==================== UPCOMING R&D & INDUSTRIAL PROJECTS SHOWCASE ==================== -->
     <section id="upcoming-projects" class="py-12 sm:py-16 bg-gradient-to-b from-navy-950 via-navy-900/90 to-navy-950 border-t border-brand-orange/25 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -484,10 +499,10 @@
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/15 border border-brand-cyan/35 text-brand-cyan text-xs font-bold uppercase tracking-wider mb-2">
                         <i class="fa-solid fa-flask-vial"></i>
-                        <span data-i18n="upcomingPill">E-Techniqa Innovation Lab • Roadmap</span>
+                        <span class="brand-wordmark text-xs"><span class="text-brand-orange">E-</span><span class="text-silver">Techn</span><span class="brand-i-wrap"><span class="brand-i-stem">ı</span><span class="brand-i-diamond"></span></span><span class="text-silver">qa</span></span>
+                        <span data-i18n="upcomingPillSuffix">Innovation Lab • Roadmap</span>
                     </div>
                     <h2 class="font-tech text-3xl sm:text-4xl font-bold text-white flex items-center gap-2.5">
-                        <span class="w-2 h-7 rounded-full bg-brand-cyan inline-block"></span>
                         <span data-i18n="upcomingHeading">Upcoming R&amp;D &amp; Industrial Projects</span>
                     </h2>
                     <p data-i18n="upcomingSub" class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
@@ -556,8 +571,7 @@
     <section class="py-12 sm:py-16 border-b border-cyan-500/15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-7 space-y-4">
-                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
-                    <span class="w-2 h-6 rounded-full bg-brand-orange inline-block"></span>
+                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white">
                     <span data-i18n="reviewsHeading">What Engineers &amp; Customers Say</span>
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -574,20 +588,31 @@
                             <span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
                             <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>EEE Student</span>
                         </div>
-                        <p data-i18n="rev2Text" class="text-xs text-slate-300 leading-relaxed">"Ordered Arduino + ESP32 combo for our semester IoT project. Every pin was pre-tested and the QR code diagram saved us hours."</p>
+                        <p data-i18n="rev2Text" class="text-xs text-slate-300 leading-relaxed">"Ordered Arduino + ESP32 combo and motor kit for our semester project. Everything arrived tested and worked first try!"</p>
                         <p class="text-xs font-bold text-white mt-3">— Rafiul Islam, EEE Dept.</p>
                     </div>
                 </div>
             </div>
 
             <div class="lg:col-span-5 space-y-3">
-                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
-                    <span class="w-2 h-6 rounded-full bg-brand-cyan inline-block"></span>
+                <h2 class="font-tech text-2xl sm:text-3xl font-bold text-white">
                     <span data-i18n="faqHeading">Quick FAQ</span>
                 </h2>
                 <details class="p-4 rounded-2xl bg-navy-900/90 border border-slate-800 text-xs text-slate-300" open>
                     <summary data-i18n="faq1Q" class="font-bold text-white cursor-pointer">How do I confirm an order?</summary>
                     <p data-i18n="faq1A" class="mt-2 text-slate-400 leading-relaxed">Add items to your Bag or click "Order via WhatsApp", fill in your name and delivery address, and our team confirms your parcel dispatch immediately.</p>
+                </details>
+                <details class="p-4 rounded-2xl bg-navy-900/90 border border-slate-800 text-xs text-slate-300">
+                    <summary data-i18n="faq3Q" class="font-bold text-white cursor-pointer">What is the delivery time and Cash on Delivery (COD) charge?</summary>
+                    <p data-i18n="faq3A" class="mt-2 text-slate-400 leading-relaxed">Inside Dhaka City: 24–48 hours (৳60). Outside Dhaka across all 64 districts: 2–4 business days (৳120). Pay cash only after receiving your parcel.</p>
+                </details>
+                <details class="p-4 rounded-2xl bg-navy-900/90 border border-slate-800 text-xs text-slate-300">
+                    <summary data-i18n="faq4Q" class="font-bold text-white cursor-pointer">Do you provide replacement warranty and technical setup help?</summary>
+                    <p data-i18n="faq4A" class="mt-2 text-slate-400 leading-relaxed">Yes! Every module is tested before dispatch. You get a 7-day instant replacement guarantee plus free WhatsApp/QR wiring &amp; Arduino code support.</p>
+                </details>
+                <details class="p-4 rounded-2xl bg-navy-900/90 border border-slate-800 text-xs text-slate-300">
+                    <summary data-i18n="faq5Q" class="font-bold text-white cursor-pointer">Can I order bulk components or request items not listed here?</summary>
+                    <p data-i18n="faq5A" class="mt-2 text-slate-400 leading-relaxed">Absolutely! Send your component list on WhatsApp or via the "Custom Project / Component Quote" button—we source directly from Dhaka electronics markets at student &amp; wholesale-friendly rates.</p>
                 </details>
                 <details class="p-4 rounded-2xl bg-navy-900/90 border border-slate-800 text-xs text-slate-300">
                     <summary data-i18n="faq2Q" class="font-bold text-white cursor-pointer">Do you build custom University FYP or B2B IoT systems?</summary>
@@ -607,7 +632,7 @@
                     </div>
                     <p class="text-xs uppercase tracking-widest text-brand-cyan mb-3">Engineering, Technology &amp; Innovation</p>
                     <p data-i18n="footerAbout" class="text-sm text-slate-400 leading-relaxed">
-                        Your trusted partner for Smart Home Automation Gadgets, EEE Project Kits, and Custom IoT Engineering Solutions.
+                        Your trusted partner for Smart Home Automation Gadgets, EEE &amp; Robotics Components, and Custom IoT Engineering Solutions.
                     </p>
                 </div>
 
@@ -654,7 +679,7 @@
             </div>
 
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <p>&copy; <span id="year"></span> E-Techniqa. All rights reserved.</p>
+                <p class="flex items-center gap-1.5">&copy; <span id="year"></span> <span class="brand-wordmark text-sm"><span class="text-brand-orange">E-</span><span class="text-silver">Techn</span><span class="brand-i-wrap"><span class="brand-i-stem">ı</span><span class="brand-i-diamond"></span></span><span class="text-silver">qa</span></span>. All rights reserved.</p>
                 <p>Engineer • Innovate • Excel</p>
             </div>
         </div>
@@ -799,7 +824,7 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <p class="text-xs text-slate-400 mb-4">Enter your E-Techniqa Admin Password to manage store products, upcoming projects &amp; store settings.</p>
+            <p class="text-xs text-slate-400 mb-4">Enter your E-Techniqa Admin Password to manage stock status, pin sourced items to the top, or edit products.</p>
             <form id="admin-login-form" class="space-y-3">
                 <input id="admin-password-input" type="password" required placeholder="Enter Admin Password" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:border-brand-orange focus:outline-none">
                 <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-orange hover:brightness-110 text-white text-sm font-bold">
@@ -816,9 +841,9 @@
                 <div>
                     <h3 class="font-tech text-2xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-sliders text-brand-orange"></i>
-                        <span>E-Techniqa Store &amp; R&amp;D Manager</span>
+                        <span>E-Techniqa Store &amp; Stock Manager</span>
                     </h3>
-                    <p class="text-xs text-slate-400">Edit products, upcoming projects or WhatsApp number — then copy updated <code class="text-amber-300">index.html</code> into GitHub.</p>
+                    <p class="text-xs text-slate-400">Change stock status (<span class="text-emerald-400">In Stock</span> / <span class="text-rose-400">Stock Out</span> / <span class="text-amber-300">Upcoming</span>), pin newly sourced items to Top, then copy <code class="text-amber-300">index.html</code>.</p>
                 </div>
                 <button id="close-admin-btn" class="w-9 h-9 rounded-xl bg-navy-800 hover:bg-brand-orange text-slate-200 hover:text-white flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
@@ -837,7 +862,7 @@
                 <div id="admin-products-panel" class="space-y-5">
                     <form id="product-editor-form" class="p-4 rounded-2xl bg-navy-950/90 border border-cyan-500/25 space-y-3">
                         <div class="flex items-center justify-between">
-                            <h4 id="editor-form-title" class="text-xs font-bold uppercase tracking-wider text-brand-cyan">+ Add New Store Product</h4>
+                            <h4 id="editor-form-title" class="text-xs font-bold uppercase tracking-wider text-brand-cyan">+ Add New Store Product (Pins to Top)</h4>
                             <button type="button" id="cancel-edit-btn" class="hidden text-xs text-amber-300 hover:underline">Cancel Edit</button>
                         </div>
                         <input type="hidden" id="edit-product-index" value="-1">
@@ -848,11 +873,21 @@
                                 <input id="form-name" type="text" required placeholder="e.g. ESP32 Cam Module" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                             </div>
                             <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Availability Status *</label>
+                                <select id="form-status" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                                    <option value="in-stock">● In Stock (Ready to Order)</option>
+                                    <option value="upcoming">● Upcoming (Pre-Book / Coming Soon)</option>
+                                    <option value="out-of-stock">● Stock Out (Currently Unavailable)</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label class="block text-[11px] text-slate-400 mb-1">Category *</label>
                                 <select id="form-category" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
-                                    <option value="gadgets">Smart Home Gadgets</option>
-                                    <option value="winter">Utility &amp; Controllers</option>
-                                    <option value="eee">EEE Kits &amp; Sensors</option>
+                                    <option value="eee">EEE Kits, GPS &amp; Sensors</option>
+                                    <option value="robotics">Motors, Pumps &amp; Robotics</option>
+                                    <option value="basic">Basic Components, Wires &amp; Power</option>
+                                    <option value="gadgets">Smart Home &amp; Protection</option>
+                                    <option value="winter">Controllers &amp; Meters</option>
                                     <option value="projects">Custom IoT Projects</option>
                                 </select>
                             </div>
@@ -866,9 +901,9 @@
                             </div>
                             <div>
                                 <label class="block text-[11px] text-slate-400 mb-1">Badge Text</label>
-                                <input id="form-badge" type="text" placeholder="e.g. Hot Offer / Best Seller" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                                <input id="form-badge" type="text" placeholder="e.g. Just Arrived / Hot Offer" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                             </div>
-                            <div>
+                            <div class="sm:col-span-2">
                                 <label class="block text-[11px] text-slate-400 mb-1">Image Filename or URL</label>
                                 <input id="form-image" type="text" placeholder="e.g. smart-plug.jpg or https://..." class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                             </div>
@@ -883,12 +918,22 @@
                             <input id="form-specs" type="text" placeholder="Feature 1 | Feature 2 | Feature 3" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                         </div>
 
-                        <button type="submit" id="editor-submit-btn" class="px-5 py-2.5 rounded-xl bg-brand-orange hover:brightness-110 text-white text-xs font-bold">
-                            + Add Product to Store
-                        </button>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button type="submit" id="editor-submit-btn" class="px-5 py-2.5 rounded-xl bg-brand-orange hover:brightness-110 text-white text-xs font-bold">
+                                + Add Product to Store
+                            </button>
+                            <label class="inline-flex items-center gap-1.5 text-xs text-cyan-300 cursor-pointer">
+                                <input id="form-pin-top" type="checkbox" checked class="rounded accent-brand-orange">
+                                <span>Move to Top (#1 Position)</span>
+                            </label>
+                        </div>
                     </form>
 
-                    <div id="admin-product-list" class="space-y-2 max-h-52 overflow-y-auto pr-1"></div>
+                    <!-- Quick Stock & Position Control List -->
+                    <div>
+                        <p class="text-[11px] text-slate-400 mb-2">Quick Controls: Change <strong class="text-white">In Stock / Stock Out / Upcoming</strong> directly or click <strong class="text-amber-300">↑ Top</strong> when newly sourced!</p>
+                        <div id="admin-product-list" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+                    </div>
                 </div>
 
                 <!-- Section B: Upcoming Projects Editor -->
@@ -991,9 +1036,9 @@
             en: {
                 bagLabel: "Bag",
                 whatsappBtn: "WhatsApp",
-                searchPlaceholder: "Search Smart Plug, Router UPS, Arduino Uno, ESP32, Sensors...",
+                searchPlaceholder: "Search Resistor, Motor, Arduino, ESP32, Router UPS, Smart Plug...",
                 heroTitle: `<span class="text-white">Building a </span><span class="text-brand-orange">Smarter</span><span class="text-brand-cyan"> Tomorrow</span>`,
-                heroSubtitle: `Upgrade your home with <strong class="text-white">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class="text-white">EEE &amp; IoT Components</strong>.`,
+                heroSubtitle: `Upgrade your home with <strong class="text-white">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class="text-white">EEE, Robotics &amp; IoT Components</strong>.`,
                 shopAllBtn: "Shop All Products",
                 customReqHeroBtn: "Custom Project / Component Quote",
                 pillar1Title: "EEE Components",
@@ -1010,7 +1055,7 @@
                 deal2Desc: "Includes Free QR Code Wiring & Code Guide",
                 labVerified: `<i class="fa-solid fa-qrcode mr-1"></i>Tested & Verified`,
                 shopKitsBtn: "Shop Kits →",
-                comboHeading: "E-Techniqa Value Combo Packs",
+                comboHeadingSuffix: "Value Combo Packs",
                 comboSubTag: "Save Extra on Bundle Orders",
                 save250: "Save ৳250",
                 save190: "Save ৳190",
@@ -1019,21 +1064,26 @@
                 combo2Title: "Complete EEE Lab & IoT Master Pack",
                 combo2Desc: "Arduino Uno + ESP32 Combo + Breadboard & Sensor Pack",
                 orderComboBtn: "Order Combo",
-                catalogHeading: "E-Techniqa Store Catalog",
+                catalogHeadingSuffix: "Store Catalog",
                 catalogSub: "Click any product to view full specs or order directly on WhatsApp.",
-                sortByLabel: "Sort by:",
+                stockFilterAll: "Status: All",
+                stockFilterIn: "● In Stock Only",
+                stockFilterUp: "● Upcoming",
+                stockFilterOut: "● Stock Out",
                 sortFeatured: "Featured & Popular",
                 sortLow: "Price: Low to High",
                 sortHigh: "Price: High to Low",
-                catAll: "All Items",
-                catGadgets: "Smart Home Gadgets",
-                catUtility: "Utility & Controllers",
-                catEEE: "EEE Kits & Sensors",
+                catAll: "All Items (30)",
+                catEEE: "EEE Kits, GPS & Sensors",
+                catRobotics: "Motors, Pumps & Robotics",
+                catBasic: "Basic Components, Wires & Power",
+                catGadgets: "Smart Home & Protection",
+                catUtility: "Controllers & Meters",
                 catProjects: "Custom IoT Projects",
                 noMatchTitle: "No matching products found",
-                noMatchSub: `Try searching for "Smart Plug", "UPS", "Arduino", or "Sensor".`,
+                noMatchSub: `Try searching for "Resistor", "Motor", "Wheel", "UPS", or "Arduino".`,
                 resetBtn: "Reset Filters",
-                upcomingPill: "E-Techniqa Innovation Lab • Roadmap",
+                upcomingPillSuffix: "Innovation Lab • Roadmap",
                 upcomingHeading: "Upcoming R&D & Industrial Projects",
                 upcomingSub: "Next-generation IoT, Agro-Tech, and Industrial Automation systems currently under development at E-Techniqa. Partner with us or pre-book pilot prototypes.",
                 submitIdeaBtn: "Submit Your Project Idea",
@@ -1048,13 +1098,19 @@
                 trust4Sub: "Setup manuals & Arduino codes included.",
                 reviewsHeading: "What Engineers & Customers Say",
                 rev1Text: `"Router Mini UPS gives solid 5 hours backup during load-shedding without any router restart. Very clean build quality!"`,
-                rev2Text: `"Ordered Arduino + ESP32 combo for our semester IoT project. Every pin was pre-tested and the QR code diagram saved us hours."`,
+                rev2Text: `"Ordered Arduino + ESP32 combo and motor kit for our semester project. Everything arrived tested and worked first try!"`,
                 faqHeading: "Quick FAQ",
                 faq1Q: "How do I confirm an order?",
                 faq1A: `Add items to your Bag or click "Order via WhatsApp", fill in your name and delivery address, and our team confirms your parcel dispatch immediately.`,
+                faq3Q: "What is the delivery time and Cash on Delivery (COD) charge?",
+                faq3A: "Inside Dhaka City: 24–48 hours (৳60). Outside Dhaka across all 64 districts: 2–4 business days (৳120). Pay cash only after receiving your parcel.",
+                faq4Q: "Do you provide replacement warranty and technical setup help?",
+                faq4A: "Yes! Every module is tested before dispatch. You get a 7-day instant replacement guarantee plus free WhatsApp/QR wiring & Arduino code support.",
+                faq5Q: "Can I order bulk components or request items not listed here?",
+                faq5A: `Absolutely! Send your component list on WhatsApp or via the "Custom Project / Component Quote" button—we source directly from Dhaka electronics markets at student & wholesale-friendly rates.`,
                 faq2Q: "Do you build custom University FYP or B2B IoT systems?",
                 faq2A: `Yes! Click "Custom Project / Component Quote" or message us on WhatsApp with your requirements for hardware, firmware, and complete documentation.`,
-                footerAbout: "Your trusted partner for Smart Home Automation Gadgets, EEE Project Kits, and Custom IoT Engineering Solutions.",
+                footerAbout: "Your trusted partner for Smart Home Automation Gadgets, EEE & Robotics Components, and Custom IoT Engineering Solutions.",
                 footerContactTitle: "Customer Care & Orders",
                 policyWarrantyBtn: "Warranty & Replacement",
                 policyDeliveryBtn: "Delivery & COD Policy",
@@ -1074,21 +1130,25 @@
                 customModalSub: "Need a custom EEE/CSE University FYP, Industrial IoT prototype, or bulk component list? Submit below for an instant quote on WhatsApp.",
                 sendQuoteWaBtn: "Send Quotation Request via WhatsApp",
                 quickSpecs: "Quick Specs",
-                readyStock: "● Ready Stock",
+                statusInStock: "● Ready Stock",
+                statusUpcoming: "● Upcoming",
+                statusOutOfStock: "● Stock Out",
                 addBtn: "Add",
                 orderWaBtn: "Order via WhatsApp",
+                preBookWaBtn: "Pre-Book on WhatsApp",
+                restockWaBtn: "Request Restock",
                 customQuoteBtn: "Request Custom Quote",
                 specsHeading: "Specifications & Included Items",
-                priceLabel: "E-Techniqa Price",
+                priceLabel: "Store Price",
                 addBagModal: "+ Add Bag",
                 orderNowModal: "Order Now"
             },
             bn: {
                 bagLabel: "ব্যাগ",
                 whatsappBtn: "WhatsApp",
-                searchPlaceholder: "Smart Plug, Router UPS, Arduino, ESP32, সেন্সর খুঁজুন...",
+                searchPlaceholder: "Resistor, Motor, Wheel, Arduino, ESP32, UPS খুঁজুন...",
                 heroTitle: `<span class="text-white">গড়ে তুলুন </span><span class="text-brand-orange">স্মার্ট</span><span class="text-brand-cyan"> আগামী</span>`,
-                heroSubtitle: `আপনার ঘরকে সাজান আধুনিক <strong class="text-white">Smart Wi-Fi Gadgets ও Mini UPS</strong> দিয়ে, অথবা তৈরি করুন আপনার প্রজেক্ট আমাদের পরীক্ষিত <strong class="text-white">EEE ও IoT কম্পোনেন্ট</strong> দিয়ে।`,
+                heroSubtitle: `আপনার ঘরকে সাজান আধুনিক <strong class="text-white">Smart Wi-Fi Gadgets ও Mini UPS</strong> দিয়ে, অথবা তৈরি করুন আপনার প্রজেক্ট আমাদের পরীক্ষিত <strong class="text-white">EEE, Robotics ও IoT কম্পোনেন্ট</strong> দিয়ে।`,
                 shopAllBtn: "সব প্রোডাক্ট দেখুন",
                 customReqHeroBtn: "কাস্টম প্রজেক্ট / কোটেশন নিন",
                 pillar1Title: "EEE কম্পোনেন্ট",
@@ -1105,7 +1165,7 @@
                 deal2Desc: "ফ্রি QR কোড ওয়্যারিং ডায়াগ্রাম ও কোড গাইডসহ",
                 labVerified: `<i class="fa-solid fa-qrcode mr-1"></i>পরীক্ষিত ও মানসম্মত`,
                 shopKitsBtn: "কিট দেখুন →",
-                comboHeading: "E-Techniqa স্পেশাল কম্বো অফার",
+                comboHeadingSuffix: "স্পেশাল কম্বো অফার",
                 comboSubTag: "কম্বো অর্ডারে বিশেষ ছাড়",
                 save250: "৳২৫০ সাশ্রয়",
                 save190: "৳১৯০ সাশ্রয়",
@@ -1114,21 +1174,26 @@
                 combo2Title: "কমপ্লিট EEE ল্যাব ও IoT মাস্টার প্যাক",
                 combo2Desc: "Arduino Uno + ESP32 কম্বো + ব্রেডবোর্ড ও সেন্সর প্যাক",
                 orderComboBtn: "কম্বো অর্ডার করুন",
-                catalogHeading: "E-Techniqa প্রোডাক্ট ক্যাটালগ",
+                catalogHeadingSuffix: "প্রোডাক্ট ক্যাটালগ",
                 catalogSub: "বিস্তারিত ফিচার দেখতে প্রোডাক্টে ক্লিক করুন অথবা সরাসরি WhatsApp-এ অর্ডার করুন।",
-                sortByLabel: "সাজান:",
+                stockFilterAll: "স্টক: সব",
+                stockFilterIn: "● স্টকে আছে",
+                stockFilterUp: "● শীঘ্রই আসছে",
+                stockFilterOut: "● স্টক শেষ",
                 sortFeatured: "জনপ্রিয় প্রোডাক্ট",
                 sortLow: "দাম: কম থেকে বেশি",
                 sortHigh: "দাম: বেশি থেকে কম",
-                catAll: "সব প্রোডাক্ট",
-                catGadgets: "স্মার্ট হোম গ্যাজেট",
-                catUtility: "ইউটিলিটি ও কন্ট্রোলার",
-                catEEE: "EEE কিট ও সেন্সর",
+                catAll: "সব প্রোডাক্ট (৩০)",
+                catEEE: "EEE কিট, GPS ও সেন্সর",
+                catRobotics: "মোটর, পাম্প ও রোবটিক্স",
+                catBasic: "বেসিক কম্পোনেন্ট, তার ও পাওয়ার",
+                catGadgets: "স্মার্ট হোম ও সুরক্ষা",
+                catUtility: "কন্ট্রোলার ও মিটার",
                 catProjects: "কাস্টম IoT প্রজেক্ট",
                 noMatchTitle: "কোনো প্রোডাক্ট খুঁজে পাওয়া যায়নি",
-                noMatchSub: `"Smart Plug", "UPS", "Arduino" বা "Sensor" লিখে আবার খুঁজুন।`,
+                noMatchSub: `"Resistor", "Motor", "Wheel", "UPS" বা "Arduino" লিখে আবার খুঁজুন।`,
                 resetBtn: "ফিল্টার রিসেট করুন",
-                upcomingPill: "E-Techniqa ইনোভেশন ল্যাব • রোডম্যাপ",
+                upcomingPillSuffix: "ইনোভেশন ল্যাব • রোডম্যাপ",
                 upcomingHeading: "আপকামিং R&D ও ইন্ডাস্ট্রিয়াল প্রজেক্টসমূহ",
                 upcomingSub: "E-Techniqa ল্যাবে বর্তমানে ডেভেলপমেন্ট পর্যায়ে থাকা আধুনিক IoT, স্মার্ট অ্যাগ্রো এবং ইন্ডাস্ট্রিয়াল অটোমেশন প্রজেক্টসমূহ। পাইলট প্রোটোটাইপ বুকিং বা পার্টনারশিপের জন্য যোগাযোগ করুন।",
                 submitIdeaBtn: "আপনার প্রজেক্ট আইডিয়া পাঠান",
@@ -1138,18 +1203,24 @@
                 trust2Title: "ক্যাশ অন ডেলিভারি",
                 trust2Sub: "পণ্য হাতে পেয়ে টাকা পরিশোধের সুবিধা।",
                 trust3Title: "ইঞ্জিনিয়ার টেস্টেড",
-                trust3Sub: "প্রতিটি মডিউল ও গ্যাজেট চেক করে পাঠানো হয়।",
+                trust3Sub: "ডেলিভারির আগে প্রতিটি মডিউল ও গ্যাজেট পরীক্ষিত।",
                 trust4Title: "QR টেক সাপোর্ট",
-                trust4Sub: "সেটআপ ম্যানুয়াল ও Arduino কোড গাইড যুক্ত।",
-                reviewsHeading: "কাস্টমার ও ইঞ্জিনিয়ারদের মতামত",
-                rev1Text: `"লোডশেডিংয়ে রাউটার রিস্টার্ট ছাড়াই একটানা ৫ ঘণ্টা ব্যাকআপ দেয়। বিল্ড কোয়ালিটি খুবই চমৎকার!"`,
-                rev2Text: `"সেমিস্টারের IoT প্রজেক্টের জন্য Arduino + ESP32 কম্বো নিয়েছিলাম। প্রতিটি পিন চেক করা ছিল এবং QR ডায়াগ্রাম অনেক সময় বাঁচিয়েছে।"`,
-                faqHeading: "সচরাচর জিজ্ঞাসিত প্রশ্ন",
+                trust4Sub: "সেটআপ গাইড ও Arduino কোড সংযুক্ত।",
+                reviewsHeading: "ইঞ্জিনিয়ার ও কাস্টমারদের মতামত",
+                rev1Text: `"লোডশেডিংয়ে Router Mini UPS টানা ৫ ঘণ্টা ব্যাকআপ দেয়, রাউটার এক সেকেন্ডের জন্যও রিস্টার্ট হয় না!"`,
+                rev2Text: `"সেমিস্টার প্রজেক্টের জন্য Arduino + ESP32 কম্বো ও মোটর কিট নিয়েছিলাম। সবগুলো টেস্টেড অবস্থায় পেয়েছি!"`,
+                faqHeading: "সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)",
                 faq1Q: "কীভাবে অর্ডার কনফার্ম করব?",
                 faq1A: `প্রোডাক্ট ব্যাগে যোগ করুন অথবা "WhatsApp-এ অর্ডার করুন" বাটনে ক্লিক করে আপনার নাম ও ঠিকানা দিন—আমাদের টিম সাথে সাথে পার্সেল কনফার্ম করবে।`,
+                faq3Q: "ডেলিভারি পেতে কত দিন লাগে এবং চার্জ কত?",
+                faq3A: "ঢাকা সিটির ভেতরে ২৪–৪৮ ঘণ্টায় হোম ডেলিভারি (৳৬০) এবং ঢাকার বাইরে সারা বাংলাদেশে ২–৪ দিনে কুরিয়ার ডেলিভারি (৳১২০)। পণ্য হাতে পেয়ে টাকা পরিশোধ করতে পারবেন।",
+                faq4Q: "প্রোডাক্ট কাজ না করলে রিপ্লেসমেন্ট ও টেকনিক্যাল সাপোর্ট পাব কি?",
+                faq4A: "হ্যাঁ! প্রতিটি মডিউল টেস্ট করে পাঠানো হয়। কোনো ত্রুটি থাকলে ৭ দিনের ইনস্ট্যান্ট রিপ্লেসমেন্ট এবং WhatsApp/QR কোডের মাধ্যমে ফ্রি ওয়্যারিং ও কোড সাপোর্ট পাবেন।",
+                faq5Q: "তালিকার বাইরের কোনো কম্পোনেন্ট বা পাইকারি অর্ডার করা যাবে কি?",
+                faq5A: `অবশ্যই! আপনার প্রয়োজনীয় কম্পোনেন্ট লিস্ট WhatsApp-এ পাঠান অথবা "কাস্টম প্রজেক্ট / কোটেশন নিন" ফর্মে দিন—আমরা ঢাকার মার্কেট থেকে সরাসরি সোর্স করে দেব।`,
                 faq2Q: "আপনারা কি কাস্টম ইউনিভার্সিটি প্রজেক্ট (FYP) বা ইন্ডাস্ট্রিয়াল কাজ করেন?",
                 faq2A: `হ্যাঁ! "কাস্টম প্রজেক্ট / কোটেশন নিন" বাটনে ক্লিক করে আপনার প্রজেক্টের বিবরণ পাঠান, আমরা হার্ডওয়্যার, কোড ও ডকুমেন্টেশনসহ তৈরি করে দেব।`,
-                footerAbout: "স্মার্ট হোম অটোমেশন গ্যাজেট, EEE প্রজেক্ট কিট এবং কাস্টম IoT ইঞ্জিনিয়ারিং সমাধানের বিশ্বস্ত প্রতিষ্ঠান।",
+                footerAbout: "স্মার্ট হোম অটোমেশন গ্যাজেট, EEE ও রোবটিক্স কম্পোনেন্ট এবং কাস্টম IoT ইঞ্জিনিয়ারিং সমাধানের বিশ্বস্ত প্রতিষ্ঠান।",
                 footerContactTitle: "কাস্টমার কেয়ার ও অর্ডার",
                 policyWarrantyBtn: "ওয়ারেন্টি ও রিপ্লেসমেন্ট নীতি",
                 policyDeliveryBtn: "ডেলিভারি ও ক্যাশ অন ডেলিভারি",
@@ -1169,12 +1240,16 @@
                 customModalSub: "ইউনিভার্সিটি FYP, ইন্ডাস্ট্রিয়াল IoT বা প্রজেক্টের কম্পোনেন্ট লিস্টের দামের জন্য নিচের ফর্মটি পূরণ করুন।",
                 sendQuoteWaBtn: "WhatsApp-এ কোটেশন রিকোয়েস্ট পাঠান",
                 quickSpecs: "বিস্তারিত",
-                readyStock: "● স্টকে আছে",
+                statusInStock: "● স্টকে আছে",
+                statusUpcoming: "● শীঘ্রই আসছে",
+                statusOutOfStock: "● স্টক শেষ",
                 addBtn: "ব্যাগে রাখুন",
                 orderWaBtn: "WhatsApp-এ অর্ডার করুন",
+                preBookWaBtn: "প্রি-বুক করুন (WhatsApp)",
+                restockWaBtn: "স্টক রিকোয়েস্ট দিন",
                 customQuoteBtn: "কাস্টম কোটেশন নিন",
                 specsHeading: "স্পেসিফিকেশন ও যা যা থাকছে",
-                priceLabel: "E-Techniqa মূল্য",
+                priceLabel: "অফার মূল্য",
                 addBagModal: "+ ব্যাগে যোগ করুন",
                 orderNowModal: "অর্ডার করুন"
             }
@@ -1207,31 +1282,72 @@
         }
 
         /* =====================================================================
-           3. STORE PRODUCT CATALOG DATA
+           3. FULL STORE PRODUCT CATALOG WITH AVAILABILITY STATUS
+              stockStatus: "in-stock" | "upcoming" | "out-of-stock"
            ===================================================================== */
         let PRODUCTS = [
             {
-                id: "smart-plug-16a",
-                name: "16A Heavy-Duty Smart Wi-Fi Plug",
-                category: "gadgets",
-                badge: "Best Seller",
+                id: "arduino-esp32-kit",
+                name: "Arduino Uno + ESP32 IoT Starter Combo",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Student Special",
                 badgeColor: "bg-brand-orange",
-                price: 850,
-                oldPrice: 1050,
-                rating: 4.9,
-                reviews: 48,
-                image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Control geyser, room heater, or AC remotely via smartphone app & timer.",
+                price: 1250,
+                oldPrice: 1450,
+                rating: 5.0,
+                reviews: 73,
+                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Pre-tested Arduino Uno R3 & ESP32 Wi-Fi/BLE board with cables & QR code guide.",
                 specs: [
-                    "16A High Load Capacity (Safe for Geyser & Heater)",
-                    "Smart Life / Tuya App + Alexa & Google Home Support",
-                    "Real-time Energy Monitoring & Auto Shut-off Timer"
+                    "100% Bootloader & Pin Tested Before Packing",
+                    "Includes USB Data Cables for both boards",
+                    "Exclusive E-Techniqa QR Code with Starter Diagrams"
+                ]
+            },
+            {
+                id: "4wd-robot-chassis-wheel",
+                name: "4WD Robot Car Chassis + 4x BO Gear Motors & Wheels",
+                category: "robotics",
+                stockStatus: "in-stock",
+                badge: "Robotics Best Seller",
+                badgeColor: "bg-amber-500 text-navy-950",
+                price: 750,
+                oldPrice: 920,
+                rating: 4.9,
+                reviews: 61,
+                image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Complete acrylic 4-wheel robot car kit with 4 BO dual-shaft gear motors & rubber grip tires.",
+                specs: [
+                    "4x High-Torque BO DC Gear Motors + 4x 65mm Rubber Wheels",
+                    "Laser-cut Acrylic Chassis with Speed Encoder Discs",
+                    "Ready for Line Follower, Obstacle Avoiding & Bluetooth Car"
+                ]
+            },
+            {
+                id: "resistor-capacitor-kit",
+                name: "600pcs Resistor (30 Values) + Capacitor Assortment Box",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Lab Must-Have",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 380,
+                oldPrice: 480,
+                rating: 5.0,
+                reviews: 84,
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Complete 1/4W metal film resistor kit (10Ω to 1MΩ) + electrolytic capacitors (1uF–1000uF).",
+                specs: [
+                    "30 Most-Used Resistor Values (20pcs each = 600pcs total)",
+                    "120pcs Electrolytic Capacitors (16V/25V/50V assorted)",
+                    "Organized & labeled so you never waste time searching"
                 ]
             },
             {
                 id: "router-mini-ups",
                 name: "Router & ONU Mini UPS (9V/12V)",
                 category: "gadgets",
+                stockStatus: "in-stock",
                 badge: "Load-Shedding Hero",
                 badgeColor: "bg-cyan-500 text-navy-950",
                 price: 1450,
@@ -1247,9 +1363,238 @@
                 ]
             },
             {
+                id: "l298n-motor-driver",
+                name: "L298N Dual H-Bridge DC & Stepper Motor Driver",
+                category: "robotics",
+                stockStatus: "in-stock",
+                badge: "Robotics Essential",
+                badgeColor: "bg-brand-orange",
+                price: 240,
+                oldPrice: 300,
+                rating: 4.9,
+                reviews: 68,
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Drive up to 4 DC motors or 1 stepper motor with built-in 5V regulator for Arduino.",
+                specs: [
+                    "Dual Channel H-Bridge (Up to 2A per channel, 5V–35V)",
+                    "Onboard 5V Regulator powers Arduino directly",
+                    "Large heatsink for continuous robotics operation"
+                ]
+            },
+            {
+                id: "servo-motor-pack",
+                name: "SG90 Micro Servo (180°) + MG995 Metal Gear Servo",
+                category: "robotics",
+                stockStatus: "in-stock",
+                badge: "Robotic Arm",
+                badgeColor: "bg-amber-500 text-navy-950",
+                price: 520,
+                oldPrice: 640,
+                rating: 4.8,
+                reviews: 45,
+                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Combo of lightweight SG90 (9g) & high-torque MG995 metal gear servo with horns & screws.",
+                specs: [
+                    "SG90 9g Servo for pan-tilt & smart dustbin lids",
+                    "MG995 Metal Gear High-Torque (10kg-cm) for Robotic Arms",
+                    "Includes full set of servo horns and mounting screws"
+                ]
+            },
+            {
+                id: "breadboard-sensor-pack",
+                name: "EEE Lab Sensor, Breadboard & 120pcs Jumper Wire Pack",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Lab Essential",
+                badgeColor: "bg-cyan-500 text-navy-950",
+                price: 790,
+                oldPrice: 950,
+                rating: 4.9,
+                reviews: 55,
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "830-point breadboard, M-M/M-F/F-F jumper wires, Ultrasonic, IR & 5V Relay modules.",
+                specs: [
+                    "830-Point Solderless Breadboard + 120pcs Jumper Wires",
+                    "HC-SR04 Ultrasonic + IR Obstacle + 1-Ch 5V Relay",
+                    "Perfect companion kit for university robotics labs"
+                ]
+            },
+            {
+                id: "nodemcu-esp8266",
+                name: "NodeMCU ESP8266 CP2102 Wi-Fi IoT Development Board",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "IoT Favorite",
+                badgeColor: "bg-brand-orange",
+                price: 420,
+                oldPrice: 520,
+                rating: 4.9,
+                reviews: 79,
+                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Low-cost Wi-Fi microcontroller compatible with Arduino IDE, Blynk & MQTT.",
+                specs: [
+                    "Original CP2102 USB-to-Serial Chip (Easy Driver Setup)",
+                    "Built-in 2.4GHz Wi-Fi for Home Automation & IoT",
+                    "Pin-tested before dispatch by E-Techniqa engineers"
+                ]
+            },
+            {
+                id: "sim800l-gsm-module",
+                name: "SIM800L GSM/GPRS SMS & Call Module + Antenna",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Hard-to-Find",
+                badgeColor: "bg-rose-600",
+                price: 550,
+                oldPrice: 680,
+                rating: 4.8,
+                reviews: 39,
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Send SMS alerts, make calls, and send IoT data over cellular network anywhere in BD.",
+                specs: [
+                    "Quad-band 850/900/1800/1900MHz (Supports all BD SIMs)",
+                    "Includes Helical + PCB Spring Antenna for strong signal",
+                    "Ideal for GPS Trackers, Smart Agriculture & Security Alerts"
+                ]
+            },
+            {
+                id: "env-gas-sensor-bundle",
+                name: "IoT Environment & Safety Sensor Bundle (DHT22 + MQ-2 + Soil)",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Project Pack",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 490,
+                oldPrice: 620,
+                rating: 4.9,
+                reviews: 44,
+                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "3-in-1 sensor combo for Smart Farming, Fire/Gas Alarm & Weather Station projects.",
+                specs: [
+                    "DHT22 High-Accuracy Temperature & Humidity Sensor",
+                    "MQ-2 Smoke & LPG Gas Leakage Detector Module",
+                    "Capacitive/Resistive Soil Moisture Sensor for Smart Agro"
+                ]
+            },
+            {
+                id: "oled-lcd-display-pack",
+                name: "0.96\" I2C OLED Display + 16x2 LCD with I2C Backpack",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Display Combo",
+                badgeColor: "bg-brand-orange",
+                price: 460,
+                oldPrice: 580,
+                rating: 4.9,
+                reviews: 51,
+                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Only 2 wires (SDA/SCL) needed to display live sensor readings on both screens.",
+                specs: [
+                    "0.96-inch Crisp 128x64 I2C OLED Module",
+                    "16x2 Character LCD Pre-soldered with I2C Serial Adapter",
+                    "Saves Arduino GPIO pins for extra sensors"
+                ]
+            },
+            {
+                id: "buck-converter-smps",
+                name: "LM2596 DC-DC Step-Down Buck Converter + 12V 2A Adapter",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Power Supply",
+                badgeColor: "bg-emerald-500 text-navy-950",
+                price: 440,
+                oldPrice: 550,
+                rating: 4.8,
+                reviews: 47,
+                image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Adjustable 1.25V–35V step-down module paired with stable 12V 2A AC-DC power adapter.",
+                specs: [
+                    "LM2596S High-Efficiency Adjustable Voltage Regulator (3A Max)",
+                    "12V 2A Regulated Power Supply Adapter with DC Barrel Jack",
+                    "Essential for powering GSM modules, Servos & Arduino safely"
+                ]
+            },
+            {
+                id: "relay-4ch-module",
+                name: "4-Channel 5V Optocoupler Relay Module (250V 10A AC)",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Home Automation",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 290,
+                oldPrice: 360,
+                rating: 4.9,
+                reviews: 63,
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Safely control 4 AC 220V lights, fans, or pumps using Arduino/ESP32.",
+                specs: [
+                    "Optocoupler isolation protects microcontroller from AC spikes",
+                    "Each relay rated up to 10A 250V AC / 30V DC",
+                    "LED status indicators for all 4 channels"
+                ]
+            },
+            {
+                id: "soldering-multimeter-kit",
+                name: "60W Soldering Iron + Digital Multimeter + Solder Wire Kit",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Engineer Toolkit",
+                badgeColor: "bg-brand-orange",
+                price: 890,
+                oldPrice: 1100,
+                rating: 4.9,
+                reviews: 58,
+                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Everything needed at your desk to test circuits, check continuity, and solder PCBs.",
+                specs: [
+                    "DT-830D Digital Multimeter with Test Probes & Battery",
+                    "60W Fast-Heating Soldering Iron + Stand + Rosin Flux",
+                    "High-quality Lead-Tin Solder Wire + Copper Veroboard"
+                ]
+            },
+            {
+                id: "bms-18650-pack",
+                name: "18650 Lithium Battery (2pcs) + 3S 20A BMS DIY Kit",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Power Electronics",
+                badgeColor: "bg-brand-orange",
+                price: 690,
+                oldPrice: 820,
+                rating: 4.8,
+                reviews: 34,
+                image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Build your own 12V portable power pack, robot car battery, or mini UPS.",
+                specs: [
+                    "High-drain 18650 Li-ion Cells + Battery Holder",
+                    "3S 20A BMS Protection Board (Overcharge/Short-circuit)",
+                    "Tested cell voltage matching before dispatch"
+                ]
+            },
+            {
+                id: "smart-plug-16a",
+                name: "16A Heavy-Duty Smart Wi-Fi Plug",
+                category: "gadgets",
+                stockStatus: "in-stock",
+                badge: "Best Seller",
+                badgeColor: "bg-brand-orange",
+                price: 850,
+                oldPrice: 1050,
+                rating: 4.9,
+                reviews: 48,
+                image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Control geyser, room heater, or AC remotely via smartphone app & timer.",
+                specs: [
+                    "16A High Load Capacity (Safe for Geyser & Heater)",
+                    "Smart Life / Tuya App + Alexa & Google Home Support",
+                    "Real-time Energy Monitoring & Auto Shut-off Timer"
+                ]
+            },
+            {
                 id: "wifi-bulb-cam",
                 name: "360° Pan-Tilt Wi-Fi Bulb Camera",
                 category: "gadgets",
+                stockStatus: "in-stock",
                 badge: "Home Security",
                 badgeColor: "bg-brand-orange",
                 price: 1650,
@@ -1268,6 +1613,7 @@
                 id: "motion-sensor-light",
                 name: "Rechargeable PIR Motion Sensor Light",
                 category: "gadgets",
+                stockStatus: "in-stock",
                 badge: "Value Pick",
                 badgeColor: "bg-emerald-500 text-navy-950",
                 price: 390,
@@ -1286,6 +1632,7 @@
                 id: "digital-timer-socket",
                 name: "Programmable Digital Timer Socket",
                 category: "winter",
+                stockStatus: "in-stock",
                 badge: "Energy Saver",
                 badgeColor: "bg-sky-500 text-navy-950",
                 price: 780,
@@ -1304,6 +1651,7 @@
                 id: "temp-controller-stc",
                 name: "STC-1000 / W1209 Digital Temp Controller",
                 category: "winter",
+                stockStatus: "in-stock",
                 badge: "Agro & Lab",
                 badgeColor: "bg-sky-500 text-navy-950",
                 price: 420,
@@ -1319,63 +1667,181 @@
                 ]
             },
             {
-                id: "arduino-esp32-kit",
-                name: "Arduino Uno + ESP32 IoT Starter Combo",
-                category: "eee",
-                badge: "Student Special",
-                badgeColor: "bg-brand-orange",
-                price: 1250,
-                oldPrice: 1450,
-                rating: 5.0,
-                reviews: 73,
-                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Pre-tested Arduino Uno R3 & ESP32 Wi-Fi/BLE board with cables & QR code guide.",
-                specs: [
-                    "100% Bootloader & Pin Tested Before Packing",
-                    "Includes USB Data Cables for both boards",
-                    "Exclusive E-Techniqa QR Code with Starter Diagrams"
-                ]
-            },
-            {
-                id: "breadboard-sensor-pack",
-                name: "EEE Lab Sensor, Breadboard & Relay Pack",
-                category: "eee",
-                badge: "Lab Essential",
-                badgeColor: "bg-cyan-500 text-navy-950",
-                price: 790,
-                oldPrice: 950,
+                id: "ac-voltage-energy-meter",
+                name: "PZEM-004T AC Digital Voltage, Current & Watt Meter",
+                category: "winter",
+                stockStatus: "in-stock",
+                badge: "EEE Power Lab",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 890,
+                oldPrice: 1080,
                 rating: 4.9,
-                reviews: 55,
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "830-point breadboard, 120pcs jumper wires, Ultrasonic, IR & 5V Relay modules.",
+                reviews: 33,
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Measure AC 80–260V, Current (up to 100A CT), Active Power, Energy & Power Factor with Arduino/ESP32.",
                 specs: [
-                    "830-Point Solderless Breadboard + M-M, M-F, F-F Jumpers",
-                    "HC-SR04 Ultrasonic + IR Obstacle + 1-Ch 5V Relay",
-                    "Perfect companion kit for university robotics labs"
+                    "Includes Split-Core 100A Current Transformer (CT) Coil",
+                    "UART TTL Interface for ESP32 / Arduino Smart Energy Meter",
+                    "Most popular module for EEE Final Year Smart Grid projects"
                 ]
             },
             {
-                id: "bms-18650-pack",
-                name: "18650 Lithium Battery + 3S BMS DIY Kit",
-                category: "eee",
-                badge: "Power Electronics",
+                id: "ac-voltage-protector-guard",
+                name: "Automatic AC Voltage Protector & Surge Guard (Fridge/TV/AC)",
+                category: "gadgets",
+                stockStatus: "in-stock",
+                badge: "Home Protection",
                 badgeColor: "bg-brand-orange",
-                price: 690,
-                oldPrice: 820,
-                rating: 4.8,
-                reviews: 34,
-                image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80",
-                shortDesc: "Build your own 12V portable power pack, robot car battery, or mini UPS.",
+                price: 680,
+                oldPrice: 850,
+                rating: 4.9,
+                reviews: 72,
+                image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Protects refrigerator, smart TV & router from sudden high/low voltage fluctuations in BD.",
                 specs: [
-                    "High-drain 18650 Li-ion Cells + 3-Slot Battery Holder",
-                    "3S 20A BMS Protection Board (Overcharge/Short-circuit)",
-                    "Tested cell voltage matching before dispatch"
+                    "Auto Cut-off below 170V and above 250V AC",
+                    "3-Minute Smart Delay Timer after power restoration",
+                    "LED indicators for Normal, High/Low Voltage & Delay"
+                ]
+            },
+            {
+                id: "auto-water-level-controller",
+                name: "Automatic Water Tank Pump Controller + Sensor Probes",
+                category: "winter",
+                stockStatus: "in-stock",
+                badge: "High Demand",
+                badgeColor: "bg-emerald-500 text-navy-950",
+                price: 1150,
+                oldPrice: 1400,
+                rating: 4.9,
+                reviews: 57,
+                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Automatically turns water motor ON when roof tank is empty and OFF when full—zero water overflow.",
+                specs: [
+                    "Includes Rust-Free Stainless Steel Water Level Sensors",
+                    "Auto & Manual Mode Switch with Dry-Run Protection",
+                    "Saves electricity bill and prevents roof water overflow"
+                ]
+            },
+            {
+                id: "mini-submersible-pump-kit",
+                name: "12V DC Submersible Mini Water Pump + 1m Pipe + Relay Kit",
+                category: "robotics",
+                stockStatus: "in-stock",
+                badge: "Smart Agro",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 390,
+                oldPrice: 490,
+                rating: 4.8,
+                reviews: 49,
+                image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Build automatic plant watering, smart irrigation, or fire-fighting robot projects effortlessly.",
+                specs: [
+                    "12V DC Brushless Submersible Pump (240L/Hour flow)",
+                    "Includes 1-Meter Flexible Vinyl Water Pipe + 5V Relay",
+                    "Pairs directly with Soil Moisture Sensor & Arduino"
+                ]
+            },
+            {
+                id: "neo6m-gps-module",
+                name: "NEO-6M GPS Satellite Tracker Module + Ceramic Antenna",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Hard-to-Find",
+                badgeColor: "bg-rose-600",
+                price: 590,
+                oldPrice: 740,
+                rating: 4.9,
+                reviews: 43,
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Real-time latitude, longitude & speed tracking for bike/car tracker and drone projects.",
+                specs: [
+                    "High-sensitivity External Ceramic Antenna included",
+                    "Built-in EEPROM saves configuration settings",
+                    "3.3V / 5V UART TTL compatible with Arduino & ESP32"
+                ]
+            },
+            {
+                id: "rfid-rc522-access-kit",
+                name: "RFID RC522 Smart Door Lock & Attendance Kit (Card + Tag)",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Security Lab",
+                badgeColor: "bg-brand-orange",
+                price: 340,
+                oldPrice: 430,
+                rating: 4.9,
+                reviews: 66,
+                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "13.56MHz contactless RFID reader with S50 white card, keychain tag & header pins.",
+                specs: [
+                    "Includes RC522 Reader + 1 RFID Card + 1 Keychain Tag",
+                    "SPI Interface works out-of-the-box with MFRC522 library",
+                    "Ideal for Smart Door Lock, Hostel Attendance & Toll Gate"
+                ]
+            },
+            {
+                id: "max7219-dot-matrix-display",
+                name: "MAX7219 4-in-1 Red LED Dot Matrix Scrolling Notice Display",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Display Module",
+                badgeColor: "bg-brand-cyan text-navy-950",
+                price: 450,
+                oldPrice: 560,
+                rating: 4.8,
+                reviews: 38,
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Create scrolling text notice boards, digital clocks, or token counters with just 3 data pins.",
+                specs: [
+                    "4 Cascaded 8x8 Red LED Matrices on a single PCB",
+                    "Includes 5-Pin Female-to-Female Connecting Cable",
+                    "High brightness visible even in daylight"
+                ]
+            },
+            {
+                id: "hookup-wire-heatshrink-kit",
+                name: "22AWG Pure Copper Hookup Wire Spool (5 Colors) + Heat Shrink Kit",
+                category: "basic",
+                stockStatus: "in-stock",
+                badge: "Wiring Essential",
+                badgeColor: "bg-amber-500 text-navy-950",
+                price: 360,
+                oldPrice: 450,
+                rating: 4.9,
+                reviews: 54,
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Color-coded flexible tinned copper wires + 100pcs heat shrink insulation sleeves.",
+                specs: [
+                    "5 Colors (Red, Black, Yellow, Blue, Green) for clean wiring",
+                    "100pcs Assorted Heat Shrink Tubes for professional joints",
+                    "Essential for neat PCB, breadboard & panel wiring"
+                ]
+            },
+            {
+                id: "ultimate-30-sensor-box",
+                name: "24-in-1 Ultimate IoT & EEE All-Sensor Mega Box",
+                category: "eee",
+                stockStatus: "in-stock",
+                badge: "Mega Value",
+                badgeColor: "bg-brand-orange",
+                price: 1690,
+                oldPrice: 2150,
+                rating: 5.0,
+                reviews: 47,
+                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                shortDesc: "Complete engineering box with Ultrasonic, IR, PIR, Rain, Flame, Sound, Gyroscope & more.",
+                specs: [
+                    "24 Most-Used Arduino/ESP32 Sensors in 1 Organizer Box",
+                    "Includes MPU6050 Gyro, Rain, Flame, Sound, LDR & Joystick",
+                    "Saves 30%+ compared to buying individual modules"
                 ]
             },
             {
                 id: "custom-iot-project",
                 name: "Custom IoT / University FYP Prototype",
                 category: "projects",
+                stockStatus: "in-stock",
                 badge: "Engineering Service",
                 badgeColor: "bg-emerald-500 text-navy-950",
                 price: 0,
@@ -1434,6 +1900,7 @@
            5. STATE & DOM REFERENCES
            ===================================================================== */
         let activeCategory = "all";
+        let activeStockFilter = "all";
         let searchQuery = "";
         let sortMode = "featured";
         let cart = [];
@@ -1446,6 +1913,7 @@
         const desktopSearch = document.getElementById("desktop-search-input");
         const mobileSearch = document.getElementById("mobile-search-input");
         const sortSelect = document.getElementById("sort-select");
+        const stockFilterSelect = document.getElementById("stock-filter-select");
         const filterButtons = document.querySelectorAll(".filter-btn");
 
         const cartBadge = document.getElementById("cart-count-badge");
@@ -1487,7 +1955,6 @@
             }
         }
 
-        // Secret 5-tap trigger on Brand Logo
         let logoTapCount = 0;
         let logoTapTimer;
         document.getElementById("brand-logo-trigger").addEventListener("click", () => {
@@ -1539,14 +2006,22 @@
         }
 
         function renderProducts() {
+            const dict = I18N[currentLang];
+            const catAllBtn = document.querySelector('[data-category="all"]');
+            if (catAllBtn) {
+                catAllBtn.textContent = currentLang === "bn" ? `সব প্রোডাক্ট (${PRODUCTS.length})` : `All Items (${PRODUCTS.length})`;
+            }
+
             let filtered = PRODUCTS.filter(p => {
+                const status = p.stockStatus || "in-stock";
                 const matchesCat = activeCategory === "all" || p.category === activeCategory;
+                const matchesStock = activeStockFilter === "all" || status === activeStockFilter;
                 const q = searchQuery.trim().toLowerCase();
                 const matchesSearch = !q ||
                     p.name.toLowerCase().includes(q) ||
                     p.shortDesc.toLowerCase().includes(q) ||
                     p.specs.some(s => s.toLowerCase().includes(q));
-                return matchesCat && matchesSearch;
+                return matchesCat && matchesStock && matchesSearch;
             });
 
             if (sortMode === "price-low") {
@@ -1562,9 +2037,12 @@
             }
 
             emptyState.classList.add("hidden");
-            const dict = I18N[currentLang];
 
             productGrid.innerHTML = filtered.map(product => {
+                const status = product.stockStatus || "in-stock";
+                const isOut = status === "out-of-stock";
+                const isUpcoming = status === "upcoming";
+
                 const priceDisplay = product.price > 0
                     ? `${STORE_CONFIG.currency}${product.price.toLocaleString()}`
                     : (product.priceLabel || "Custom Quote");
@@ -1576,8 +2054,39 @@
                 const imgSrc = product.image || getFallbackSvgUrl(product.name);
                 const isSaved = wishlist.includes(product.id);
 
+                let statusHtml = `<span class="ml-auto text-[10px] text-emerald-400 font-semibold">${dict.statusInStock}</span>`;
+                if (isOut) {
+                    statusHtml = `<span class="ml-auto text-[10px] text-rose-400 font-bold">${dict.statusOutOfStock}</span>`;
+                } else if (isUpcoming) {
+                    statusHtml = `<span class="ml-auto text-[10px] text-amber-300 font-bold">${dict.statusUpcoming}</span>`;
+                }
+
+                let mainActionBtnHtml = "";
+                if (isOut) {
+                    mainActionBtnHtml = `
+                        <button onclick="orderSingleOnWhatsApp('${product.id}')" class="w-full py-2.5 rounded-xl bg-navy-800 hover:bg-rose-600/30 border border-rose-500/40 text-rose-300 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>${dict.restockWaBtn}</span>
+                        </button>
+                    `;
+                } else if (isUpcoming) {
+                    mainActionBtnHtml = `
+                        <button onclick="orderSingleOnWhatsApp('${product.id}')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-brand-orange hover:brightness-110 text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>${dict.preBookWaBtn}</span>
+                        </button>
+                    `;
+                } else {
+                    mainActionBtnHtml = `
+                        <button onclick="orderSingleOnWhatsApp('${product.id}')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md shadow-green-500/15 transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>${product.price > 0 ? dict.orderWaBtn : dict.customQuoteBtn}</span>
+                        </button>
+                    `;
+                }
+
                 return `
-                    <article class="store-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+                    <article class="store-card rounded-2xl overflow-hidden flex flex-col justify-between group ${isOut ? 'opacity-80' : ''}">
                         <div class="relative h-48 bg-navy-950 overflow-hidden border-b border-slate-800/80">
                             <img
                                 onclick="openProductModal('${product.id}')"
@@ -1585,16 +2094,16 @@
                                 alt="${product.name}"
                                 loading="lazy"
                                 onerror="this.onerror=null; this.src='${getFallbackSvgUrl(product.name)}';"
-                                class="product-img w-full h-full object-cover opacity-90 group-hover:opacity-100 cursor-pointer"
+                                class="product-img w-full h-full object-cover ${isOut ? 'grayscale' : 'opacity-90 group-hover:opacity-100'} cursor-pointer"
                             >
                             <div onclick="openProductModal('${product.id}')" class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/40 cursor-pointer"></div>
 
-                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider text-white ${product.badgeColor || 'bg-brand-orange'} shadow-md pointer-events-none">
-                                ${product.badge || 'In Stock'}
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider text-white ${isOut ? 'bg-rose-600' : (isUpcoming ? 'bg-amber-500 text-navy-950' : (product.badgeColor || 'bg-brand-orange'))} shadow-md pointer-events-none">
+                                ${isOut ? 'Stock Out' : (isUpcoming ? 'Upcoming' : (product.badge || 'In Stock'))}
                             </span>
 
                             <div class="absolute top-3 right-3 flex items-center gap-1.5">
-                                ${discountPercent > 0 ? `
+                                ${discountPercent > 0 && !isOut ? `
                                     <span class="px-2 py-1 rounded-md bg-rose-600 text-white text-[10px] font-bold shadow">
                                         -${discountPercent}%
                                     </span>
@@ -1620,7 +2129,7 @@
                                         <i class="fa-solid fa-star-half-stroke"></i>
                                     </div>
                                     <span class="text-slate-400 text-[11px]">(${product.reviews || 25})</span>
-                                    <span class="ml-auto text-[10px] text-emerald-400 font-semibold">${dict.readyStock}</span>
+                                    ${statusHtml}
                                 </div>
 
                                 <h3 class="font-tech text-xl font-bold text-white leading-snug cursor-pointer hover:text-brand-orange transition-colors line-clamp-2" onclick="openProductModal('${product.id}')">
@@ -1639,17 +2148,14 @@
                                             <span class="text-xs text-slate-500 line-through ml-1.5">${STORE_CONFIG.currency}${product.oldPrice.toLocaleString()}</span>
                                         ` : ''}
                                     </div>
-                                    ${product.price > 0 ? `
+                                    ${product.price > 0 && status === "in-stock" ? `
                                         <button onclick="addToCart('${product.id}')" class="px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-brand-orange border border-cyan-500/30 hover:border-transparent text-xs font-semibold text-cyan-300 hover:text-white transition-all">
                                             <i class="fa-solid fa-cart-plus mr-1"></i>${dict.addBtn}
                                         </button>
                                     ` : ''}
                                 </div>
 
-                                <button onclick="orderSingleOnWhatsApp('${product.id}')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md shadow-green-500/15 transition-all">
-                                    <i class="fa-brands fa-whatsapp text-base"></i>
-                                    <span>${product.price > 0 ? dict.orderWaBtn : dict.customQuoteBtn}</span>
-                                </button>
+                                ${mainActionBtnHtml}
                             </div>
                         </div>
                     </article>
@@ -1719,6 +2225,8 @@
             searchQuery = "";
             desktopSearch.value = "";
             mobileSearch.value = "";
+            activeStockFilter = "all";
+            stockFilterSelect.value = "all";
             sortMode = "featured";
             sortSelect.value = "featured";
             selectCategory("all");
@@ -1739,6 +2247,11 @@
                 mobileSearch.value = searchQuery;
                 renderProducts();
             });
+        });
+
+        stockFilterSelect.addEventListener("change", (e) => {
+            activeStockFilter = e.target.value;
+            renderProducts();
         });
 
         sortSelect.addEventListener("change", (e) => {
@@ -1788,7 +2301,7 @@
                         <p class="text-xs text-brand-orange font-bold mt-0.5">${p.price > 0 ? STORE_CONFIG.currency + p.price : 'Custom Quote'}</p>
                     </div>
                     <div class="flex items-center gap-1.5 flex-shrink-0">
-                        ${p.price > 0 ? `<button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-brand-orange text-white text-xs font-bold">+ Bag</button>` : ''}
+                        ${p.price > 0 && (p.stockStatus || 'in-stock') === 'in-stock' ? `<button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-brand-orange text-white text-xs font-bold">+ Bag</button>` : ''}
                         <button onclick="toggleWishlist('${p.id}')" class="w-7 h-7 rounded-lg bg-navy-800 text-rose-400 text-xs"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
@@ -1859,6 +2372,9 @@
             const p = PRODUCTS.find(item => item.id === id);
             if (!p) return;
             const dict = I18N[currentLang];
+            const status = p.stockStatus || "in-stock";
+            const isOut = status === "out-of-stock";
+            const isUpcoming = status === "upcoming";
 
             const priceDisplay = p.price > 0 ? `${STORE_CONFIG.currency}${p.price.toLocaleString()}` : (p.priceLabel || "Custom Quote");
             const imgSrc = p.image || getFallbackSvgUrl(p.name);
@@ -1866,11 +2382,13 @@
             modalBody.innerHTML = `
                 <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
                     <div class="sm:col-span-5 rounded-2xl overflow-hidden bg-navy-950 border border-slate-800 h-52 sm:h-64">
-                        <img src="${imgSrc}" alt="${p.name}" onerror="this.onerror=null; this.src='${getFallbackSvgUrl(p.name)}';" class="w-full h-full object-cover">
+                        <img src="${imgSrc}" alt="${p.name}" onerror="this.onerror=null; this.src='${getFallbackSvgUrl(p.name)}';" class="w-full h-full object-cover ${isOut ? 'grayscale' : ''}">
                     </div>
 
                     <div class="sm:col-span-7">
-                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase text-white ${p.badgeColor || 'bg-brand-orange'} mb-2">${p.badge || 'In Stock'}</span>
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase text-white ${isOut ? 'bg-rose-600' : (isUpcoming ? 'bg-amber-500 text-navy-950' : (p.badgeColor || 'bg-brand-orange'))} mb-2">
+                            ${isOut ? 'Stock Out' : (isUpcoming ? 'Upcoming' : (p.badge || 'In Stock'))}
+                        </span>
                         <h3 class="font-tech text-2xl sm:text-3xl font-bold text-white leading-tight">${p.name}</h3>
                         <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">${p.shortDesc}</p>
 
@@ -1893,13 +2411,13 @@
                                 ${p.oldPrice && p.price > 0 ? `<span class="text-xs text-slate-500 line-through ml-1.5">${STORE_CONFIG.currency}${p.oldPrice}</span>` : ''}
                             </div>
                             <div class="flex gap-2">
-                                ${p.price > 0 ? `
+                                ${p.price > 0 && status === "in-stock" ? `
                                     <button onclick="addToCart('${p.id}'); closeModal();" class="px-4 py-2.5 rounded-xl bg-navy-800 hover:bg-navy-700 border border-cyan-500/35 text-cyan-300 text-xs font-bold">
                                         ${dict.addBagModal}
                                     </button>
                                 ` : ''}
                                 <button onclick="orderSingleOnWhatsApp('${p.id}')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:brightness-110 text-white text-xs sm:text-sm font-bold flex items-center gap-2">
-                                    <i class="fa-brands fa-whatsapp text-base"></i> ${dict.orderNowModal}
+                                    <i class="fa-brands fa-whatsapp text-base"></i> ${isOut ? dict.restockWaBtn : (isUpcoming ? dict.preBookWaBtn : dict.orderNowModal)}
                                 </button>
                             </div>
                         </div>
@@ -1920,7 +2438,7 @@
 
         function addToCart(id) {
             const product = PRODUCTS.find(p => p.id === id);
-            if (!product || product.price <= 0) return;
+            if (!product || product.price <= 0 || (product.stockStatus && product.stockStatus !== "in-stock")) return;
 
             const existing = cart.find(item => item.id === id);
             if (existing) {
@@ -1989,7 +2507,15 @@
                 return;
             }
 
-            const msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি ওয়েবসাইট থেকে নিচের প্রোডাক্টটি অর্ডার করতে চাই:\n\n• প্রোডাক্ট: ${p.name}\n• দাম: ${STORE_CONFIG.currency}${p.price}\n• পরিমাণ: 1 টি\n\nআমার নাম ও ডেলিভারি ঠিকানা: `;
+            const status = p.stockStatus || "in-stock";
+            let msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি ওয়েবসাইট থেকে নিচের প্রোডাক্টটি অর্ডার করতে চাই:\n\n• প্রোডাক্ট: ${p.name}\n• দাম: ${STORE_CONFIG.currency}${p.price}\n• পরিমাণ: 1 টি\n\nআমার নাম ও ডেলিভারি ঠিকানা: `;
+
+            if (status === "out-of-stock") {
+                msg = `হ্যালো ${STORE_CONFIG.brandName},\nআপনাদের ওয়েবসাইটে "${p.name}" প্রোডাক্টটি Stock Out দেখাচ্ছে। এটি কবে নাগাদ স্টকে আসবে আমাকে জানাবেন প্লিজ!`;
+            } else if (status === "upcoming") {
+                msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি আপনাদের Upcoming প্রোডাক্ট "${p.name}" (দাম: ${STORE_CONFIG.currency}${p.price}) প্রি-বুক করতে চাই।`;
+            }
+
             window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
         }
 
@@ -2020,7 +2546,7 @@
         });
 
         /* =====================================================================
-           10. SECRET ADMIN PANEL LOGIC
+           10. SECRET ADMIN PANEL LOGIC (STOCK TOGGLE & PIN-TO-TOP)
            ===================================================================== */
         const adminModal = document.getElementById("admin-modal");
         const adminProductList = document.getElementById("admin-product-list");
@@ -2049,28 +2575,57 @@
                 : "px-4 py-2 rounded-xl bg-navy-800 text-slate-300 text-xs font-bold";
         }
 
+        function quickChangeProductStatus(index, newStatus) {
+            if (!PRODUCTS[index]) return;
+            PRODUCTS[index].stockStatus = newStatus;
+            renderProducts();
+            renderAdminProductList();
+            showToast(`Status updated to ${newStatus.toUpperCase()}!`);
+        }
+
+        function moveProductToTop(index) {
+            if (index <= 0 || !PRODUCTS[index]) return;
+            const [item] = PRODUCTS.splice(index, 1);
+            PRODUCTS.unshift(item);
+            renderProducts();
+            renderAdminProductList();
+            showToast(`"${item.name}" pinned to #1 Top Position!`);
+        }
+
         function renderAdminProductList() {
             document.getElementById("admin-prod-count").textContent = PRODUCTS.length;
-            adminProductList.innerHTML = PRODUCTS.map((p, index) => `
-                <div class="p-2.5 rounded-xl bg-navy-950 border border-slate-800 flex items-center justify-between gap-2 text-xs">
-                    <div class="flex items-center gap-2.5 min-w-0">
-                        <img src="${p.image || getFallbackSvgUrl(p.name)}" alt="" class="w-9 h-9 rounded-lg object-cover bg-navy-900 flex-shrink-0">
-                        <div class="truncate">
-                            <span class="font-semibold text-white block truncate">${p.name}</span>
-                            <span class="text-brand-orange font-bold">${p.price > 0 ? STORE_CONFIG.currency + p.price : 'Custom'}</span>
-                            ${p.oldPrice > p.price ? `<span class="text-slate-500 line-through ml-1">${STORE_CONFIG.currency}${p.oldPrice}</span>` : ''}
+            adminProductList.innerHTML = PRODUCTS.map((p, index) => {
+                const st = p.stockStatus || "in-stock";
+                return `
+                    <div class="p-2.5 rounded-xl bg-navy-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <img src="${p.image || getFallbackSvgUrl(p.name)}" alt="" class="w-9 h-9 rounded-lg object-cover bg-navy-900 flex-shrink-0">
+                            <div class="truncate">
+                                <span class="font-semibold text-white block truncate">#${index + 1} ${p.name}</span>
+                                <span class="text-brand-orange font-bold">${p.price > 0 ? STORE_CONFIG.currency + p.price : 'Custom'}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                            <select onchange="quickChangeProductStatus(${index}, this.value)" class="px-2 py-1 rounded-lg bg-navy-900 border border-slate-700 text-[11px] font-semibold ${st === 'in-stock' ? 'text-emerald-400' : (st === 'upcoming' ? 'text-amber-300' : 'text-rose-400')}">
+                                <option value="in-stock" ${st === 'in-stock' ? 'selected' : ''}>In Stock</option>
+                                <option value="upcoming" ${st === 'upcoming' ? 'selected' : ''}>Upcoming</option>
+                                <option value="out-of-stock" ${st === 'out-of-stock' ? 'selected' : ''}>Stock Out</option>
+                            </select>
+                            ${index > 0 ? `
+                                <button onclick="moveProductToTop(${index})" title="Pin to Top (#1)" class="px-2 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-navy-950 font-bold transition-colors">
+                                    ↑ Top
+                                </button>
+                            ` : ''}
+                            <button onclick="startEditProduct(${index})" class="px-2 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-navy-950 font-semibold transition-colors">
+                                Edit
+                            </button>
+                            <button onclick="deleteProductByIndex(${index})" class="px-2 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white transition-colors">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 flex-shrink-0">
-                        <button onclick="startEditProduct(${index})" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-navy-950 font-semibold transition-colors">
-                            <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
-                        </button>
-                        <button onclick="deleteProductByIndex(${index})" class="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white transition-colors">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join("");
+                `;
+            }).join("");
         }
 
         function renderAdminUpcomingList() {
@@ -2094,6 +2649,7 @@
 
             editIndexInput.value = index;
             document.getElementById("form-name").value = p.name;
+            document.getElementById("form-status").value = p.stockStatus || "in-stock";
             document.getElementById("form-category").value = p.category;
             document.getElementById("form-price").value = p.price;
             document.getElementById("form-old-price").value = p.oldPrice || "";
@@ -2101,6 +2657,7 @@
             document.getElementById("form-image").value = p.image || "";
             document.getElementById("form-desc").value = p.shortDesc || "";
             document.getElementById("form-specs").value = (p.specs || []).join(" | ");
+            document.getElementById("form-pin-top").checked = (index === 0);
 
             editorFormTitle.textContent = `✎ Editing: ${p.name}`;
             editorSubmitBtn.textContent = "Save Changes";
@@ -2111,7 +2668,9 @@
         function resetEditorForm() {
             editorForm.reset();
             editIndexInput.value = "-1";
-            editorFormTitle.textContent = "+ Add New Store Product";
+            document.getElementById("form-status").value = "in-stock";
+            document.getElementById("form-pin-top").checked = true;
+            editorFormTitle.textContent = "+ Add New Store Product (Pins to Top)";
             editorSubmitBtn.textContent = "+ Add Product to Store";
             cancelEditBtn.classList.add("hidden");
         }
@@ -2144,20 +2703,23 @@
             e.preventDefault();
             const editIdx = parseInt(editIndexInput.value, 10);
             const name = document.getElementById("form-name").value.trim();
+            const stockStatus = document.getElementById("form-status").value;
             const category = document.getElementById("form-category").value;
             const price = parseFloat(document.getElementById("form-price").value) || 0;
             const oldPrice = parseFloat(document.getElementById("form-old-price").value) || 0;
-            const badge = document.getElementById("form-badge").value.trim() || "In Stock";
+            const badge = document.getElementById("form-badge").value.trim() || "Just Arrived";
             const image = document.getElementById("form-image").value.trim() || getFallbackSvgUrl(name);
             const shortDesc = document.getElementById("form-desc").value.trim();
             const specsRaw = document.getElementById("form-specs").value.trim();
+            const pinTop = document.getElementById("form-pin-top").checked;
 
             const itemData = {
                 id: editIdx >= 0 ? PRODUCTS[editIdx].id : ("prod-" + Date.now()),
                 name,
                 category,
+                stockStatus,
                 badge,
-                badgeColor: category === "eee" ? "bg-brand-orange" : "bg-cyan-500 text-navy-950",
+                badgeColor: (category === "eee" || category === "robotics") ? "bg-brand-orange" : "bg-cyan-500 text-navy-950",
                 price,
                 oldPrice: oldPrice > price ? oldPrice : 0,
                 rating: editIdx >= 0 ? (PRODUCTS[editIdx].rating || 5.0) : 5.0,
@@ -2170,10 +2732,19 @@
             };
 
             if (editIdx >= 0) {
-                PRODUCTS[editIdx] = itemData;
+                PRODUCTS.splice(editIdx, 1);
+                if (pinTop) {
+                    PRODUCTS.unshift(itemData);
+                } else {
+                    PRODUCTS.splice(editIdx, 0, itemData);
+                }
                 showToast("Product updated! Copy code to save permanently.");
             } else {
-                PRODUCTS.unshift(itemData);
+                if (pinTop) {
+                    PRODUCTS.unshift(itemData);
+                } else {
+                    PRODUCTS.push(itemData);
+                }
                 showToast("Product added! Copy code to save permanently.");
             }
 
