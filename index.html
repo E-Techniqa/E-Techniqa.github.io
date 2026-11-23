@@ -232,10 +232,10 @@
                     </button>
 
                     <!-- WhatsApp Button (Desktop & Tablet) -->
-                    <a id="nav-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white text-sm font-semibold shadow-lg shadow-green-500/20 transition-all">
+                    <button type="button" onclick="openWhatsAppGeneral()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white text-sm font-semibold shadow-lg shadow-green-500/20 transition-all">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span data-i18n="whatsappBtn">WhatsApp</span>
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -257,9 +257,9 @@
                     <i class="fa-solid fa-heart text-xs text-rose-500"></i>
                     <span class="wishlist-count-display absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-rose-600 text-white text-[9px] font-bold flex items-center justify-center shadow">0</span>
                 </button>
-                <a id="mobile-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="sm:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white flex-shrink-0 shadow" aria-label="WhatsApp">
+                <button type="button" onclick="openWhatsAppGeneral()" class="sm:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white flex-shrink-0 shadow" aria-label="WhatsApp">
                     <i class="fa-brands fa-whatsapp text-base"></i>
-                </a>
+                </button>
             </div>
         </div>
     </header>
@@ -660,7 +660,7 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-brands fa-whatsapp text-emerald-400 w-4"></i>
-                            <a id="footer-whatsapp-text" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-brand-cyan transition-colors">+880 1570-296758</a>
+                            <button type="button" id="footer-whatsapp-text" onclick="openWhatsAppGeneral()" class="hover:text-brand-cyan transition-colors text-left">+880 1570-296758</button>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-envelope text-brand-cyan w-4"></i>
@@ -686,9 +686,9 @@
                         <a id="footer-fb-link" href="https://www.facebook.com/share/1JStFspezS/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/35 border border-blue-500/40 text-blue-300 text-sm font-semibold transition-all">
                             <i class="fa-brands fa-facebook"></i> <span data-i18n="fbPageBtn">Facebook Page</span>
                         </a>
-                        <a id="footer-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 text-emerald-300 text-sm font-semibold transition-all">
+                        <button type="button" onclick="openWhatsAppGeneral()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 text-emerald-300 text-sm font-semibold transition-all">
                             <i class="fa-brands fa-whatsapp"></i> <span data-i18n="chatNowBtn">Chat Now</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -733,17 +733,50 @@
             <span id="bottom-nav-bag-badge" class="hidden absolute top-0 right-3 min-w-[14px] h-3.5 px-1 rounded-full bg-brand-orange text-white text-[9px] font-bold flex items-center justify-center">0</span>
             <span data-i18n="bagLabel">Bag</span>
         </button>
-        <a id="bottom-nav-wa" href="#" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-0.5 py-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+        <button type="button" onclick="openWhatsAppGeneral()" class="flex flex-col items-center justify-center gap-0.5 py-1 text-emerald-400 hover:text-emerald-300 transition-colors">
             <i class="fa-brands fa-whatsapp text-base"></i>
             <span data-i18n="whatsappBtn">WhatsApp</span>
-        </a>
+        </button>
     </nav>
 
     <!-- ==================== DESKTOP FLOATING QUICK-CHAT WIDGET ==================== -->
     <div class="hidden sm:flex fixed bottom-5 right-5 z-40 flex-col items-end gap-2">
-        <a id="floating-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-400 text-white shadow-2xl shadow-green-500/40 flex items-center justify-center text-2xl hover:scale-105 transition-transform" aria-label="Chat on WhatsApp" title="Direct WhatsApp Support">
+        <button type="button" onclick="openWhatsAppGeneral()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-400 text-white shadow-2xl shadow-green-500/40 flex items-center justify-center text-2xl hover:scale-105 transition-transform" aria-label="Chat on WhatsApp" title="Direct WhatsApp Support">
             <i class="fa-brands fa-whatsapp"></i>
-        </a>
+        </button>
+    </div>
+
+    <!-- ==================== SMART WHATSAPP DIRECT HELPER MODAL (PREVENTS APP CONFUSION) ==================== -->
+    <div id="wa-helper-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+        <div class="relative w-full max-w-md rounded-3xl bg-navy-900 border border-emerald-500/50 p-5 sm:p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-tech text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-2xl"></i>
+                    <span data-i18n="waHelperTitle">Opening WhatsApp...</span>
+                </h3>
+                <button onclick="document.getElementById('wa-helper-modal').classList.add('hidden')" class="w-8 h-8 rounded-lg bg-navy-800 text-slate-300 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p data-i18n="waHelperSub" class="text-xs text-slate-300 leading-relaxed mb-3">
+                If your phone shows a choice between <strong>WhatsApp</strong> and <strong>WhatsApp Business</strong>, simply tap <strong>"Use WhatsApp"</strong>. Your order message is already copied!
+            </p>
+            <div class="p-3 rounded-2xl bg-navy-950 border border-slate-800 mb-4">
+                <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                    <span>WhatsApp Number: <strong id="wa-helper-num" class="text-emerald-400">+880 1570-296758</strong></span>
+                    <button type="button" onclick="copyWaNumberOnly()" class="text-brand-cyan hover:underline font-semibold">Copy Number</button>
+                </div>
+                <pre id="wa-helper-msg-preview" class="text-[11px] text-slate-200 whitespace-pre-wrap font-sans max-h-28 overflow-y-auto leading-relaxed"></pre>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" onclick="copyWaPreparedMessage()" class="py-2.5 px-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-cyan-500/35 text-cyan-300 text-xs font-bold flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-copy"></i> <span data-i18n="copyMsgBtn">Copy Message</span>
+                </button>
+                <a id="wa-helper-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-base"></i> <span data-i18n="openWaAgainBtn">Open WhatsApp</span>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- ==================== EEE LAB ENGINEERING CALCULATOR MODAL ==================== -->
@@ -1322,6 +1355,10 @@
                 navHome: "Home",
                 navCatalog: "Catalog",
                 navQuote: "Quote",
+                waHelperTitle: "Opening WhatsApp...",
+                waHelperSub: "If your phone asks between <strong>WhatsApp</strong> and <strong>WhatsApp Business</strong>, simply tap <strong>\"Use WhatsApp\"</strong>. Your order message is already copied!",
+                copyMsgBtn: "Copy Message",
+                openWaAgainBtn: "Open WhatsApp",
                 calcModalTitle: "EEE Lab Quick Tools",
                 resCalcTitle: "1. 4-Band Resistor Color Decoder",
                 resBand1Lbl: "Band 1",
@@ -1462,6 +1499,10 @@
                 navHome: "হোম",
                 navCatalog: "ক্যাটালগ",
                 navQuote: "কোটেশন",
+                waHelperTitle: "হোয়াটসঅ্যাপ ওপেন হচ্ছে...",
+                waHelperSub: "ফোনে যদি <strong>WhatsApp</strong> এবং <strong>WhatsApp Business</strong> অপশন দেখায়, তবে <strong>\"Use WhatsApp\"</strong> চাপুন। আপনার মেসেজটি ইতিমধ্যে কপি করা হয়েছে!",
+                copyMsgBtn: "মেসেজ কপি করুন",
+                openWaAgainBtn: "হোয়াটসঅ্যাপ খুলুন",
                 calcModalTitle: "EEE ল্যাব কুইক টুলস",
                 resCalcTitle: "১. ৪-ব্যান্ড রেজিস্টর কালার ক্যালকুলেটর",
                 resBand1Lbl: "ব্যান্ড ১",
@@ -1511,6 +1552,58 @@
                 orderNowModal: "এখনই অর্ডার করুন"
             }
         };
+
+        /* =====================================================================
+           UNIVERSAL WHATSAPP LAUNCHER (AVOIDS WHATSAPP BUSINESS CONFUSION)
+           ===================================================================== */
+        let lastPreparedWaMessage = "";
+
+        function openWhatsAppChat(messageText) {
+            lastPreparedWaMessage = messageText;
+            const phone = STORE_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
+            const universalUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(messageText)}`;
+
+            // Auto-copy message to clipboard as a seamless backup
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(messageText).catch(() => {});
+            }
+
+            // Populate smart helper modal in case browser/Android shows app chooser
+            document.getElementById("wa-helper-num").textContent = STORE_CONFIG.displayPhone;
+            document.getElementById("wa-helper-msg-preview").textContent = messageText;
+            document.getElementById("wa-helper-direct-link").href = universalUrl;
+            document.getElementById("wa-helper-modal").classList.remove("hidden");
+
+            // Attempt direct navigation to WhatsApp
+            window.location.href = universalUrl;
+        }
+
+        function openWhatsAppGeneral() {
+            const msg = currentLang === "bn"
+                ? `আসসালামু আলাইকুম ${STORE_CONFIG.brandName}! আমি আপনাদের প্রোডাক্ট সম্পর্কে জানতে চাই।`
+                : `Assalamu Alaikum ${STORE_CONFIG.brandName}! I want to inquire about your products.`;
+            openWhatsAppChat(msg);
+        }
+
+        function copyWaPreparedMessage() {
+            const temp = document.createElement("textarea");
+            temp.value = lastPreparedWaMessage;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+            showToast(currentLang === "bn" ? "অর্ডার মেসেজ কপি হয়েছে!" : "Order message copied!");
+        }
+
+        function copyWaNumberOnly() {
+            const temp = document.createElement("input");
+            temp.value = STORE_CONFIG.displayPhone;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+            showToast(currentLang === "bn" ? "হোয়াটসঅ্যাপ নম্বর কপি হয়েছে!" : "WhatsApp number copied!");
+        }
 
         function syncPromoVisibility() {
             const ticker = document.getElementById("top-promo-ticker");
@@ -2226,15 +2319,10 @@
            5. INITIALIZATION & SECRET ADMIN TRIGGER (5 Logo Taps OR #admin URL)
            ===================================================================== */
         function syncContactLinks() {
-            const waIntro = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent("Assalamu Alaikum E-Techniqa! I want to inquire about your products.")}`;
-            document.getElementById("nav-whatsapp-link").href = waIntro;
-            document.getElementById("mobile-whatsapp-link").href = waIntro;
-            document.getElementById("bottom-nav-wa").href = waIntro;
-            document.getElementById("footer-wa-btn").href = waIntro;
-            document.getElementById("floating-wa-btn").href = waIntro;
             const footerWaText = document.getElementById("footer-whatsapp-text");
-            footerWaText.href = waIntro;
-            footerWaText.textContent = `${STORE_CONFIG.displayPhone} (WhatsApp)`;
+            if (footerWaText) {
+                footerWaText.textContent = `${STORE_CONFIG.displayPhone} (WhatsApp)`;
+            }
             document.getElementById("footer-fb-link").href = STORE_CONFIG.facebookUrl;
         }
 
@@ -2480,10 +2568,8 @@
 
         function renderUpcomingProjects() {
             const dict = I18N[currentLang];
-            upcomingGrid.innerHTML = UPCOMING_PROJECTS.map(proj => {
+            upcomingGrid.innerHTML = UPCOMING_PROJECTS.map((proj, idx) => {
                 const imgSrc = proj.image || getFallbackSvgUrl(proj.title);
-                const waMsg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি আপনাদের Upcoming R&D Project "${proj.title}" সম্পর্কে বিস্তারিত জানতে / প্রি-বুক করতে চাই।`;
-
                 return `
                     <article class="store-card rounded-2xl overflow-hidden flex flex-col justify-between group">
                         <div class="relative h-44 bg-navy-950 overflow-hidden border-b border-slate-800/80">
@@ -2514,15 +2600,22 @@
                             </div>
 
                             <div class="mt-4 pt-3.5 border-t border-slate-800/80">
-                                <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-navy-800 hover:bg-gradient-to-r hover:from-brand-orange hover:to-brand-amber border border-brand-cyan/35 hover:border-transparent text-cyan-300 hover:text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                                <button type="button" onclick="inquireUpcomingProject(${idx})" class="w-full py-2.5 rounded-xl bg-navy-800 hover:bg-gradient-to-r hover:from-brand-orange hover:to-brand-amber border border-brand-cyan/35 hover:border-transparent text-cyan-300 hover:text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
                                     <i class="fa-brands fa-whatsapp text-sm"></i>
                                     <span>${dict.inquireProjectBtn}</span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </article>
                 `;
             }).join("");
+        }
+
+        function inquireUpcomingProject(index) {
+            const proj = UPCOMING_PROJECTS[index];
+            if (!proj) return;
+            const waMsg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি আপনাদের Upcoming R&D Project "${proj.title}" সম্পর্কে বিস্তারিত জানতে / প্রি-বুক করতে চাই।`;
+            openWhatsAppChat(waMsg);
         }
 
         /* =====================================================================
@@ -2742,7 +2835,7 @@
 
             document.getElementById("custom-request-modal").classList.add("hidden");
             e.target.reset();
-            window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+            openWhatsAppChat(msg);
         });
 
         function openPolicyModal(type) {
@@ -2777,7 +2870,7 @@
 
         function orderBundleWhatsApp(comboName, comboPrice) {
             const msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি আপনাদের স্পেশাল কম্বো অফারটি অর্ডার করতে চাই:\n\n• কম্বো প্যাক: ${comboName}\n• অফার মূল্য: ${STORE_CONFIG.currency}${comboPrice}\n\nআমার নাম ও ডেলিভারি ঠিকানা: `;
-            window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+            openWhatsAppChat(msg);
         }
 
         /* =====================================================================
@@ -2974,7 +3067,7 @@
                 msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি আপনাদের Upcoming প্রোডাক্ট "${p.name}" (দাম: ${STORE_CONFIG.currency}${p.price}) প্রি-বুক করতে চাই।`;
             }
 
-            window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+            openWhatsAppChat(msg);
         }
 
         document.getElementById("checkout-whatsapp-btn").addEventListener("click", () => {
@@ -3010,7 +3103,8 @@
                 `💳 পেমেন্ট মেথড: ${custPayment}\n\n` +
                 `👤 নাম: ${custName}\n📞 মোবাইল: ${custPhone}\n📍 ঠিকানা: ${custAddress}`;
 
-            window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+            cartDrawer.classList.add("hidden");
+            openWhatsAppChat(msg);
         });
 
         /* =====================================================================
