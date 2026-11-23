@@ -57,7 +57,6 @@
             background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
         }
 
-        /* Exact Brand Wordmark Matching Reference Emblem */
         .brand-wordmark {
             font-family: 'Exo 2', sans-serif;
             font-style: italic;
@@ -131,7 +130,12 @@
         ::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
     </style>
 </head>
-<body class="circuit-bg text-slate-100 font-sans antialiased selection:bg-brand-orange selection:text-white overflow-x-hidden">
+<body class="circuit-bg text-slate-100 font-sans antialiased selection:bg-brand-orange selection:text-white overflow-x-hidden pb-16 sm:pb-0">
+
+    <!-- ==================== PROMO ANNOUNCEMENT TICKER (ONLY SHOWN WHEN ADMIN TURNS PROMO ON) ==================== -->
+    <div id="top-promo-ticker" class="hidden bg-gradient-to-r from-navy-950 via-navy-850 to-navy-950 border-b border-brand-orange/30 py-1.5 px-3 text-center text-[11px] sm:text-xs font-medium text-slate-200">
+        <span id="top-promo-text"></span>
+    </div>
 
     <!-- ==================== MAIN E-COMMERCE HEADER ==================== -->
     <header class="sticky top-0 z-40 backdrop-blur-lg bg-navy-950/95 border-b border-cyan-500/20 shadow-lg shadow-black/40">
@@ -202,6 +206,12 @@
 
                 <!-- Right Storefront Actions -->
                 <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+                    <!-- Free EEE Lab Calculator Tool Button -->
+                    <button onclick="openCalcModal()" class="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-xl bg-navy-900 hover:bg-navy-800 border border-brand-cyan/35 text-brand-cyan text-[10px] sm:text-xs font-bold transition-all" title="EEE Resistor & Ohm's Law Calculator">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span data-i18n="calcToolBtn" class="hidden xl:inline">EEE Tools</span>
+                    </button>
+
                     <!-- Language Switcher -->
                     <div class="flex items-center rounded-xl bg-navy-900 border border-cyan-500/30 p-0.5 text-[10px] sm:text-xs font-bold" role="group" aria-label="Language Switcher">
                         <button id="lang-en-btn" onclick="setLanguage('en')" class="px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all">EN</button>
@@ -229,7 +239,7 @@
                 </div>
             </div>
 
-            <!-- Mobile Second Row: Search Bar + Wishlist + WhatsApp -->
+            <!-- Mobile Second Row: Search Bar + Clear Button + Wishlist + WhatsApp -->
             <div class="md:hidden pb-3 flex items-center gap-2">
                 <div class="relative flex-1">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
@@ -237,8 +247,11 @@
                         id="mobile-search-input"
                         type="text"
                         placeholder="Search Resistor, Motor, Arduino, UPS..."
-                        class="w-full pl-9 pr-3 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-orange"
+                        class="w-full pl-9 pr-8 py-2 rounded-xl bg-navy-900 border border-cyan-500/25 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-brand-orange"
                     >
+                    <button id="mobile-clear-search" onclick="resetFilters()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs" aria-label="Clear Search">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
                 </div>
                 <button onclick="openWishlistDrawer()" class="sm:hidden relative flex items-center justify-center w-9 h-9 rounded-xl bg-navy-800/90 border border-cyan-500/30 flex-shrink-0" aria-label="Saved Wishlist">
                     <i class="fa-solid fa-heart text-xs text-rose-500"></i>
@@ -291,35 +304,37 @@
                         </div>
                     </div>
 
-                    <!-- Bottom Brand Pillars Strip -->
-                    <div class="relative z-10 mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-3 gap-2 sm:gap-4">
-                        <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-brand-cyan/15 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan flex-shrink-0">
+                    <!-- Bottom Interactive Brand Pillars (Smart Clickable Shortcut Buttons) -->
+                    <div class="relative z-10 mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-3 gap-2 sm:gap-3">
+                        <button type="button" onclick="navigateToCategory('eee')" class="group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5 p-2 rounded-xl bg-navy-950/60 hover:bg-navy-800/90 border border-brand-cyan/25 hover:border-brand-cyan transition-all active:scale-95">
+                            <div class="w-8 h-8 rounded-lg bg-brand-cyan/15 group-hover:bg-brand-cyan/25 border border-brand-cyan/35 flex items-center justify-center text-brand-cyan flex-shrink-0 transition-colors">
                                 <i class="fa-solid fa-microchip text-xs"></i>
                             </div>
                             <div class="min-w-0">
-                                <div data-i18n="pillar1Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">EEE Components</div>
-                                <div data-i18n="pillar1Sub" class="text-[10px] text-slate-400 hidden sm:block">Build Your Ideas</div>
+                                <div data-i18n="pillar1Title" class="text-[11px] sm:text-xs font-bold text-white group-hover:text-brand-cyan leading-tight transition-colors">EEE Components</div>
+                                <div data-i18n="pillar1Sub" class="text-[10px] text-slate-400 hidden sm:block">Build Your Ideas &rarr;</div>
                             </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center text-brand-orange flex-shrink-0">
+                        </button>
+
+                        <button type="button" onclick="navigateToCategory('gadgets')" class="group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5 p-2 rounded-xl bg-navy-950/60 hover:bg-navy-800/90 border border-brand-orange/25 hover:border-brand-orange transition-all active:scale-95">
+                            <div class="w-8 h-8 rounded-lg bg-brand-orange/15 group-hover:bg-brand-orange/25 border border-brand-orange/35 flex items-center justify-center text-brand-orange flex-shrink-0 transition-colors">
                                 <i class="fa-solid fa-house-signal text-xs"></i>
                             </div>
                             <div class="min-w-0">
-                                <div data-i18n="pillar2Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">Our Products</div>
-                                <div data-i18n="pillar2Sub" class="text-[10px] text-slate-400 hidden sm:block">Smart Solutions</div>
+                                <div data-i18n="pillar2Title" class="text-[11px] sm:text-xs font-bold text-white group-hover:text-brand-orange leading-tight transition-colors">Our Products</div>
+                                <div data-i18n="pillar2Sub" class="text-[10px] text-slate-400 hidden sm:block">Smart Solutions &rarr;</div>
                             </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                        </button>
+
+                        <button type="button" onclick="document.getElementById('upcoming-projects').scrollIntoView({ behavior: 'smooth' })" class="group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1.5 sm:gap-2.5 p-2 rounded-xl bg-navy-950/60 hover:bg-navy-800/90 border border-emerald-500/25 hover:border-emerald-400 transition-all active:scale-95">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 group-hover:bg-emerald-500/25 border border-emerald-400/35 flex items-center justify-center text-emerald-400 flex-shrink-0 transition-colors">
                                 <i class="fa-solid fa-solar-panel text-xs"></i>
                             </div>
                             <div class="min-w-0">
-                                <div data-i18n="pillar3Title" class="text-[11px] sm:text-xs font-bold text-white leading-tight">Big Projects</div>
-                                <div data-i18n="pillar3Sub" class="text-[10px] text-slate-400 hidden sm:block">For a Greener Future</div>
+                                <div data-i18n="pillar3Title" class="text-[11px] sm:text-xs font-bold text-white group-hover:text-emerald-300 leading-tight transition-colors">Big Projects</div>
+                                <div data-i18n="pillar3Sub" class="text-[10px] text-slate-400 hidden sm:block">R&amp;D Roadmap &rarr;</div>
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -578,18 +593,18 @@
                     <div class="p-5 rounded-2xl bg-navy-900/90 border border-cyan-500/20">
                         <div class="flex items-center justify-between text-amber-400 text-xs mb-2">
                             <span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>Verified Buyer</span>
+                            <span data-i18n="verifiedBuyerBadge" class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>Verified Buyer</span>
                         </div>
                         <p data-i18n="rev1Text" class="text-xs text-slate-300 leading-relaxed">"Router Mini UPS gives solid 5 hours backup during load-shedding without any router restart. Very clean build quality!"</p>
-                        <p class="text-xs font-bold text-white mt-3">— Tanvir Ahmed, Dhaka</p>
+                        <p data-i18n="rev1Author" class="text-xs font-bold text-white mt-3">— Tanvir Ahmed, Dhaka</p>
                     </div>
                     <div class="p-5 rounded-2xl bg-navy-900/90 border border-cyan-500/20">
                         <div class="flex items-center justify-between text-amber-400 text-xs mb-2">
                             <span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>EEE Student</span>
+                            <span data-i18n="eeeStudentBadge" class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>EEE Student</span>
                         </div>
                         <p data-i18n="rev2Text" class="text-xs text-slate-300 leading-relaxed">"Ordered Arduino + ESP32 combo and motor kit for our semester project. Everything arrived tested and worked first try!"</p>
-                        <p class="text-xs font-bold text-white mt-3">— Rafiul Islam, EEE Dept.</p>
+                        <p data-i18n="rev2Author" class="text-xs font-bold text-white mt-3">— Rafiul Islam, EEE Dept.</p>
                     </div>
                 </div>
             </div>
@@ -623,7 +638,7 @@
     </section>
 
     <!-- ==================== FOOTER ==================== -->
-    <footer id="contact" class="bg-navy-950 pt-14 pb-8 border-t border-brand-orange/30">
+    <footer id="contact" class="bg-navy-950 pt-14 pb-10 border-t border-brand-orange/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-slate-800/80">
                 <div>
@@ -641,7 +656,7 @@
                     <ul class="space-y-3 text-sm text-slate-300">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-location-dot text-brand-orange w-4"></i>
-                            <span>Dhaka, Bangladesh</span>
+                            <span data-i18n="footerLocation">Dhaka, Bangladesh</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-brands fa-whatsapp text-emerald-400 w-4"></i>
@@ -669,10 +684,10 @@
                     <p data-i18n="footerFollowDesc" class="text-sm text-slate-400 mb-4">Looking for a custom component list or university Final Year Project (FYP) consultation?</p>
                     <div class="flex flex-wrap gap-3">
                         <a id="footer-fb-link" href="https://www.facebook.com/share/1JStFspezS/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/35 border border-blue-500/40 text-blue-300 text-sm font-semibold transition-all">
-                            <i class="fa-brands fa-facebook"></i> Facebook Page
+                            <i class="fa-brands fa-facebook"></i> <span data-i18n="fbPageBtn">Facebook Page</span>
                         </a>
                         <a id="footer-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 text-emerald-300 text-sm font-semibold transition-all">
-                            <i class="fa-brands fa-whatsapp"></i> Chat Now
+                            <i class="fa-brands fa-whatsapp"></i> <span data-i18n="chatNowBtn">Chat Now</span>
                         </a>
                     </div>
                 </div>
@@ -685,11 +700,140 @@
         </div>
     </footer>
 
-    <!-- ==================== FLOATING QUICK-CHAT WIDGET ==================== -->
-    <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
-        <a id="floating-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-400 text-white shadow-2xl shadow-green-500/40 flex items-center justify-center text-2xl hover:scale-105 transition-transform" aria-label="Chat on WhatsApp" title="Direct WhatsApp Support">
+    <!-- ==================== MOBILE FLOATING CART BAR ==================== -->
+    <div id="mobile-floating-bag-bar" class="hidden sm:hidden fixed bottom-16 left-3 right-3 z-30">
+        <button onclick="cartDrawer.classList.remove('hidden')" class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-brand-orange to-brand-amber text-white shadow-2xl shadow-brand-orange/40 flex items-center justify-between text-xs font-bold">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-sm"></i>
+                <span id="floating-bag-count">0 Items</span>
+            </span>
+            <span class="flex items-center gap-2">
+                <span id="floating-bag-total">৳0</span>
+                <span data-i18n="floatingCheckoutBtn" class="px-2 py-0.5 rounded-lg bg-navy-950/30">Checkout &rarr;</span>
+            </span>
+        </button>
+    </div>
+
+    <!-- ==================== STICKY APP-STYLE BOTTOM NAV BAR (MOBILE ONLY) ==================== -->
+    <nav class="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-navy-950/95 backdrop-blur-lg border-t border-cyan-500/25 px-2 py-1.5 grid grid-cols-5 items-center text-[10px] font-semibold text-slate-300">
+        <a href="#home" class="flex flex-col items-center justify-center gap-0.5 py-1 hover:text-brand-orange transition-colors">
+            <i class="fa-solid fa-house text-sm text-brand-cyan"></i>
+            <span data-i18n="navHome">Home</span>
+        </a>
+        <a href="#catalog" class="flex flex-col items-center justify-center gap-0.5 py-1 hover:text-brand-orange transition-colors">
+            <i class="fa-solid fa-table-cells-large text-sm text-brand-orange"></i>
+            <span data-i18n="navCatalog">Catalog</span>
+        </a>
+        <button onclick="openCustomRequestModal()" class="flex flex-col items-center justify-center gap-0.5 py-1 hover:text-brand-cyan transition-colors">
+            <i class="fa-solid fa-file-signature text-sm text-amber-300"></i>
+            <span data-i18n="navQuote">Quote</span>
+        </button>
+        <button onclick="cartDrawer.classList.remove('hidden')" class="relative flex flex-col items-center justify-center gap-0.5 py-1 hover:text-brand-orange transition-colors">
+            <i class="fa-solid fa-cart-shopping text-sm text-brand-orange"></i>
+            <span id="bottom-nav-bag-badge" class="hidden absolute top-0 right-3 min-w-[14px] h-3.5 px-1 rounded-full bg-brand-orange text-white text-[9px] font-bold flex items-center justify-center">0</span>
+            <span data-i18n="bagLabel">Bag</span>
+        </button>
+        <a id="bottom-nav-wa" href="#" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-0.5 py-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span data-i18n="whatsappBtn">WhatsApp</span>
+        </a>
+    </nav>
+
+    <!-- ==================== DESKTOP FLOATING QUICK-CHAT WIDGET ==================== -->
+    <div class="hidden sm:flex fixed bottom-5 right-5 z-40 flex-col items-end gap-2">
+        <a id="floating-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-400 text-white shadow-2xl shadow-green-500/40 flex items-center justify-center text-2xl hover:scale-105 transition-transform" aria-label="Chat on WhatsApp" title="Direct WhatsApp Support">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
+    </div>
+
+    <!-- ==================== EEE LAB ENGINEERING CALCULATOR MODAL ==================== -->
+    <div id="eee-calc-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+        <div class="relative w-full max-w-md rounded-3xl bg-navy-900 border border-brand-cyan/50 p-5 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-tech text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-brand-cyan"></i>
+                    <span data-i18n="calcModalTitle">EEE Lab Quick Tools</span>
+                </h3>
+                <button onclick="document.getElementById('eee-calc-modal').classList.add('hidden')" class="w-8 h-8 rounded-lg bg-navy-800 text-slate-300 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Tool 1: 4-Band Resistor Color Code Calculator -->
+            <div class="p-4 rounded-2xl bg-navy-950/95 border border-slate-800 space-y-3 mb-4">
+                <h4 data-i18n="resCalcTitle" class="text-xs font-bold uppercase tracking-wider text-brand-orange">1. 4-Band Resistor Color Decoder</h4>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <div>
+                        <label data-i18n="resBand1Lbl" class="text-[10px] text-slate-400 block mb-1">Band 1</label>
+                        <select id="res-b1" onchange="calculateResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                            <option value="1" selected>Brown (1)</option>
+                            <option value="2">Red (2)</option>
+                            <option value="3">Orange (3)</option>
+                            <option value="4">Yellow (4)</option>
+                            <option value="5">Green (5)</option>
+                            <option value="6">Blue (6)</option>
+                            <option value="7">Violet (7)</option>
+                            <option value="8">Grey (8)</option>
+                            <option value="9">White (9)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label data-i18n="resBand2Lbl" class="text-[10px] text-slate-400 block mb-1">Band 2</label>
+                        <select id="res-b2" onchange="calculateResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                            <option value="0" selected>Black (0)</option>
+                            <option value="1">Brown (1)</option>
+                            <option value="2">Red (2)</option>
+                            <option value="3">Orange (3)</option>
+                            <option value="4">Yellow (4)</option>
+                            <option value="5">Green (5)</option>
+                            <option value="6">Blue (6)</option>
+                            <option value="7">Violet (7)</option>
+                            <option value="8">Grey (8)</option>
+                            <option value="9">White (9)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label data-i18n="resMultLbl" class="text-[10px] text-slate-400 block mb-1">Multiplier</label>
+                        <select id="res-mult" onchange="calculateResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                            <option value="1">Black (×1Ω)</option>
+                            <option value="10">Brown (×10Ω)</option>
+                            <option value="100" selected>Red (×100Ω)</option>
+                            <option value="1000">Orange (×1kΩ)</option>
+                            <option value="10000">Yellow (×10kΩ)</option>
+                            <option value="100000">Green (×100kΩ)</option>
+                            <option value="1000000">Blue (×1MΩ)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-navy-900 border border-brand-cyan/30 flex items-center justify-between">
+                    <span data-i18n="resValLbl" class="text-xs text-slate-400">Resistor Value:</span>
+                    <span id="res-output" class="font-tech text-xl font-bold text-brand-cyan">1 kΩ (±5% Gold)</span>
+                </div>
+            </div>
+
+            <!-- Tool 2: LED Current-Limiting Resistor Calculator -->
+            <div class="p-4 rounded-2xl bg-navy-950/95 border border-slate-800 space-y-3">
+                <h4 data-i18n="ledCalcTitle" class="text-xs font-bold uppercase tracking-wider text-emerald-400">2. LED Series Resistor Calculator</h4>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <div>
+                        <label data-i18n="ledSrcLbl" class="text-[10px] text-slate-400 block mb-1">Source (V)</label>
+                        <input id="led-vs" type="number" value="5" step="0.1" oninput="calculateLedResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                    </div>
+                    <div>
+                        <label data-i18n="ledDropLbl" class="text-[10px] text-slate-400 block mb-1">LED Drop (V)</label>
+                        <input id="led-vf" type="number" value="2" step="0.1" oninput="calculateLedResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                    </div>
+                    <div>
+                        <label data-i18n="ledCurLbl" class="text-[10px] text-slate-400 block mb-1">Current (mA)</label>
+                        <input id="led-ma" type="number" value="15" step="1" oninput="calculateLedResistor()" class="w-full p-2 rounded-lg bg-navy-900 border border-slate-700 text-white">
+                    </div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-navy-900 border border-emerald-500/30 flex items-center justify-between">
+                    <span data-i18n="ledReqLbl" class="text-xs text-slate-400">Required Resistor:</span>
+                    <span id="led-output" class="font-tech text-xl font-bold text-emerald-400">200 Ω (Use 220Ω)</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ==================== PRODUCT QUICK-VIEW MODAL ==================== -->
@@ -718,9 +862,9 @@
             <form id="custom-request-form" class="space-y-3">
                 <input id="req-name" type="text" required placeholder="Your Name / Institution *" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                 <select id="req-type" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
-                    <option value="University FYP / IoT Project">University FYP / Robotics / IoT Project</option>
-                    <option value="Bulk EEE Component List">Bulk EEE / Sensor Component List</option>
-                    <option value="Smart Home / B2B Industrial Automation">Smart Home / B2B Industrial Automation</option>
+                    <option value="University FYP / IoT Project" data-i18n="reqOpt1">University FYP / Robotics / IoT Project</option>
+                    <option value="Bulk EEE Component List" data-i18n="reqOpt2">Bulk EEE / Sensor Component List</option>
+                    <option value="Smart Home / B2B Industrial Automation" data-i18n="reqOpt3">Smart Home / B2B Industrial Automation</option>
                 </select>
                 <input id="req-budget" type="text" placeholder="Estimated Budget (Optional, e.g. ৳3,000 - ৳5,000)" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                 <textarea id="req-details" rows="3" required placeholder="Describe your project requirements or list the components you need *" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none"></textarea>
@@ -776,6 +920,16 @@
             <div class="flex-1 overflow-y-auto p-5 space-y-4">
                 <div id="cart-items-container" class="space-y-3"></div>
 
+                <!-- Promo Code Box (Automatically hidden unless Admin turns Promo Offer ON) -->
+                <div id="promo-code-box" class="hidden p-3.5 rounded-2xl bg-navy-900/95 border border-brand-orange/30 space-y-2">
+                    <label data-i18n="promoLabel" class="text-[11px] font-bold uppercase tracking-wider text-amber-300 block">Have a Promo Code?</label>
+                    <div class="flex gap-2">
+                        <input id="promo-input" type="text" placeholder="Enter Promo Code" class="flex-1 px-3 py-2 rounded-xl bg-navy-950 border border-slate-700 text-xs text-white uppercase focus:border-brand-orange focus:outline-none">
+                        <button type="button" onclick="applyPromoCode()" data-i18n="applyBtn" class="px-4 py-2 rounded-xl bg-brand-orange hover:brightness-110 text-white text-xs font-bold">Apply</button>
+                    </div>
+                    <p id="promo-status-msg" class="text-[11px] text-emerald-400 hidden"></p>
+                </div>
+
                 <!-- Built-in Customer Checkout Details Form -->
                 <div id="checkout-details-box" class="hidden p-4 rounded-2xl bg-navy-900/95 border border-cyan-500/25 space-y-3">
                     <h4 data-i18n="deliveryDetailsTitle" class="text-xs font-bold uppercase tracking-wider text-brand-cyan">Delivery Details</h4>
@@ -795,6 +949,10 @@
 
             <div class="p-5 border-t border-slate-800 bg-navy-900/95 space-y-3">
                 <div class="space-y-1.5 text-sm">
+                    <div id="cart-discount-row" class="hidden flex justify-between text-emerald-400">
+                        <span data-i18n="discountLabel">Promo Discount</span>
+                        <span id="cart-discount-amount">-৳0</span>
+                    </div>
                     <div class="flex justify-between text-slate-400">
                         <span data-i18n="deliveryChargeLabel">Delivery Charge</span>
                         <span id="cart-delivery-fee" class="text-emerald-400 font-medium">৳60</span>
@@ -824,7 +982,7 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <p class="text-xs text-slate-400 mb-4">Enter your E-Techniqa Admin Password to manage stock status, pin sourced items to the top, or edit products.</p>
+            <p class="text-xs text-slate-400 mb-4">Enter your E-Techniqa Admin Password to manage stock status, promo offers, or edit products.</p>
             <form id="admin-login-form" class="space-y-3">
                 <input id="admin-password-input" type="password" required placeholder="Enter Admin Password" class="w-full px-4 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:border-brand-orange focus:outline-none">
                 <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-orange hover:brightness-110 text-white text-sm font-bold">
@@ -841,9 +999,9 @@
                 <div>
                     <h3 class="font-tech text-2xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-sliders text-brand-orange"></i>
-                        <span>E-Techniqa Store &amp; Stock Manager</span>
+                        <span>E-Techniqa Store &amp; Offer Manager</span>
                     </h3>
-                    <p class="text-xs text-slate-400">Change stock status (<span class="text-emerald-400">In Stock</span> / <span class="text-rose-400">Stock Out</span> / <span class="text-amber-300">Upcoming</span>), pin newly sourced items to Top, then copy <code class="text-amber-300">index.html</code>.</p>
+                    <p class="text-xs text-slate-400">Manage stock status, toggle Promo Offers ON/OFF, pin newly sourced items to Top, then copy <code class="text-amber-300">index.html</code>.</p>
                 </div>
                 <button id="close-admin-btn" class="w-9 h-9 rounded-xl bg-navy-800 hover:bg-brand-orange text-slate-200 hover:text-white flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
@@ -855,7 +1013,7 @@
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
                     <button id="admin-tab-products" onclick="switchAdminTab('products')" class="px-4 py-2 rounded-xl bg-brand-orange text-white text-xs font-bold">Store Products (<span id="admin-prod-count">0</span>)</button>
                     <button id="admin-tab-upcoming" onclick="switchAdminTab('upcoming')" class="px-4 py-2 rounded-xl bg-navy-800 text-slate-300 text-xs font-bold">Upcoming R&amp;D Projects (<span id="admin-up-count">0</span>)</button>
-                    <button id="admin-tab-settings" onclick="switchAdminTab('settings')" class="px-4 py-2 rounded-xl bg-navy-800 text-slate-300 text-xs font-bold">Store Settings</button>
+                    <button id="admin-tab-settings" onclick="switchAdminTab('settings')" class="px-4 py-2 rounded-xl bg-navy-800 text-slate-300 text-xs font-bold">Promo Offer &amp; Settings</button>
                 </div>
 
                 <!-- Section A: Store Products Editor -->
@@ -904,8 +1062,8 @@
                                 <input id="form-badge" type="text" placeholder="e.g. Just Arrived / Hot Offer" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                             </div>
                             <div class="sm:col-span-2">
-                                <label class="block text-[11px] text-slate-400 mb-1">Image Filename or URL</label>
-                                <input id="form-image" type="text" placeholder="e.g. smart-plug.jpg or https://..." class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                                <label class="block text-[11px] text-slate-400 mb-1">Exact Product Image Filename (for GitHub) or Direct URL</label>
+                                <input id="form-image" type="text" placeholder="e.g. mini-ups.jpg or https://..." class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
                             </div>
                         </div>
 
@@ -929,7 +1087,6 @@
                         </div>
                     </form>
 
-                    <!-- Quick Stock & Position Control List -->
                     <div>
                         <p class="text-[11px] text-slate-400 mb-2">Quick Controls: Change <strong class="text-white">In Stock / Stock Out / Upcoming</strong> directly or click <strong class="text-amber-300">↑ Top</strong> when newly sourced!</p>
                         <div id="admin-product-list" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
@@ -970,10 +1127,47 @@
                     <div id="admin-upcoming-list" class="space-y-2 max-h-52 overflow-y-auto pr-1"></div>
                 </div>
 
-                <!-- Section C: Store Settings -->
+                <!-- Section C: Promo Offer Campaign & Store Settings -->
                 <div id="admin-settings-panel" class="hidden space-y-4">
-                    <form id="store-settings-form" class="p-4 rounded-2xl bg-navy-950/90 border border-cyan-500/25 space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cyan">Store Contact &amp; Admin Password</h4>
+                    <form id="store-settings-form" class="p-4 rounded-2xl bg-navy-950/90 border border-brand-orange/35 space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-brand-orange">Campaign Promo Code Control</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Turn ON only when running a special offer; turn OFF to hide promo banner &amp; code input completely.</p>
+                            </div>
+                            <label class="inline-flex items-center gap-2 cursor-pointer bg-navy-900 px-3 py-1.5 rounded-xl border border-slate-700">
+                                <input id="set-promo-enabled" type="checkbox" class="rounded accent-brand-orange w-4 h-4">
+                                <span id="promo-toggle-label" class="text-xs font-bold text-slate-200">Promo Active</span>
+                            </label>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Promo Code Name</label>
+                                <input id="set-promo-code" type="text" placeholder="e.g. EID20 or ETECH10" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white uppercase focus:border-brand-orange focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Discount Type</label>
+                                <select id="set-promo-type" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                                    <option value="percent">Percentage (% OFF)</option>
+                                    <option value="flat">Fixed Amount (৳ OFF)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Discount Value</label>
+                                <input id="set-promo-value" type="number" min="1" placeholder="e.g. 10 or 50" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label class="block text-[11px] text-slate-400 mb-1">Top Announcement Banner Text (English)</label>
+                                <input id="set-promo-banner-en" type="text" placeholder="e.g. 🎉 Eid Special! Use Promo Code EID10 for 10% OFF on all orders!" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label class="block text-[11px] text-slate-400 mb-1">Top Announcement Banner Text (বাংলা)</label>
+                                <input id="set-promo-banner-bn" type="text" placeholder="যেমন: 🎉 বিশেষ অফার! প্রোমো কোড EID10 ব্যবহার করলে পাচ্ছেন ১০% ছাড়!" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-white focus:border-brand-orange focus:outline-none">
+                            </div>
+                        </div>
+
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cyan pt-2 border-t border-slate-800">Store Contact &amp; Admin Password</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-slate-400 mb-1">WhatsApp Number (with 880, no +) *</label>
@@ -989,7 +1183,7 @@
                             </div>
                         </div>
                         <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">
-                            Save Store Settings
+                            Save Offer &amp; Store Settings
                         </button>
                     </form>
                 </div>
@@ -1006,8 +1200,8 @@
     </div>
 
     <!-- ==================== TOAST NOTIFICATION ==================== -->
-    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
-        <div class="px-5 py-3 rounded-2xl bg-navy-800 border border-brand-orange/70 text-white text-sm font-medium shadow-2xl flex items-center gap-2.5">
+    <div id="toast" class="fixed bottom-20 sm:bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
+        <div class="px-5 py-3 rounded-2xl bg-navy-800 border border-brand-orange/70 text-white text-xs sm:text-sm font-medium shadow-2xl flex items-center gap-2.5 whitespace-nowrap">
             <i class="fa-solid fa-circle-check text-brand-orange"></i>
             <span id="toast-message">Action completed!</span>
         </div>
@@ -1016,54 +1210,48 @@
     <!-- ==================== STOREFRONT JAVASCRIPT ==================== -->
     <script>
         /* =====================================================================
-           1. STORE SETTINGS & SECRET ADMIN PASSWORD
+           1. STORE SETTINGS & CAMPAIGN PROMO CONFIGURATION
+              promoEnabled: false (Default OFF — turn ON anytime from Admin Panel)
            ===================================================================== */
         let STORE_CONFIG = {
             brandName: "E-Techniqa",
             whatsappNumber: "8801570296758",
             displayPhone: "+880 1570-296758",
             facebookUrl: "https://www.facebook.com/share/1JStFspezS/",
+            adminPassword: "etechniqa2026",
             currency: "৳",
-            adminPassword: "etechniqa2026"
+            promoEnabled: false,
+            promoCode: "ETECH10",
+            promoType: "percent",
+            promoValue: 10,
+            promoBannerEn: "🎉 Special Offer! Use Promo Code ETECH10 for 10% OFF on your order!",
+            promoBannerBn: "🎉 বিশেষ অফার! অর্ডারে প্রোমো কোড ETECH10 ব্যবহার করলে পাচ্ছেন ১০% ছাড়!"
         };
 
-        /* =====================================================================
-           2. COMPLETE BILINGUAL DICTIONARY (ENGLISH & BANGLA)
-           ===================================================================== */
         let currentLang = "en";
-
         const I18N = {
             en: {
+                calcToolBtn: "EEE Tools",
                 bagLabel: "Bag",
                 whatsappBtn: "WhatsApp",
-                searchPlaceholder: "Search Resistor, Motor, Arduino, ESP32, Router UPS, Smart Plug...",
-                heroTitle: `<span class="text-white">Building a </span><span class="text-brand-orange">Smarter</span><span class="text-brand-cyan"> Tomorrow</span>`,
-                heroSubtitle: `Upgrade your home with <strong class="text-white">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class="text-white">EEE, Robotics &amp; IoT Components</strong>.`,
+                heroTitle: "<span class=\"text-white\">Building a </span><span class=\"text-brand-orange\">Smarter</span><span class=\"text-brand-cyan\"> Tomorrow</span>",
+                heroSubtitle: "Upgrade your home with <strong class=\"text-white\">Smart Wi-Fi Gadgets &amp; Mini UPS</strong> or build your next breakthrough with verified <strong class=\"text-white\">EEE, Robotics &amp; IoT Components</strong>.",
                 shopAllBtn: "Shop All Products",
                 customReqHeroBtn: "Custom Project / Component Quote",
                 pillar1Title: "EEE Components",
-                pillar1Sub: "Build Your Ideas",
+                pillar1Sub: "Build Your Ideas →",
                 pillar2Title: "Our Products",
-                pillar2Sub: "Smart Solutions",
+                pillar2Sub: "Smart Solutions →",
                 pillar3Title: "Big Projects",
-                pillar3Sub: "For a Greener Future",
+                pillar3Sub: "R&D Roadmap →",
                 deal1Tag: "Featured Gadget",
                 deal1Desc: "4–6 Hours Non-Stop Wi-Fi & ONU Backup",
-                inStockLabel: `<i class="fa-solid fa-circle-check mr-1"></i>In Stock`,
+                inStockLabel: "<i class=\"fa-solid fa-circle-check mr-1\"></i>In Stock",
                 viewDealBtn: "View Deal →",
                 deal2Tag: "EEE / CSE Kit",
                 deal2Desc: "Includes Free QR Code Wiring & Code Guide",
-                labVerified: `<i class="fa-solid fa-qrcode mr-1"></i>Tested & Verified`,
+                labVerified: "<i class=\"fa-solid fa-qrcode mr-1\"></i>Tested & Verified",
                 shopKitsBtn: "Shop Kits →",
-                comboHeadingSuffix: "Value Combo Packs",
-                comboSubTag: "Save Extra on Bundle Orders",
-                save250: "Save ৳250",
-                save190: "Save ৳190",
-                combo1Title: "Smart Home Load-Shedding Combo",
-                combo1Desc: "Router Mini UPS (9V/12V) + Rechargeable PIR Motion Light",
-                combo2Title: "Complete EEE Lab & IoT Master Pack",
-                combo2Desc: "Arduino Uno + ESP32 Combo + Breadboard & Sensor Pack",
-                orderComboBtn: "Order Combo",
                 catalogHeadingSuffix: "Store Catalog",
                 catalogSub: "Click any product to view full specs or order directly on WhatsApp.",
                 stockFilterAll: "Status: All",
@@ -1073,21 +1261,28 @@
                 sortFeatured: "Featured & Popular",
                 sortLow: "Price: Low to High",
                 sortHigh: "Price: High to Low",
-                catAll: "All Items (30)",
-                catEEE: "EEE Kits, GPS & Sensors",
-                catRobotics: "Motors, Pumps & Robotics",
-                catBasic: "Basic Components, Wires & Power",
                 catGadgets: "Smart Home & Protection",
+                catEEE: "EEE Kits, GPS & Sensors",
+                catBasic: "Basic Components, Wires & Power",
+                catRobotics: "Motors, Pumps & Robotics",
                 catUtility: "Controllers & Meters",
                 catProjects: "Custom IoT Projects",
                 noMatchTitle: "No matching products found",
-                noMatchSub: `Try searching for "Resistor", "Motor", "Wheel", "UPS", or "Arduino".`,
+                noMatchSub: "Try searching for \"Resistor\", \"Motor\", \"Wheel\", \"UPS\", or \"Arduino\".",
                 resetBtn: "Reset Filters",
+                comboHeadingSuffix: "Value Combo Packs",
+                comboSubTag: "Save Extra on Bundle Orders",
+                save250: "Save ৳250",
+                combo1Title: "Smart Home Load-Shedding Combo",
+                combo1Desc: "Router Mini UPS (9V/12V) + Rechargeable PIR Motion Light",
+                orderComboBtn: "Order Combo",
+                save190: "Save ৳190",
+                combo2Title: "Complete EEE Lab & IoT Master Pack",
+                combo2Desc: "Arduino Uno + ESP32 Combo + Breadboard & Sensor Pack",
                 upcomingPillSuffix: "Innovation Lab • Roadmap",
                 upcomingHeading: "Upcoming R&D & Industrial Projects",
                 upcomingSub: "Next-generation IoT, Agro-Tech, and Industrial Automation systems currently under development at E-Techniqa. Partner with us or pre-book pilot prototypes.",
                 submitIdeaBtn: "Submit Your Project Idea",
-                inquireProjectBtn: "Pre-Book / Inquire Pilot",
                 trust1Title: "Fast BD Delivery",
                 trust1Sub: "Fast & reliable courier all over Bangladesh.",
                 trust2Title: "Cash on Delivery",
@@ -1097,176 +1292,253 @@
                 trust4Title: "QR Tech Support",
                 trust4Sub: "Setup manuals & Arduino codes included.",
                 reviewsHeading: "What Engineers & Customers Say",
-                rev1Text: `"Router Mini UPS gives solid 5 hours backup during load-shedding without any router restart. Very clean build quality!"`,
-                rev2Text: `"Ordered Arduino + ESP32 combo and motor kit for our semester project. Everything arrived tested and worked first try!"`,
+                verifiedBuyerBadge: "<i class=\"fa-solid fa-circle-check mr-1\"></i>Verified Buyer",
+                eeeStudentBadge: "<i class=\"fa-solid fa-circle-check mr-1\"></i>EEE Student",
+                rev1Text: "\"Router Mini UPS gives solid 5 hours backup during load-shedding without any router restart. Very clean build quality!\"",
+                rev1Author: "— Tanvir Ahmed, Dhaka",
+                rev2Text: "\"Ordered Arduino + ESP32 combo and motor kit for our semester project. Everything arrived tested and worked first try!\"",
+                rev2Author: "— Rafiul Islam, EEE Dept.",
                 faqHeading: "Quick FAQ",
                 faq1Q: "How do I confirm an order?",
-                faq1A: `Add items to your Bag or click "Order via WhatsApp", fill in your name and delivery address, and our team confirms your parcel dispatch immediately.`,
+                faq1A: "Add items to your Bag or click \"Order via WhatsApp\", fill in your name and delivery address, and our team confirms your parcel dispatch immediately.",
                 faq3Q: "What is the delivery time and Cash on Delivery (COD) charge?",
                 faq3A: "Inside Dhaka City: 24–48 hours (৳60). Outside Dhaka across all 64 districts: 2–4 business days (৳120). Pay cash only after receiving your parcel.",
                 faq4Q: "Do you provide replacement warranty and technical setup help?",
                 faq4A: "Yes! Every module is tested before dispatch. You get a 7-day instant replacement guarantee plus free WhatsApp/QR wiring & Arduino code support.",
                 faq5Q: "Can I order bulk components or request items not listed here?",
-                faq5A: `Absolutely! Send your component list on WhatsApp or via the "Custom Project / Component Quote" button—we source directly from Dhaka electronics markets at student & wholesale-friendly rates.`,
+                faq5A: "Absolutely! Send your component list on WhatsApp or via the \"Custom Project / Component Quote\" button—we source directly from Dhaka electronics markets at student & wholesale-friendly rates.",
                 faq2Q: "Do you build custom University FYP or B2B IoT systems?",
-                faq2A: `Yes! Click "Custom Project / Component Quote" or message us on WhatsApp with your requirements for hardware, firmware, and complete documentation.`,
+                faq2A: "Yes! Click \"Custom Project / Component Quote\" or message us on WhatsApp with your requirements for hardware, firmware, and complete documentation.",
                 footerAbout: "Your trusted partner for Smart Home Automation Gadgets, EEE & Robotics Components, and Custom IoT Engineering Solutions.",
                 footerContactTitle: "Customer Care & Orders",
+                footerLocation: "Dhaka, Bangladesh",
                 policyWarrantyBtn: "Warranty & Replacement",
                 policyDeliveryBtn: "Delivery & COD Policy",
                 footerFollowTitle: "Follow & Message Us",
                 footerFollowDesc: "Looking for a custom component list or university Final Year Project (FYP) consultation?",
+                fbPageBtn: "Facebook Page",
+                chatNowBtn: "Chat Now",
+                floatingCheckoutBtn: "Checkout →",
+                navHome: "Home",
+                navCatalog: "Catalog",
+                navQuote: "Quote",
+                calcModalTitle: "EEE Lab Quick Tools",
+                resCalcTitle: "1. 4-Band Resistor Color Decoder",
+                resBand1Lbl: "Band 1",
+                resBand2Lbl: "Band 2",
+                resMultLbl: "Multiplier",
+                resValLbl: "Resistor Value:",
+                ledCalcTitle: "2. LED Series Resistor Calculator",
+                ledSrcLbl: "Source (V)",
+                ledDropLbl: "LED Drop (V)",
+                ledCurLbl: "Current (mA)",
+                ledReqLbl: "Required Resistor:",
+                customModalTitle: "Custom Project / Component Quote",
+                customModalSub: "Need a custom EEE/CSE University FYP, Industrial IoT prototype, or bulk component list? Submit below for an instant quote on WhatsApp.",
+                reqOpt1: "University FYP / Robotics / IoT Project",
+                reqOpt2: "Bulk EEE / Sensor Component List",
+                reqOpt3: "Smart Home / B2B Industrial Automation",
+                sendQuoteWaBtn: "Send Quotation Request via WhatsApp",
                 wishlistTitle: "Saved Wishlist",
                 bagTitle: "Your Order Bag",
+                promoLabel: "Have a Promo Code?",
+                applyBtn: "Apply",
                 deliveryDetailsTitle: "Delivery Details",
                 zoneDhaka: "Inside Dhaka City (Delivery: ৳60)",
                 zoneOutside: "Outside Dhaka (Delivery: ৳120)",
                 payCod: "Payment: Cash on Delivery (COD)",
                 payMobile: "Payment: bKash / Nagad",
+                discountLabel: "Promo Discount",
                 deliveryChargeLabel: "Delivery Charge",
                 subtotalLabel: "Total Payable",
                 confirmWaBtn: "Confirm Order via WhatsApp",
-                customModalTitle: "Custom Project / Component Quote",
-                customModalSub: "Need a custom EEE/CSE University FYP, Industrial IoT prototype, or bulk component list? Submit below for an instant quote on WhatsApp.",
-                sendQuoteWaBtn: "Send Quotation Request via WhatsApp",
-                quickSpecs: "Quick Specs",
-                statusInStock: "● Ready Stock",
-                statusUpcoming: "● Upcoming",
+                statusInStock: "● In Stock",
                 statusOutOfStock: "● Stock Out",
-                addBtn: "Add",
-                orderWaBtn: "Order via WhatsApp",
-                preBookWaBtn: "Pre-Book on WhatsApp",
+                statusUpcoming: "● Upcoming",
+                badgeStockOut: "Stock Out",
+                badgeUpcoming: "Upcoming",
                 restockWaBtn: "Request Restock",
-                customQuoteBtn: "Request Custom Quote",
-                specsHeading: "Specifications & Included Items",
-                priceLabel: "Store Price",
-                addBagModal: "+ Add Bag",
+                preBookWaBtn: "Pre-Book on WhatsApp",
+                orderWaBtn: "Order via WhatsApp",
+                customQuoteBtn: "Get Custom Quote",
+                quickSpecs: "Quick Specs",
+                shareBtn: "Share",
+                addBtn: "Add",
+                inquireProjectBtn: "Inquire / Pre-Book Prototype",
+                specsHeading: "Key Specifications",
+                priceLabel: "Price",
+                addBagModal: "Add to Bag",
                 orderNowModal: "Order Now"
             },
             bn: {
+                calcToolBtn: "EEE টুলস",
                 bagLabel: "ব্যাগ",
-                whatsappBtn: "WhatsApp",
-                searchPlaceholder: "Resistor, Motor, Wheel, Arduino, ESP32, UPS খুঁজুন...",
-                heroTitle: `<span class="text-white">গড়ে তুলুন </span><span class="text-brand-orange">স্মার্ট</span><span class="text-brand-cyan"> আগামী</span>`,
-                heroSubtitle: `আপনার ঘরকে সাজান আধুনিক <strong class="text-white">Smart Wi-Fi Gadgets ও Mini UPS</strong> দিয়ে, অথবা তৈরি করুন আপনার প্রজেক্ট আমাদের পরীক্ষিত <strong class="text-white">EEE, Robotics ও IoT কম্পোনেন্ট</strong> দিয়ে।`,
+                whatsappBtn: "হোয়াটসঅ্যাপ",
+                heroTitle: "<span class=\"text-white\">গড়ছি আগামীর </span><span class=\"text-brand-orange\">স্মার্ট</span><span class=\"text-brand-cyan\"> ভবিষ্যৎ</span>",
+                heroSubtitle: "ঘরের জন্য <strong class=\"text-white\">স্মার্ট Wi-Fi গ্যাজেট ও Mini UPS</strong> অথবা প্রজেক্টের জন্য নির্ভরযোগ্য <strong class=\"text-white\">EEE, রোবটিক্স ও IoT কম্পোনেন্ট</strong> অর্ডার করুন সহজেই।",
                 shopAllBtn: "সব প্রোডাক্ট দেখুন",
-                customReqHeroBtn: "কাস্টম প্রজেক্ট / কোটেশন নিন",
+                customReqHeroBtn: "কাস্টম প্রজেক্ট / কোটেশন",
                 pillar1Title: "EEE কম্পোনেন্ট",
-                pillar1Sub: "আপনার আইডিয়া গড়ুন",
-                pillar2Title: "স্মার্ট প্রোডাক্ট",
-                pillar2Sub: "স্মার্ট সমাধান",
+                pillar1Sub: "প্রজেক্টের পার্টস →",
+                pillar2Title: "আমাদের প্রোডাক্ট",
+                pillar2Sub: "স্মার্ট সমাধান →",
                 pillar3Title: "বড় প্রজেক্ট",
-                pillar3Sub: "সবুজ ভবিষ্যতের জন্য",
+                pillar3Sub: "R&D রোডম্যাপ →",
                 deal1Tag: "সেরা গ্যাজেট",
                 deal1Desc: "লোডশেডিংয়ে ৪–৬ ঘণ্টা টানা Wi-Fi ও ONU ব্যাকআপ",
-                inStockLabel: `<i class="fa-solid fa-circle-check mr-1"></i>স্টকে আছে`,
+                inStockLabel: "<i class=\"fa-solid fa-circle-check mr-1\"></i>স্টকে আছে",
                 viewDealBtn: "অফার দেখুন →",
                 deal2Tag: "EEE / CSE কিট",
-                deal2Desc: "ফ্রি QR কোড ওয়্যারিং ডায়াগ্রাম ও কোড গাইডসহ",
-                labVerified: `<i class="fa-solid fa-qrcode mr-1"></i>পরীক্ষিত ও মানসম্মত`,
+                deal2Desc: "ফ্রি QR কোড সার্কিট ডায়াগ্রাম ও কোড গাইডসহ",
+                labVerified: "<i class=\"fa-solid fa-qrcode mr-1\"></i>টেস্টেড ও ভেরিফাইড",
                 shopKitsBtn: "কিট দেখুন →",
-                comboHeadingSuffix: "স্পেশাল কম্বো অফার",
-                comboSubTag: "কম্বো অর্ডারে বিশেষ ছাড়",
-                save250: "৳২৫০ সাশ্রয়",
-                save190: "৳১৯০ সাশ্রয়",
-                combo1Title: "স্মার্ট হোম লোডশেডিং কম্বো প্যাক",
-                combo1Desc: "Router Mini UPS (9V/12V) + রিচার্জেবল PIR মোশন লাইট",
-                combo2Title: "কমপ্লিট EEE ল্যাব ও IoT মাস্টার প্যাক",
-                combo2Desc: "Arduino Uno + ESP32 কম্বো + ব্রেডবোর্ড ও সেন্সর প্যাক",
-                orderComboBtn: "কম্বো অর্ডার করুন",
-                catalogHeadingSuffix: "প্রোডাক্ট ক্যাটালগ",
-                catalogSub: "বিস্তারিত ফিচার দেখতে প্রোডাক্টে ক্লিক করুন অথবা সরাসরি WhatsApp-এ অর্ডার করুন।",
-                stockFilterAll: "স্টক: সব",
-                stockFilterIn: "● স্টকে আছে",
+                catalogHeadingSuffix: "স্টোর ক্যাটালগ",
+                catalogSub: "বিস্তারিত স্পেসিফিকেশন দেখতে বা সরাসরি হোয়াটসঅ্যাপে অর্ডার করতে যেকোনো প্রোডাক্টে ক্লিক করুন।",
+                stockFilterAll: "স্ট্যাটাস: সবগুলো",
+                stockFilterIn: "● শুধু স্টকে আছে",
                 stockFilterUp: "● শীঘ্রই আসছে",
                 stockFilterOut: "● স্টক শেষ",
-                sortFeatured: "জনপ্রিয় প্রোডাক্ট",
-                sortLow: "দাম: কম থেকে বেশি",
-                sortHigh: "দাম: বেশি থেকে কম",
-                catAll: "সব প্রোডাক্ট (৩০)",
-                catEEE: "EEE কিট, GPS ও সেন্সর",
-                catRobotics: "মোটর, পাম্প ও রোবটিক্স",
-                catBasic: "বেসিক কম্পোনেন্ট, তার ও পাওয়ার",
+                sortFeatured: "জনপ্রিয় ও সেরা",
+                sortLow: "কম থেকে বেশি দাম",
+                sortHigh: "বেশি থেকে কম দাম",
                 catGadgets: "স্মার্ট হোম ও সুরক্ষা",
+                catEEE: "EEE কিট, GPS ও সেন্সর",
+                catBasic: "বেসিক কম্পোনেন্ট, তার ও পাওয়ার",
+                catRobotics: "মোটর, পাম্প ও রোবটিক্স",
                 catUtility: "কন্ট্রোলার ও মিটার",
                 catProjects: "কাস্টম IoT প্রজেক্ট",
-                noMatchTitle: "কোনো প্রোডাক্ট খুঁজে পাওয়া যায়নি",
-                noMatchSub: `"Resistor", "Motor", "Wheel", "UPS" বা "Arduino" লিখে আবার খুঁজুন।`,
+                noMatchTitle: "কোনো প্রোডাক্ট পাওয়া যায়নি",
+                noMatchSub: "\"Resistor\", \"Motor\", \"UPS\" বা \"Arduino\" লিখে খুঁজে দেখুন।",
                 resetBtn: "ফিল্টার রিসেট করুন",
+                comboHeadingSuffix: "ভ্যালু কম্বো প্যাক",
+                comboSubTag: "কম্বো অর্ডারে বিশেষ ছাড়",
+                save250: "৳২৫০ সাশ্রয়",
+                combo1Title: "স্মার্ট হোম লোডশেডিং কম্বো",
+                combo1Desc: "Router Mini UPS (9V/12V) + রিচার্জেবল PIR মোশন লাইট",
+                orderComboBtn: "কম্বো অর্ডার করুন",
+                save190: "৳১৯০ সাশ্রয়",
+                combo2Title: "কমপ্লিট EEE ল্যাব ও IoT মাস্টার প্যাক",
+                combo2Desc: "Arduino Uno + ESP32 কম্বো + ব্রেডবোর্ড ও সেন্সর প্যাক",
                 upcomingPillSuffix: "ইনোভেশন ল্যাব • রোডম্যাপ",
-                upcomingHeading: "আপকামিং R&D ও ইন্ডাস্ট্রিয়াল প্রজেক্টসমূহ",
-                upcomingSub: "E-Techniqa ল্যাবে বর্তমানে ডেভেলপমেন্ট পর্যায়ে থাকা আধুনিক IoT, স্মার্ট অ্যাগ্রো এবং ইন্ডাস্ট্রিয়াল অটোমেশন প্রজেক্টসমূহ। পাইলট প্রোটোটাইপ বুকিং বা পার্টনারশিপের জন্য যোগাযোগ করুন।",
-                submitIdeaBtn: "আপনার প্রজেক্ট আইডিয়া পাঠান",
-                inquireProjectBtn: "প্রি-বুক / বিস্তারিত জানুন",
+                upcomingHeading: "আপকামিং R&D ও ইন্ডাস্ট্রিয়াল প্রজেক্ট",
+                upcomingSub: "E-Techniqa ল্যাবে উন্নয়নাধীন পরবর্তী প্রজন্মের IoT, এগ্রো-টেক ও ইন্ডাস্ট্রিয়াল অটোমেশন সিস্টেম। প্রোটোটাইপ প্রি-বুক করতে যোগাযোগ করুন।",
+                submitIdeaBtn: "আপনার প্রজেক্ট আইডিয়া দিন",
                 trust1Title: "দ্রুত ডেলিভারি",
                 trust1Sub: "সারা বাংলাদেশে দ্রুত ও নিরাপদ কুরিয়ার ডেলিভারি।",
                 trust2Title: "ক্যাশ অন ডেলিভারি",
-                trust2Sub: "পণ্য হাতে পেয়ে টাকা পরিশোধের সুবিধা।",
+                trust2Sub: "পার্সেল হাতে পেয়ে নিশ্চিন্তে টাকা পরিশোধ করুন।",
                 trust3Title: "ইঞ্জিনিয়ার টেস্টেড",
-                trust3Sub: "ডেলিভারির আগে প্রতিটি মডিউল ও গ্যাজেট পরীক্ষিত।",
+                trust3Sub: "প্রতিটি মডিউল পাঠানোর আগে টেস্ট করে নেওয়া হয়।",
                 trust4Title: "QR টেক সাপোর্ট",
-                trust4Sub: "সেটআপ গাইড ও Arduino কোড সংযুক্ত।",
-                reviewsHeading: "ইঞ্জিনিয়ার ও কাস্টমারদের মতামত",
-                rev1Text: `"লোডশেডিংয়ে Router Mini UPS টানা ৫ ঘণ্টা ব্যাকআপ দেয়, রাউটার এক সেকেন্ডের জন্যও রিস্টার্ট হয় না!"`,
-                rev2Text: `"সেমিস্টার প্রজেক্টের জন্য Arduino + ESP32 কম্বো ও মোটর কিট নিয়েছিলাম। সবগুলো টেস্টেড অবস্থায় পেয়েছি!"`,
+                trust4Sub: "সেটআপ ম্যানুয়াল ও Arduino কোড গাইড।",
+                reviewsHeading: "কাস্টমার ও ইঞ্জিনিয়ারদের মতামত",
+                verifiedBuyerBadge: "<i class=\"fa-solid fa-circle-check mr-1\"></i>ভেরিফাইড ক্রেতা",
+                eeeStudentBadge: "<i class=\"fa-solid fa-circle-check mr-1\"></i>EEE শিক্ষার্থী",
+                rev1Text: "\"Router Mini UPS লোডশেডিংয়ে টানা ৫ ঘণ্টা ব্যাকআপ দেয়, রাউটার রিস্টার্ট হয় না। বিল্ড কোয়ালিটি দারুণ!\"",
+                rev1Author: "— তানভীর আহমেদ, ঢাকা",
+                rev2Text: "\"সেমিস্টার প্রজেক্টের জন্য Arduino + ESP32 কম্বো এবং মোটর কিট নিয়েছিলাম। সবগুলো টেস্টেড ছিল এবং প্রথমবারেই কাজ করেছে!\"",
+                rev2Author: "— রাফিউল ইসলাম, EEE বিভাগ",
                 faqHeading: "সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)",
                 faq1Q: "কীভাবে অর্ডার কনফার্ম করব?",
-                faq1A: `প্রোডাক্ট ব্যাগে যোগ করুন অথবা "WhatsApp-এ অর্ডার করুন" বাটনে ক্লিক করে আপনার নাম ও ঠিকানা দিন—আমাদের টিম সাথে সাথে পার্সেল কনফার্ম করবে।`,
-                faq3Q: "ডেলিভারি পেতে কত দিন লাগে এবং চার্জ কত?",
-                faq3A: "ঢাকা সিটির ভেতরে ২৪–৪৮ ঘণ্টায় হোম ডেলিভারি (৳৬০) এবং ঢাকার বাইরে সারা বাংলাদেশে ২–৪ দিনে কুরিয়ার ডেলিভারি (৳১২০)। পণ্য হাতে পেয়ে টাকা পরিশোধ করতে পারবেন।",
-                faq4Q: "প্রোডাক্ট কাজ না করলে রিপ্লেসমেন্ট ও টেকনিক্যাল সাপোর্ট পাব কি?",
-                faq4A: "হ্যাঁ! প্রতিটি মডিউল টেস্ট করে পাঠানো হয়। কোনো ত্রুটি থাকলে ৭ দিনের ইনস্ট্যান্ট রিপ্লেসমেন্ট এবং WhatsApp/QR কোডের মাধ্যমে ফ্রি ওয়্যারিং ও কোড সাপোর্ট পাবেন।",
-                faq5Q: "তালিকার বাইরের কোনো কম্পোনেন্ট বা পাইকারি অর্ডার করা যাবে কি?",
-                faq5A: `অবশ্যই! আপনার প্রয়োজনীয় কম্পোনেন্ট লিস্ট WhatsApp-এ পাঠান অথবা "কাস্টম প্রজেক্ট / কোটেশন নিন" ফর্মে দিন—আমরা ঢাকার মার্কেট থেকে সরাসরি সোর্স করে দেব।`,
-                faq2Q: "আপনারা কি কাস্টম ইউনিভার্সিটি প্রজেক্ট (FYP) বা ইন্ডাস্ট্রিয়াল কাজ করেন?",
-                faq2A: `হ্যাঁ! "কাস্টম প্রজেক্ট / কোটেশন নিন" বাটনে ক্লিক করে আপনার প্রজেক্টের বিবরণ পাঠান, আমরা হার্ডওয়্যার, কোড ও ডকুমেন্টেশনসহ তৈরি করে দেব।`,
-                footerAbout: "স্মার্ট হোম অটোমেশন গ্যাজেট, EEE ও রোবটিক্স কম্পোনেন্ট এবং কাস্টম IoT ইঞ্জিনিয়ারিং সমাধানের বিশ্বস্ত প্রতিষ্ঠান।",
+                faq1A: "পছন্দের প্রোডাক্ট ব্যাগে যোগ করুন অথবা \"হোয়াটসঅ্যাপে অর্ডার\" বাটনে ক্লিক করে নাম ও ঠিকানা দিন—আমাদের টিম দ্রুত ডেলিভারি কনফার্ম করবে।",
+                faq3Q: "ডেলিভারি সময় ও ক্যাশ অন ডেলিভারি চার্জ কত?",
+                faq3A: "ঢাকা সিটির ভেতরে ২৪–৪৮ ঘণ্টা (চার্জ ৳৬০) এবং সারা বাংলাদেশে ২–৪ কার্যদিবস (চার্জ ৳১২০)। পার্সেল হাতে পেয়ে টাকা পরিশোধ করতে পারবেন।",
+                faq4Q: "রিপ্লেসমেন্ট ওয়ারেন্টি ও টেকনিক্যাল সাপোর্ট পাওয়া যাবে কি?",
+                faq4A: "হ্যাঁ! প্রতিটি মডিউল টেস্ট করে পাঠানো হয়। ৭ দিনের ইনস্ট্যান্ট রিপ্লেসমেন্ট গ্যারান্টি এবং ফ্রি WhatsApp/QR কোড ও কানেকশন সাপোর্ট পাবেন।",
+                faq5Q: "তালিকার বাইরের কম্পোনেন্ট বা বাল্ক অর্ডার করা যাবে কি?",
+                faq5A: "অবশ্যই! আপনার কম্পোনেন্ট লিস্ট হোয়াটসঅ্যাপে বা \"কাস্টম প্রজেক্ট / কোটেশন\" বাটনে পাঠিয়ে দিন—আমরা ঢাকার মার্কেট থেকে সরাসরি সোর্সিং করে দেব।",
+                faq2Q: "ইউনিভার্সিটি FYP বা কাস্টম IoT প্রজেক্ট তৈরি করে দেন কি?",
+                faq2A: "হ্যাঁ! হার্ডওয়্যার, ফার্মওয়্যার কোড এবং সম্পূর্ণ ডকুমেন্টেশনসহ কাস্টম প্রজেক্টের জন্য আমাদের কোটেশন ফর্ম পূরণ করুন বা হোয়াটসঅ্যাপে মেসেজ দিন।",
+                footerAbout: "স্মার্ট হোম গ্যাজেট, EEE ও রোবটিক্স কম্পোনেন্ট এবং কাস্টম IoT ইঞ্জিনিয়ারিং সমাধানের বিশ্বস্ত প্রতিষ্ঠান।",
                 footerContactTitle: "কাস্টমার কেয়ার ও অর্ডার",
-                policyWarrantyBtn: "ওয়ারেন্টি ও রিপ্লেসমেন্ট নীতি",
-                policyDeliveryBtn: "ডেলিভারি ও ক্যাশ অন ডেলিভারি",
-                footerFollowTitle: "ফেসবুক ও যোগাযোগ",
-                footerFollowDesc: "কাস্টম কম্পোনেন্ট লিস্ট বা ইউনিভার্সিটি প্রজেক্ট (FYP) পরামর্শের জন্য মেসেজ দিন।",
-                wishlistTitle: "পছন্দের তালিকা (Wishlist)",
+                footerLocation: "ঢাকা, বাংলাদেশ",
+                policyWarrantyBtn: "ওয়ারেন্টি ও রিপ্লেসমেন্ট",
+                policyDeliveryBtn: "ডেলিভারি ও COD নীতিমালা",
+                footerFollowTitle: "আমাদের সাথে যুক্ত থাকুন",
+                footerFollowDesc: "কাস্টম কম্পোনেন্ট লিস্ট বা ইউনিভার্সিটি প্রজেক্ট পরামর্শের জন্য মেসেজ দিন।",
+                fbPageBtn: "ফেসবুক পেজ",
+                chatNowBtn: "মেসেজ দিন",
+                floatingCheckoutBtn: "চেকআউট →",
+                navHome: "হোম",
+                navCatalog: "ক্যাটালগ",
+                navQuote: "কোটেশন",
+                calcModalTitle: "EEE ল্যাব কুইক টুলস",
+                resCalcTitle: "১. ৪-ব্যান্ড রেজিস্টর কালার ক্যালকুলেটর",
+                resBand1Lbl: "ব্যান্ড ১",
+                resBand2Lbl: "ব্যান্ড ২",
+                resMultLbl: "গুণক (Multiplier)",
+                resValLbl: "রেজিস্টরের মান:",
+                ledCalcTitle: "২. LED সিরিজ রেজিস্টর ক্যালকুলেটর",
+                ledSrcLbl: "সোর্স ভোল্ট (V)",
+                ledDropLbl: "LED ভোল্ট (V)",
+                ledCurLbl: "কারেন্ট (mA)",
+                ledReqLbl: "প্রয়োজনীয় রেজিস্টর:",
+                customModalTitle: "কাস্টম প্রজেক্ট / কম্পোনেন্ট কোটেশন",
+                customModalSub: "আপনার ইউনিভার্সিটি FYP, IoT প্রজেক্ট বা বাল্ক কম্পোনেন্ট লিস্ট নিচে লিখুন—হোয়াটসঅ্যাপে দ্রুত কোটেশন পেয়ে যাবেন।",
+                reqOpt1: "ইউনিভার্সিটি FYP / রোবটিক্স / IoT প্রজেক্ট",
+                reqOpt2: "বাল্ক EEE / সেন্সর কম্পোনেন্ট লিস্ট",
+                reqOpt3: "স্মার্ট হোম / ইন্ডাস্ট্রিয়াল অটোমেশন",
+                sendQuoteWaBtn: "হোয়াটসঅ্যাপে কোটেশন পাঠান",
+                wishlistTitle: "সেভ করা উইশলিস্ট",
                 bagTitle: "আপনার অর্ডার ব্যাগ",
+                promoLabel: "প্রোমো কোড আছে?",
+                applyBtn: "অ্যাপ্লাই",
                 deliveryDetailsTitle: "ডেলিভারি তথ্য",
-                zoneDhaka: "ঢাকা সিটির ভেতরে (ডেলিভারি চার্জ: ৳৬০)",
-                zoneOutside: "ঢাকার বাইরে সারা বাংলাদেশ (চার্জ: ৳১২০)",
-                payCod: "পেমেন্ট: ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে)",
+                zoneDhaka: "ঢাকা সিটির ভেতরে (ডেলিভারি: ৳৬০)",
+                zoneOutside: "ঢাকার বাইরে (ডেলিভারি: ৳১২০)",
+                payCod: "পেমেন্ট: ক্যাশ অন ডেলিভারি (COD)",
                 payMobile: "পেমেন্ট: বিকাশ / নগদ",
+                discountLabel: "প্রোমো ছাড়",
                 deliveryChargeLabel: "ডেলিভারি চার্জ",
                 subtotalLabel: "সর্বমোট বিল",
-                confirmWaBtn: "WhatsApp-এ অর্ডার কনফার্ম করুন",
-                customModalTitle: "কাস্টম প্রজেক্ট / কম্পোনেন্ট কোটেশন",
-                customModalSub: "ইউনিভার্সিটি FYP, ইন্ডাস্ট্রিয়াল IoT বা প্রজেক্টের কম্পোনেন্ট লিস্টের দামের জন্য নিচের ফর্মটি পূরণ করুন।",
-                sendQuoteWaBtn: "WhatsApp-এ কোটেশন রিকোয়েস্ট পাঠান",
-                quickSpecs: "বিস্তারিত",
+                confirmWaBtn: "হোয়াটসঅ্যাপে অর্ডার কনফার্ম করুন",
                 statusInStock: "● স্টকে আছে",
-                statusUpcoming: "● শীঘ্রই আসছে",
                 statusOutOfStock: "● স্টক শেষ",
-                addBtn: "ব্যাগে রাখুন",
-                orderWaBtn: "WhatsApp-এ অর্ডার করুন",
-                preBookWaBtn: "প্রি-বুক করুন (WhatsApp)",
-                restockWaBtn: "স্টক রিকোয়েস্ট দিন",
-                customQuoteBtn: "কাস্টম কোটেশন নিন",
-                specsHeading: "স্পেসিফিকেশন ও যা যা থাকছে",
-                priceLabel: "অফার মূল্য",
-                addBagModal: "+ ব্যাগে যোগ করুন",
-                orderNowModal: "অর্ডার করুন"
+                statusUpcoming: "● শীঘ্রই আসছে",
+                badgeStockOut: "স্টক শেষ",
+                badgeUpcoming: "শীঘ্রই আসছে",
+                restockWaBtn: "স্টক রিকোয়েস্ট",
+                preBookWaBtn: "হোয়াটসঅ্যাপে প্রি-বুক",
+                orderWaBtn: "হোয়াটসঅ্যাপে অর্ডার",
+                customQuoteBtn: "কোটেশন নিন",
+                quickSpecs: "স্পেসিফিকেশন",
+                shareBtn: "শেয়ার",
+                addBtn: "যোগ",
+                inquireProjectBtn: "বিস্তারিত / প্রি-বুক",
+                specsHeading: "প্রধান বৈশিষ্ট্যসমূহ",
+                priceLabel: "মূল্য",
+                addBagModal: "ব্যাগে যোগ করুন",
+                orderNowModal: "এখনই অর্ডার করুন"
             }
         };
 
+        function syncPromoVisibility() {
+            const ticker = document.getElementById("top-promo-ticker");
+            const promoText = document.getElementById("top-promo-text");
+            if (STORE_CONFIG.promoEnabled) {
+                ticker.classList.remove("hidden");
+                promoText.textContent = currentLang === "bn" ? STORE_CONFIG.promoBannerBn : STORE_CONFIG.promoBannerEn;
+            } else {
+                ticker.classList.add("hidden");
+                appliedPromo = null;
+            }
+        }
+
         function setLanguage(lang) {
             currentLang = lang;
+            document.documentElement.lang = lang;
+            const enBtn = document.getElementById("lang-en-btn");
+            const bnBtn = document.getElementById("lang-bn-btn");
+            if (enBtn && bnBtn) {
+                enBtn.className = lang === "en"
+                    ? "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all"
+                    : "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-300 hover:text-white transition-all";
+                bnBtn.className = lang === "bn"
+                    ? "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all"
+                    : "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-300 hover:text-white transition-all";
+            }
+
             const dict = I18N[lang];
-
-            document.getElementById("lang-en-btn").className = lang === "en"
-                ? "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all"
-                : "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-300 hover:text-white transition-all";
-
-            document.getElementById("lang-bn-btn").className = lang === "bn"
-                ? "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-brand-orange text-white transition-all"
-                : "px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-slate-300 hover:text-white transition-all";
-
             document.querySelectorAll("[data-i18n]").forEach(el => {
                 const key = el.getAttribute("data-i18n");
                 if (dict[key]) {
@@ -1274,16 +1546,37 @@
                 }
             });
 
-            desktopSearch.placeholder = dict.searchPlaceholder;
-            mobileSearch.placeholder = dict.searchPlaceholder;
+            if (desktopSearch) {
+                desktopSearch.placeholder = lang === "bn"
+                    ? "রেজিস্টর, মোটর, Arduino, ESP32, Router UPS খুঁজুন..."
+                    : "Search Resistor, Motor, Arduino, ESP32, Router UPS, Smart Plug...";
+            }
+            if (mobileSearch) {
+                mobileSearch.placeholder = lang === "bn"
+                    ? "রেজিস্টর, মোটর, Arduino, UPS খুঁজুন..."
+                    : "Search Resistor, Motor, Arduino, UPS...";
+            }
+
+            document.getElementById("cust-name").placeholder = lang === "bn" ? "আপনার পূর্ণ নাম *" : "Your Full Name *";
+            document.getElementById("cust-phone").placeholder = lang === "bn" ? "মোবাইল নম্বর (01XXXXXXXXX) *" : "Mobile Number (01XXXXXXXXX) *";
+            document.getElementById("cust-address").placeholder = lang === "bn" ? "সম্পূর্ণ ডেলিভারি ঠিকানা *" : "Full Delivery Address *";
+            document.getElementById("promo-input").placeholder = lang === "bn" ? "প্রোমো কোড লিখুন" : "Enter Promo Code";
+
+            document.getElementById("req-name").placeholder = lang === "bn" ? "আপনার নাম / প্রতিষ্ঠানের নাম *" : "Your Name / Institution *";
+            document.getElementById("req-budget").placeholder = lang === "bn" ? "আনুমানিক বাজেট (ঐচ্ছিক, যেমন: ৳৩,০০০ - ৳৫,০০০)" : "Estimated Budget (Optional, e.g. ৳3,000 - ৳5,000)";
+            document.getElementById("req-details").placeholder = lang === "bn" ? "আপনার প্রজেক্টের বিবরণ বা প্রয়োজনীয় কম্পোনেন্টের তালিকা লিখুন *" : "Describe your project requirements or list the components you need *";
+
+            syncPromoVisibility();
+            calculateResistor();
+            calculateLedResistor();
             renderProducts();
             renderUpcomingProjects();
             updateCartUI();
+            updateWishlistUI();
         }
 
         /* =====================================================================
-           3. FULL STORE PRODUCT CATALOG WITH AVAILABILITY STATUS
-              stockStatus: "in-stock" | "upcoming" | "out-of-stock"
+           2. FULL STORE PRODUCT CATALOG
            ===================================================================== */
         let PRODUCTS = [
             {
@@ -1373,7 +1666,7 @@
                 oldPrice: 300,
                 rating: 4.9,
                 reviews: 68,
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Drive up to 4 DC motors or 1 stepper motor with built-in 5V regulator for Arduino.",
                 specs: [
                     "Dual Channel H-Bridge (Up to 2A per channel, 5V–35V)",
@@ -1392,7 +1685,7 @@
                 oldPrice: 640,
                 rating: 4.8,
                 reviews: 45,
-                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Combo of lightweight SG90 (9g) & high-torque MG995 metal gear servo with horns & screws.",
                 specs: [
                     "SG90 9g Servo for pan-tilt & smart dustbin lids",
@@ -1411,7 +1704,7 @@
                 oldPrice: 950,
                 rating: 4.9,
                 reviews: 55,
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1608564697071-ddf911d81370?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "830-point breadboard, M-M/M-F/F-F jumper wires, Ultrasonic, IR & 5V Relay modules.",
                 specs: [
                     "830-Point Solderless Breadboard + 120pcs Jumper Wires",
@@ -1430,7 +1723,7 @@
                 oldPrice: 520,
                 rating: 4.9,
                 reviews: 79,
-                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Low-cost Wi-Fi microcontroller compatible with Arduino IDE, Blynk & MQTT.",
                 specs: [
                     "Original CP2102 USB-to-Serial Chip (Easy Driver Setup)",
@@ -1449,7 +1742,7 @@
                 oldPrice: 680,
                 rating: 4.8,
                 reviews: 39,
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Send SMS alerts, make calls, and send IoT data over cellular network anywhere in BD.",
                 specs: [
                     "Quad-band 850/900/1800/1900MHz (Supports all BD SIMs)",
@@ -1487,7 +1780,7 @@
                 oldPrice: 580,
                 rating: 4.9,
                 reviews: 51,
-                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Only 2 wires (SDA/SCL) needed to display live sensor readings on both screens.",
                 specs: [
                     "0.96-inch Crisp 128x64 I2C OLED Module",
@@ -1506,7 +1799,7 @@
                 oldPrice: 550,
                 rating: 4.8,
                 reviews: 47,
-                image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Adjustable 1.25V–35V step-down module paired with stable 12V 2A AC-DC power adapter.",
                 specs: [
                     "LM2596S High-Efficiency Adjustable Voltage Regulator (3A Max)",
@@ -1525,7 +1818,7 @@
                 oldPrice: 360,
                 rating: 4.9,
                 reviews: 63,
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Safely control 4 AC 220V lights, fans, or pumps using Arduino/ESP32.",
                 specs: [
                     "Optocoupler isolation protects microcontroller from AC spikes",
@@ -1544,7 +1837,7 @@
                 oldPrice: 1100,
                 rating: 4.9,
                 reviews: 58,
-                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Everything needed at your desk to test circuits, check continuity, and solder PCBs.",
                 specs: [
                     "DT-830D Digital Multimeter with Test Probes & Battery",
@@ -1563,7 +1856,7 @@
                 oldPrice: 820,
                 rating: 4.8,
                 reviews: 34,
-                image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1619641805634-b867f535071c?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Build your own 12V portable power pack, robot car battery, or mini UPS.",
                 specs: [
                     "High-drain 18650 Li-ion Cells + Battery Holder",
@@ -1582,7 +1875,7 @@
                 oldPrice: 1050,
                 rating: 4.9,
                 reviews: 48,
-                image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Control geyser, room heater, or AC remotely via smartphone app & timer.",
                 specs: [
                     "16A High Load Capacity (Safe for Geyser & Heater)",
@@ -1639,7 +1932,7 @@
                 oldPrice: 950,
                 rating: 4.8,
                 reviews: 29,
-                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Automate water pumps, geysers, or aquarium lights without needing Wi-Fi.",
                 specs: [
                     "16 On/Off Daily & Weekly Custom Schedules",
@@ -1658,7 +1951,7 @@
                 oldPrice: 550,
                 rating: 4.9,
                 reviews: 41,
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Precision automatic heating & cooling relay control for incubators & farms.",
                 specs: [
                     "High-accuracy Waterproof NTC Temperature Probe",
@@ -1677,7 +1970,7 @@
                 oldPrice: 1080,
                 rating: 4.9,
                 reviews: 33,
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Measure AC 80–260V, Current (up to 100A CT), Active Power, Energy & Power Factor with Arduino/ESP32.",
                 specs: [
                     "Includes Split-Core 100A Current Transformer (CT) Coil",
@@ -1696,7 +1989,7 @@
                 oldPrice: 850,
                 rating: 4.9,
                 reviews: 72,
-                image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Protects refrigerator, smart TV & router from sudden high/low voltage fluctuations in BD.",
                 specs: [
                     "Auto Cut-off below 170V and above 250V AC",
@@ -1715,7 +2008,7 @@
                 oldPrice: 1400,
                 rating: 4.9,
                 reviews: 57,
-                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Automatically turns water motor ON when roof tank is empty and OFF when full—zero water overflow.",
                 specs: [
                     "Includes Rust-Free Stainless Steel Water Level Sensors",
@@ -1734,7 +2027,7 @@
                 oldPrice: 490,
                 rating: 4.8,
                 reviews: 49,
-                image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Build automatic plant watering, smart irrigation, or fire-fighting robot projects effortlessly.",
                 specs: [
                     "12V DC Brushless Submersible Pump (240L/Hour flow)",
@@ -1753,7 +2046,7 @@
                 oldPrice: 740,
                 rating: 4.9,
                 reviews: 43,
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Real-time latitude, longitude & speed tracking for bike/car tracker and drone projects.",
                 specs: [
                     "High-sensitivity External Ceramic Antenna included",
@@ -1772,7 +2065,7 @@
                 oldPrice: 430,
                 rating: 4.9,
                 reviews: 66,
-                image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "13.56MHz contactless RFID reader with S50 white card, keychain tag & header pins.",
                 specs: [
                     "Includes RC522 Reader + 1 RFID Card + 1 Keychain Tag",
@@ -1791,7 +2084,7 @@
                 oldPrice: 560,
                 rating: 4.8,
                 reviews: 38,
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Create scrolling text notice boards, digital clocks, or token counters with just 3 data pins.",
                 specs: [
                     "4 Cascaded 8x8 Red LED Matrices on a single PCB",
@@ -1810,7 +2103,7 @@
                 oldPrice: 450,
                 rating: 4.9,
                 reviews: 54,
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Color-coded flexible tinned copper wires + 100pcs heat shrink insulation sleeves.",
                 specs: [
                     "5 Colors (Red, Black, Yellow, Blue, Green) for clean wiring",
@@ -1829,7 +2122,7 @@
                 oldPrice: 2150,
                 rating: 5.0,
                 reviews: 47,
-                image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "Complete engineering box with Ultrasonic, IR, PIR, Rain, Flame, Sound, Gyroscope & more.",
                 specs: [
                     "24 Most-Used Arduino/ESP32 Sensors in 1 Organizer Box",
@@ -1848,7 +2141,7 @@
                 priceLabel: "Custom Quote",
                 rating: 5.0,
                 reviews: 26,
-                image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
                 shortDesc: "End-to-end hardware + firmware + mobile dashboard built for your project.",
                 specs: [
                     "Smart Energy Meter, Smart Agriculture & Home Automation",
@@ -1859,7 +2152,7 @@
         ];
 
         /* =====================================================================
-           4. UPCOMING R&D PROJECTS DATA
+           3. UPCOMING R&D PROJECTS DATA
            ===================================================================== */
         let UPCOMING_PROJECTS = [
             {
@@ -1867,7 +2160,7 @@
                 title: "Smart Poultry & Agro Climate Controller",
                 status: "Prototype Testing",
                 domain: "B2B Agro-Tech • IoT",
-                image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=700&q=80",
+                image: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=600&q=80",
                 desc: "Automated temperature, ammonia gas, and humidity regulation with real-time SMS/App alerts to reduce poultry mortality and boost farm efficiency."
             },
             {
@@ -1875,7 +2168,7 @@
                 title: "Industrial Motor Predictive Maintenance Node",
                 status: "R&D Phase",
                 domain: "Industrial Automation • PLC/IoT",
-                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80",
+                image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
                 desc: "3-phase motor vibration, bearing temperature, and current-signature monitoring system designed to prevent unexpected factory downtime."
             },
             {
@@ -1883,7 +2176,7 @@
                 title: "3-Phase IoT Smart Energy & Power Factor Monitor",
                 status: "Coming Soon",
                 domain: "Smart Grid • Energy Analytics",
-                image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=700&q=80",
+                image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80",
                 desc: "Live kWh billing tracker, voltage sag/surge protection, and power factor monitoring dashboard for homes, hostels, and commercial buildings."
             },
             {
@@ -1891,19 +2184,20 @@
                 title: "Hybrid Solar MPPT & Auto-Transfer Switch (ATS)",
                 status: "In Development",
                 domain: "Green Energy • Power Electronics",
-                image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=700&q=80",
+                image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80",
                 desc: "Intelligent solar-to-grid load switching controller that maximizes daytime solar harvesting and protects sensitive appliances."
             }
         ];
 
         /* =====================================================================
-           5. STATE & DOM REFERENCES
+           4. STATE & DOM REFERENCES
            ===================================================================== */
         let activeCategory = "all";
         let activeStockFilter = "all";
         let searchQuery = "";
         let sortMode = "featured";
         let cart = [];
+        let appliedPromo = null;
         let wishlist = JSON.parse(localStorage.getItem("etechniqa_wishlist") || "[]");
         const INITIAL_HTML_SOURCE = document.documentElement.outerHTML;
 
@@ -1912,6 +2206,7 @@
         const emptyState = document.getElementById("empty-state");
         const desktopSearch = document.getElementById("desktop-search-input");
         const mobileSearch = document.getElementById("mobile-search-input");
+        const mobileClearSearch = document.getElementById("mobile-clear-search");
         const sortSelect = document.getElementById("sort-select");
         const stockFilterSelect = document.getElementById("stock-filter-select");
         const filterButtons = document.querySelectorAll(".filter-btn");
@@ -1928,12 +2223,13 @@
         const modalBody = document.getElementById("modal-body");
 
         /* =====================================================================
-           6. INITIALIZATION & SECRET ADMIN TRIGGER (5 Logo Taps OR #admin URL)
+           5. INITIALIZATION & SECRET ADMIN TRIGGER (5 Logo Taps OR #admin URL)
            ===================================================================== */
         function syncContactLinks() {
             const waIntro = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent("Assalamu Alaikum E-Techniqa! I want to inquire about your products.")}`;
             document.getElementById("nav-whatsapp-link").href = waIntro;
             document.getElementById("mobile-whatsapp-link").href = waIntro;
+            document.getElementById("bottom-nav-wa").href = waIntro;
             document.getElementById("footer-wa-btn").href = waIntro;
             document.getElementById("floating-wa-btn").href = waIntro;
             const footerWaText = document.getElementById("footer-whatsapp-text");
@@ -1945,10 +2241,17 @@
         function initStore() {
             document.getElementById("year").textContent = new Date().getFullYear();
             syncContactLinks();
+            syncPromoVisibility();
             renderProducts();
             renderUpcomingProjects();
             updateCartUI();
             updateWishlistUI();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const sharedProdId = urlParams.get("product");
+            if (sharedProdId && PRODUCTS.some(p => p.id === sharedProdId)) {
+                openProductModal(sharedProdId);
+            }
 
             if (window.location.hash === "#admin") {
                 openAdminLogin();
@@ -1988,6 +2291,14 @@
                 resetEditorForm();
                 renderAdminProductList();
                 renderAdminUpcomingList();
+
+                document.getElementById("set-promo-enabled").checked = !!STORE_CONFIG.promoEnabled;
+                document.getElementById("set-promo-code").value = STORE_CONFIG.promoCode || "ETECH10";
+                document.getElementById("set-promo-type").value = STORE_CONFIG.promoType || "percent";
+                document.getElementById("set-promo-value").value = STORE_CONFIG.promoValue || 10;
+                document.getElementById("set-promo-banner-en").value = STORE_CONFIG.promoBannerEn || "";
+                document.getElementById("set-promo-banner-bn").value = STORE_CONFIG.promoBannerBn || "";
+
                 document.getElementById("set-wa-num").value = STORE_CONFIG.whatsappNumber;
                 document.getElementById("set-disp-phone").value = STORE_CONFIG.displayPhone;
                 document.getElementById("set-admin-pass").value = STORE_CONFIG.adminPassword;
@@ -1999,10 +2310,11 @@
         });
 
         /* =====================================================================
-           7. RENDER STOREFRONT & UPCOMING PROJECTS
+           6. RENDER STOREFRONT & UPCOMING PROJECTS
            ===================================================================== */
         function getFallbackSvgUrl(title) {
-            return `https://placehold.co/600x400/071329/00D4FF?text=${encodeURIComponent(title)}`;
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#071329"/><stop offset="100%" stop-color="#0D1F42"/></linearGradient></defs><rect width="600" height="400" fill="url(#bg)"/><g stroke="#00D4FF" stroke-opacity="0.18" stroke-width="2" fill="none"><path d="M0 80H160L190 110H410L440 80H600"/><path d="M0 320H140L170 290H430L460 320H600"/><rect x="220" y="130" width="160" height="140" rx="16" stroke="#FF6B00" stroke-opacity="0.6" stroke-width="3"/></g><circle cx="300" cy="200" r="34" fill="#FF6B00" fill-opacity="0.2" stroke="#00D4FF" stroke-width="2.5"/><text x="300" y="207" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="22">ET</text></svg>`;
+            return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
         }
 
         function renderProducts() {
@@ -2045,7 +2357,7 @@
 
                 const priceDisplay = product.price > 0
                     ? `${STORE_CONFIG.currency}${product.price.toLocaleString()}`
-                    : (product.priceLabel || "Custom Quote");
+                    : (currentLang === "bn" ? "কাস্টম কোটেশন" : (product.priceLabel || "Custom Quote"));
 
                 const discountPercent = (product.oldPrice && product.oldPrice > product.price && product.price > 0)
                     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -2099,7 +2411,7 @@
                             <div onclick="openProductModal('${product.id}')" class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/40 cursor-pointer"></div>
 
                             <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider text-white ${isOut ? 'bg-rose-600' : (isUpcoming ? 'bg-amber-500 text-navy-950' : (product.badgeColor || 'bg-brand-orange'))} shadow-md pointer-events-none">
-                                ${isOut ? 'Stock Out' : (isUpcoming ? 'Upcoming' : (product.badge || 'In Stock'))}
+                                ${isOut ? dict.badgeStockOut : (isUpcoming ? dict.badgeUpcoming : (product.badge || (currentLang === 'bn' ? 'স্টকে আছে' : 'In Stock')))}
                             </span>
 
                             <div class="absolute top-3 right-3 flex items-center gap-1.5">
@@ -2108,6 +2420,9 @@
                                         -${discountPercent}%
                                     </span>
                                 ` : ''}
+                                <button onclick="shareProduct('${product.id}')" class="w-7 h-7 rounded-lg bg-navy-950/85 border border-slate-700 hover:border-brand-cyan text-slate-300 hover:text-brand-cyan flex items-center justify-center transition-colors" aria-label="Share Product" title="Copy Product Share Link">
+                                    <i class="fa-solid fa-share-nodes text-xs"></i>
+                                </button>
                                 <button onclick="toggleWishlist('${product.id}')" class="w-7 h-7 rounded-lg bg-navy-950/85 border border-slate-700 hover:border-rose-500 flex items-center justify-center transition-colors" aria-label="Save to Wishlist">
                                     <i class="fa-${isSaved ? 'solid text-rose-500' : 'regular text-slate-300'} fa-heart text-xs"></i>
                                 </button>
@@ -2211,8 +2526,99 @@
         }
 
         /* =====================================================================
-           8. SEARCH, FILTER, WISHLIST & CUSTOM QUOTE HANDLERS
+           7. SEARCH, FILTER, SHARE, EEE CALCULATORS & ADMIN-CONTROLLED PROMO
            ===================================================================== */
+        function shareProduct(id) {
+            const p = PRODUCTS.find(item => item.id === id);
+            if (!p) return;
+            const shareUrl = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(id)}`;
+            if (navigator.share) {
+                navigator.share({
+                    title: `${p.name} | E-Techniqa`,
+                    text: `${p.name} — ${p.price > 0 ? STORE_CONFIG.currency + p.price : 'Custom Quote'}`,
+                    url: shareUrl
+                }).catch(() => {});
+            } else {
+                const tempInput = document.createElement("input");
+                tempInput.value = shareUrl;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                showToast(currentLang === "bn" ? "প্রোডাক্টের শেয়ার লিংক কপি হয়েছে!" : "Product link copied to share!");
+            }
+        }
+
+        function openCalcModal() {
+            calculateResistor();
+            calculateLedResistor();
+            document.getElementById("eee-calc-modal").classList.remove("hidden");
+        }
+
+        function calculateResistor() {
+            const b1 = parseInt(document.getElementById("res-b1").value, 10);
+            const b2 = parseInt(document.getElementById("res-b2").value, 10);
+            const mult = parseInt(document.getElementById("res-mult").value, 10);
+            const ohms = ((b1 * 10) + b2) * mult;
+
+            let formatted = `${ohms} Ω`;
+            if (ohms >= 1000000) formatted = `${(ohms / 1000000).toFixed(2).replace(/\.00$/, "")} MΩ`;
+            else if (ohms >= 1000) formatted = `${(ohms / 1000).toFixed(2).replace(/\.00$/, "")} kΩ`;
+
+            document.getElementById("res-output").textContent = currentLang === "bn"
+                ? `${formatted} (±৫% গোল্ড)`
+                : `${formatted} (±5% Gold)`;
+        }
+
+        function calculateLedResistor() {
+            const vs = parseFloat(document.getElementById("led-vs").value) || 0;
+            const vf = parseFloat(document.getElementById("led-vf").value) || 0;
+            const ma = parseFloat(document.getElementById("led-ma").value) || 1;
+            if (vs <= vf) {
+                document.getElementById("led-output").textContent = currentLang === "bn"
+                    ? "সোর্স ভোল্ট বেশি হতে হবে"
+                    : "Source V must be > LED V";
+                return;
+            }
+            const r = Math.round((vs - vf) / (ma / 1000));
+            const standards = [10, 22, 47, 100, 150, 220, 330, 470, 560, 680, 1000, 1500, 2200, 4700, 10000];
+            const nearest = standards.find(val => val >= r) || r;
+            document.getElementById("led-output").textContent = currentLang === "bn"
+                ? `${r} Ω (${nearest}Ω ব্যবহার করুন)`
+                : `${r} Ω (Use ${nearest}Ω)`;
+        }
+
+        function applyPromoCode() {
+            if (!STORE_CONFIG.promoEnabled) return;
+            const enteredCode = document.getElementById("promo-input").value.trim().toUpperCase();
+            const activeCode = (STORE_CONFIG.promoCode || "").trim().toUpperCase();
+            const statusEl = document.getElementById("promo-status-msg");
+
+            if (enteredCode && enteredCode === activeCode) {
+                appliedPromo = {
+                    code: activeCode,
+                    type: STORE_CONFIG.promoType || "percent",
+                    value: Number(STORE_CONFIG.promoValue) || 10
+                };
+                const labelText = appliedPromo.type === "percent"
+                    ? `${appliedPromo.value}% OFF`
+                    : `${STORE_CONFIG.currency}${appliedPromo.value} OFF`;
+                statusEl.textContent = currentLang === "bn"
+                    ? `✓ ${activeCode} অ্যাপ্লাই হয়েছে (${labelText})!`
+                    : `✓ ${activeCode} applied (${labelText})!`;
+                statusEl.className = "text-[11px] text-emerald-400";
+                statusEl.classList.remove("hidden");
+            } else {
+                appliedPromo = null;
+                statusEl.textContent = currentLang === "bn"
+                    ? `× সঠিক প্রোমো কোড দিন`
+                    : `× Invalid promo code`;
+                statusEl.className = "text-[11px] text-rose-400";
+                statusEl.classList.remove("hidden");
+            }
+            updateCartUI();
+        }
+
         function selectCategory(cat) {
             activeCategory = cat;
             filterButtons.forEach(btn => {
@@ -2221,10 +2627,16 @@
             renderProducts();
         }
 
+        function navigateToCategory(cat) {
+            selectCategory(cat);
+            scrollToCatalog();
+        }
+
         function resetFilters() {
             searchQuery = "";
             desktopSearch.value = "";
             mobileSearch.value = "";
+            if (mobileClearSearch) mobileClearSearch.classList.add("hidden");
             activeStockFilter = "all";
             stockFilterSelect.value = "all";
             sortMode = "featured";
@@ -2245,6 +2657,9 @@
                 searchQuery = e.target.value;
                 desktopSearch.value = searchQuery;
                 mobileSearch.value = searchQuery;
+                if (mobileClearSearch) {
+                    mobileClearSearch.classList.toggle("hidden", searchQuery.length === 0);
+                }
                 renderProducts();
             });
         });
@@ -2267,10 +2682,10 @@
             const idx = wishlist.indexOf(id);
             if (idx === -1) {
                 wishlist.push(id);
-                showToast("Saved to your wishlist!");
+                showToast(currentLang === "bn" ? "উইশলিস্টে সেভ করা হয়েছে!" : "Saved to your wishlist!");
             } else {
                 wishlist.splice(idx, 1);
-                showToast("Removed from wishlist.");
+                showToast(currentLang === "bn" ? "উইশলিস্ট থেকে সরানো হয়েছে।" : "Removed from wishlist.");
             }
             localStorage.setItem("etechniqa_wishlist", JSON.stringify(wishlist));
             renderProducts();
@@ -2287,8 +2702,8 @@
                 wishlistItemsContainer.innerHTML = `
                     <div class="text-center py-12">
                         <i class="fa-regular fa-heart text-4xl text-slate-700 mb-3"></i>
-                        <p class="text-slate-300 text-sm font-medium">No saved items yet</p>
-                        <p class="text-slate-500 text-xs mt-1">Click the heart icon on any product to save it here.</p>
+                        <p class="text-slate-300 text-sm font-medium">${currentLang === "bn" ? "কোনো আইটেম সেভ করা নেই" : "No saved items yet"}</p>
+                        <p class="text-slate-500 text-xs mt-1">${currentLang === "bn" ? "পছন্দের প্রোডাক্টে হার্ট (♥) চাপলে এখানে সেভ থাকবে।" : "Click the heart icon on any product to save it here."}</p>
                     </div>
                 `;
                 return;
@@ -2298,10 +2713,10 @@
                 <div class="p-3.5 rounded-2xl bg-navy-900 border border-slate-800 flex items-center justify-between gap-3">
                     <div class="min-w-0">
                         <h4 class="text-xs sm:text-sm font-semibold text-white truncate">${p.name}</h4>
-                        <p class="text-xs text-brand-orange font-bold mt-0.5">${p.price > 0 ? STORE_CONFIG.currency + p.price : 'Custom Quote'}</p>
+                        <p class="text-xs text-brand-orange font-bold mt-0.5">${p.price > 0 ? STORE_CONFIG.currency + p.price : (currentLang === 'bn' ? 'কাস্টম কোটেশন' : 'Custom Quote')}</p>
                     </div>
                     <div class="flex items-center gap-1.5 flex-shrink-0">
-                        ${p.price > 0 && (p.stockStatus || 'in-stock') === 'in-stock' ? `<button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-brand-orange text-white text-xs font-bold">+ Bag</button>` : ''}
+                        ${p.price > 0 && (p.stockStatus || 'in-stock') === 'in-stock' ? `<button onclick="addToCart('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-brand-orange text-white text-xs font-bold">${currentLang === 'bn' ? '+ ব্যাগ' : '+ Bag'}</button>` : ''}
                         <button onclick="toggleWishlist('${p.id}')" class="w-7 h-7 rounded-lg bg-navy-800 text-rose-400 text-xs"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
@@ -2366,7 +2781,7 @@
         }
 
         /* =====================================================================
-           9. PRODUCT QUICK-VIEW MODAL & CART
+           8. PRODUCT QUICK-VIEW MODAL & CART
            ===================================================================== */
         function openProductModal(id) {
             const p = PRODUCTS.find(item => item.id === id);
@@ -2376,7 +2791,9 @@
             const isOut = status === "out-of-stock";
             const isUpcoming = status === "upcoming";
 
-            const priceDisplay = p.price > 0 ? `${STORE_CONFIG.currency}${p.price.toLocaleString()}` : (p.priceLabel || "Custom Quote");
+            const priceDisplay = p.price > 0
+                ? `${STORE_CONFIG.currency}${p.price.toLocaleString()}`
+                : (currentLang === "bn" ? "কাস্টম কোটেশন" : (p.priceLabel || "Custom Quote"));
             const imgSrc = p.image || getFallbackSvgUrl(p.name);
 
             modalBody.innerHTML = `
@@ -2386,9 +2803,14 @@
                     </div>
 
                     <div class="sm:col-span-7">
-                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase text-white ${isOut ? 'bg-rose-600' : (isUpcoming ? 'bg-amber-500 text-navy-950' : (p.badgeColor || 'bg-brand-orange'))} mb-2">
-                            ${isOut ? 'Stock Out' : (isUpcoming ? 'Upcoming' : (p.badge || 'In Stock'))}
-                        </span>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase text-white ${isOut ? 'bg-rose-600' : (isUpcoming ? 'bg-amber-500 text-navy-950' : (p.badgeColor || 'bg-brand-orange'))}">
+                                ${isOut ? dict.badgeStockOut : (isUpcoming ? dict.badgeUpcoming : (p.badge || (currentLang === 'bn' ? 'স্টকে আছে' : 'In Stock')))}
+                            </span>
+                            <button onclick="shareProduct('${p.id}')" class="px-2.5 py-1 rounded-lg bg-navy-950 border border-slate-700 hover:border-brand-cyan text-xs text-cyan-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-share-nodes"></i> ${dict.shareBtn}
+                            </button>
+                        </div>
                         <h3 class="font-tech text-2xl sm:text-3xl font-bold text-white leading-tight">${p.name}</h3>
                         <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">${p.shortDesc}</p>
 
@@ -2447,7 +2869,7 @@
                 cart.push({ ...product, qty: 1 });
             }
             updateCartUI();
-            showToast(`${product.name} added to your bag!`);
+            showToast(currentLang === "bn" ? `${product.name} ব্যাগে যোগ হয়েছে!` : `${product.name} added to your bag!`);
         }
 
         function updateCartQty(id, delta) {
@@ -2464,13 +2886,49 @@
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             const itemsSubtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            let discountAmount = 0;
+            if (STORE_CONFIG.promoEnabled && appliedPromo && itemsSubtotal > 0) {
+                if (appliedPromo.type === "percent") {
+                    discountAmount = Math.round((itemsSubtotal * appliedPromo.value) / 100);
+                } else {
+                    discountAmount = Math.min(appliedPromo.value, itemsSubtotal);
+                }
+            }
+
             const deliveryFee = totalItems > 0 ? parseInt(document.getElementById("cust-zone").value || "60", 10) : 0;
-            const grandTotal = itemsSubtotal + deliveryFee;
+            const grandTotal = Math.max(0, itemsSubtotal - discountAmount) + deliveryFee;
 
             cartBadge.textContent = totalItems;
             document.getElementById("cart-delivery-fee").textContent = `${STORE_CONFIG.currency}${deliveryFee}`;
             cartTotalPrice.textContent = `${STORE_CONFIG.currency}${grandTotal.toLocaleString()}`;
             document.getElementById("checkout-details-box").classList.toggle("hidden", cart.length === 0);
+
+            const showPromoBox = cart.length > 0 && !!STORE_CONFIG.promoEnabled;
+            document.getElementById("promo-code-box").classList.toggle("hidden", !showPromoBox);
+
+            const discountRow = document.getElementById("cart-discount-row");
+            if (discountAmount > 0 && cart.length > 0) {
+                discountRow.classList.remove("hidden");
+                document.getElementById("cart-discount-amount").textContent = `-${STORE_CONFIG.currency}${discountAmount.toLocaleString()} (${appliedPromo.code})`;
+            } else {
+                discountRow.classList.add("hidden");
+            }
+
+            const floatingBar = document.getElementById("mobile-floating-bag-bar");
+            const bottomBadge = document.getElementById("bottom-nav-bag-badge");
+            if (floatingBar && bottomBadge) {
+                if (totalItems > 0) {
+                    floatingBar.classList.remove("hidden");
+                    bottomBadge.classList.remove("hidden");
+                    bottomBadge.textContent = totalItems;
+                    document.getElementById("floating-bag-count").textContent = currentLang === "bn" ? `${totalItems}টি আইটেম ব্যাগে` : `${totalItems} Item${totalItems > 1 ? 's' : ''} in Bag`;
+                    document.getElementById("floating-bag-total").textContent = `${STORE_CONFIG.currency}${Math.max(0, itemsSubtotal - discountAmount).toLocaleString()}`;
+                } else {
+                    floatingBar.classList.add("hidden");
+                    bottomBadge.classList.add("hidden");
+                }
+            }
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
@@ -2521,7 +2979,7 @@
 
         document.getElementById("checkout-whatsapp-btn").addEventListener("click", () => {
             if (cart.length === 0) {
-                showToast("Please add at least one item to your bag!");
+                showToast(currentLang === "bn" ? "অন্তত একটি প্রোডাক্ট ব্যাগে যোগ করুন!" : "Please add at least one item to your bag!");
                 return;
             }
             const custName = document.getElementById("cust-name").value.trim() || "Not Provided";
@@ -2532,11 +2990,21 @@
 
             const lines = cart.map((item, i) => `${i + 1}. ${item.name} (${item.qty}x) — ${STORE_CONFIG.currency}${item.price * item.qty}`);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const grandTotal = subtotal + deliveryFee;
+
+            let discountAmount = 0;
+            if (STORE_CONFIG.promoEnabled && appliedPromo && subtotal > 0) {
+                discountAmount = appliedPromo.type === "percent"
+                    ? Math.round((subtotal * appliedPromo.value) / 100)
+                    : Math.min(appliedPromo.value, subtotal);
+            }
+
+            const grandTotal = Math.max(0, subtotal - discountAmount) + deliveryFee;
+            const promoLine = discountAmount > 0 ? `🎟️ প্রোমো ছাড় (${appliedPromo.code}): -${STORE_CONFIG.currency}${discountAmount}\n` : "";
 
             const msg = `হ্যালো ${STORE_CONFIG.brandName},\nআমি ওয়েবসাইট থেকে নতুন অর্ডার কনফার্ম করছি:\n\n` +
                 `📦 প্রোডাক্ট তালিকা:\n${lines.join("\n")}\n\n` +
                 `💰 সাবটোটাল: ${STORE_CONFIG.currency}${subtotal}\n` +
+                promoLine +
                 `🚚 ডেলিভারি চার্জ: ${STORE_CONFIG.currency}${deliveryFee}\n` +
                 `✅ সর্বমোট বিল: ${STORE_CONFIG.currency}${grandTotal}\n` +
                 `💳 পেমেন্ট মেথড: ${custPayment}\n\n` +
@@ -2546,7 +3014,7 @@
         });
 
         /* =====================================================================
-           10. SECRET ADMIN PANEL LOGIC (STOCK TOGGLE & PIN-TO-TOP)
+           9. SECRET ADMIN PANEL LOGIC (PROMO ON/OFF, STOCK TOGGLE & PIN-TO-TOP)
            ===================================================================== */
         const adminModal = document.getElementById("admin-modal");
         const adminProductList = document.getElementById("admin-product-list");
@@ -2778,11 +3246,26 @@
 
         document.getElementById("store-settings-form").addEventListener("submit", (e) => {
             e.preventDefault();
+            STORE_CONFIG.promoEnabled = document.getElementById("set-promo-enabled").checked;
+            STORE_CONFIG.promoCode = document.getElementById("set-promo-code").value.trim().toUpperCase() || "ETECH10";
+            STORE_CONFIG.promoType = document.getElementById("set-promo-type").value;
+            STORE_CONFIG.promoValue = parseFloat(document.getElementById("set-promo-value").value) || 10;
+            STORE_CONFIG.promoBannerEn = document.getElementById("set-promo-banner-en").value.trim();
+            STORE_CONFIG.promoBannerBn = document.getElementById("set-promo-banner-bn").value.trim();
+
             STORE_CONFIG.whatsappNumber = document.getElementById("set-wa-num").value.trim();
             STORE_CONFIG.displayPhone = document.getElementById("set-disp-phone").value.trim();
             STORE_CONFIG.adminPassword = document.getElementById("set-admin-pass").value.trim();
+
+            if (!STORE_CONFIG.promoEnabled) {
+                appliedPromo = null;
+            }
+            syncPromoVisibility();
             syncContactLinks();
-            showToast("Store settings updated! Click Copy Updated index.html Code to save.");
+            updateCartUI();
+            showToast(STORE_CONFIG.promoEnabled
+                ? `Promo Offer (${STORE_CONFIG.promoCode}) is now ON! Copy code to save.`
+                : "Promo Offer turned OFF! Copy code to save.");
         });
 
         document.getElementById("copy-full-html-btn").addEventListener("click", () => {
@@ -2815,7 +3298,7 @@
         });
 
         /* =====================================================================
-           11. DRAWER & TOAST CONTROLS
+           10. DRAWER & TOAST CONTROLS
            ===================================================================== */
         document.getElementById("open-cart-btn").addEventListener("click", () => cartDrawer.classList.remove("hidden"));
         document.getElementById("close-cart-btn").addEventListener("click", () => cartDrawer.classList.add("hidden"));
